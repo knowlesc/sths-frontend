@@ -13,15 +13,18 @@ import 'bootstrap';
 import { AppMain } from './components/appMain/appMain.component';
 import { AppHeader } from './components/appHeader/appHeader.component';
 import { PlayerStats } from './components/PlayerStats/playerStats.component';
+import { Services } from './services/services';
+import { Config } from './models/config';
 
-declare const config: { apiUrl: string };
+declare const config: Config;
 
 const app = angular.module('sths.frontend', [
   'ngMaterial',
   'ngRoute',
   AppMain.moduleName,
   AppHeader.moduleName,
-  PlayerStats.moduleName
+  PlayerStats.moduleName,
+  Services.moduleName
 ]);
 
 app.constant('config', config);

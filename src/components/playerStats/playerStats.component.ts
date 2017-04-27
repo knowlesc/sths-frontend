@@ -1,9 +1,11 @@
 import * as angular from 'angular';
+import { PlayerStatsController } from './playerStats.controller';
 
 export class PlayerStats {
   static moduleName = 'PlayerStats';
   static componentName = 'playerStats';
   static componentOptions: ng.IComponentOptions = {
+    controller: PlayerStatsController,
     template: `
       <nav class="navbar navbar-default navbar-stacked">
         <div class="container-fluid">
