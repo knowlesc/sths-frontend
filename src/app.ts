@@ -14,6 +14,8 @@ import { AppMain } from './components/appMain/appMain.component';
 import { AppHeader } from './components/appHeader/appHeader.component';
 import { PlayerStats } from './components/PlayerStats/playerStats.component';
 
+declare const config: { apiUrl: string };
+
 const app = angular.module('sths.frontend', [
   'ngMaterial',
   'ngRoute',
@@ -21,6 +23,8 @@ const app = angular.module('sths.frontend', [
   AppHeader.moduleName,
   PlayerStats.moduleName
 ]);
+
+app.constant('config', config);
 
 app.config(($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {

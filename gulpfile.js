@@ -17,13 +17,18 @@ gulp.task('watch', () => {
     ['tslint', 'build']);
 });
 
-gulp.task('build', ['external-css', 'external-js', 'external-fonts', 'html', 'scss'], () => {
+gulp.task('build', ['external-css', 'external-js', 'external-fonts', 'html', 'scss', 'config'], () => {
   browserify()
     .add('src/app.ts')
     .plugin(tsify, { noImplicitAny: true })
     .bundle()
     .on("error", (e) => { console.log(e.message); })
     .pipe(source('bundle.js'))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('config', () => {
+  return gulp.src('./config.js')
     .pipe(gulp.dest('build'));
 });
 
