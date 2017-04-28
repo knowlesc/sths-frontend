@@ -5,7 +5,6 @@ import * as jQuery from 'jquery';
 (global as any).jQuery = jQuery;
 
 import 'angular-aria';
-import 'angular-material';
 import 'angular-animate';
 import 'angular-route';
 import 'bootstrap';
@@ -19,7 +18,6 @@ import { Config } from './models/config';
 declare const config: Config;
 
 const app = angular.module('sths.frontend', [
-  'ngMaterial',
   'ngRoute',
   AppMain.moduleName,
   AppHeader.moduleName,

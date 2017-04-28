@@ -20,7 +20,7 @@ gulp.task('watch', () => {
     ['tslint', 'build']);
 });
 
-gulp.task('build', ['external-css', 'external-js', 'external-fonts', 'html', 'scss', 'config'], () => {
+gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'config'], () => {
   browserify()
     .add('src/app.ts')
     .plugin(tsify, { noImplicitAny: true })
@@ -38,9 +38,7 @@ gulp.task('build-minified', ['build'], () => {
     uglify(),
     rename('bundle.min.js'),
     gulp.dest('build')
-  ], (e) => {
-    if (e) console.log(err);
-  });
+  ], (e) => { if (e) console.log(e); });
 });
 
 gulp.task('config', () => {
@@ -55,31 +53,13 @@ gulp.task('scss', () => {
     .pipe(gulp.dest('build/css'));
 });
 
-gulp.task('external-js', () => {
-  return gulp.src([
-    'node_modules/angular/angular.js',
-    'node_modules/angular-aria/angular-aria.js',
-    'node_modules/angular-animate/angular-animate.js',
-    'node_modules/angular-material/angular-material.js',
-    'node_modules/angular-route/angular-route.js',
-    'node_modules/bootstrap/dist/js/bootstrap.js',
-    'node_modules/jquery/dist/jquery.js'
-  ])
-    .pipe(gulp.dest('build/js'));
-});
-
 gulp.task('external-css', () => {
-  return gulp.src([
-    'src/css/*.css',
-    'node_modules/angular-material/angular-material.css'
-  ])
+  return gulp.src(['src/css/*.css'])
     .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('external-fonts', () => {
-  return gulp.src([
-    'node_modules/bootstrap/dist/fonts/*'
-  ])
+  return gulp.src(['node_modules/bootstrap/dist/fonts/*'])
     .pipe(gulp.dest('build/fonts'));
 });
 
