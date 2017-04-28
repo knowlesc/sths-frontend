@@ -1,12 +1,15 @@
 const gulp = require('gulp');
-const sourcemaps = require('gulp-sourcemaps');
-const path = require('path');
 const tslint = require('gulp-tslint');
 const sass = require('gulp-sass');
 const browserify = require('browserify');
 const tsify = require('tsify');
 const source = require('vinyl-source-stream');
 const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const pump = require('pump');
+const babelify = require('babelify');
+const ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('default',
   ['watch', 'tslint', 'build']);
@@ -21,10 +24,23 @@ gulp.task('build', ['external-css', 'external-js', 'external-fonts', 'html', 'sc
   browserify()
     .add('src/app.ts')
     .plugin(tsify, { noImplicitAny: true })
+    .transform(babelify, { extensions: ['.ts'], presets: ["es2015"] })
     .bundle()
     .on("error", (e) => { console.log(e.message); })
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('build'));
+});
+
+gulp.task('build-minified', ['build'], () => {
+  pump([
+    gulp.src('build/bundle.js'),
+    ngAnnotate(),
+    uglify(),
+    rename('bundle.min.js'),
+    gulp.dest('build')
+  ], (e) => {
+    if (e) console.log(err);
+  });
 });
 
 gulp.task('config', () => {
