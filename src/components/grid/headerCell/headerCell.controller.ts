@@ -19,7 +19,6 @@ export class HeaderCellController {
   }
 
   sort(): void {
-    console.log(this.gridOptions);
     this.gridOptions.updateSort(this.fieldIndex);
   }
 }
