@@ -7,7 +7,7 @@ export class HeaderCell {
   static directiveOptions: ng.IDirectiveFactory = () => {
     return {
       bindToController: {
-        fieldIndex: '=',
+        sortFieldIndex: '=',
         gridOptions: '=',
         hcCenter: '='
       },

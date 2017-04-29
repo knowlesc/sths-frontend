@@ -10,10 +10,18 @@ export class PlayerStatsController {
 
   constructor(private $timeout: ng.ITimeoutService, private playersService: PlayersService) {
     this.gridOptions = new GridOptions();
-    this.gridOptions.fieldNames = ['Number', 'Name', 'TeamName', 'Position',
-      'GP', 'G', 'A', 'P', 'PlusMinus', 'PIM', 'Hits', 'Shots', 'ShotsPCT',
-      'ShotsBlock', 'AMG', 'PPG', 'PPA', 'PPP', 'P60'];
+    this.gridOptions.fieldNames = ['Name', 'TeamName', 'Position', 'GP', 'G', 'A', 'P',
+      'PlusMinus', 'PIM', 'Hits', 'Shots', 'ShotsPCT', 'ShotsBlock', 'AvgTOI', 'PPG', 'PPA',
+      'PPP', 'P60'];
 
+    this.gridOptions.onSort(() => {
+      this.loadStats();
+    });
+
+    this.loadStats();
+  }
+
+  onSortUpdated() {
     this.loadStats();
   }
 
@@ -22,7 +30,8 @@ export class PlayerStatsController {
       limit: 50,
       hasTeam: 'true',
       hasPlayedMinimumGames: 'true',
-      league: this.selectedLeague
+      league: this.selectedLeague,
+      sort: this.gridOptions.getCurrentSortAsString()
     };
 
     this.playersService.getSkaterStats(params)

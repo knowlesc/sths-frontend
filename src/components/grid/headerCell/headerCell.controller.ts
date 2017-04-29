@@ -1,24 +1,32 @@
 import { GridOptions } from '../../grid/gridOptions';
 
 export class HeaderCellController {
-  fieldIndex: number;
+  sortFieldIndex: number;
   gridOptions: GridOptions;
 
+  private get isSortable(): boolean {
+    return this.sortFieldIndex !== undefined
+      && this.sortFieldIndex !== null
+      && this.sortFieldIndex >= 0;
+  }
+
   get sortAsc(): boolean {
-    return this.gridOptions
+    return this.isSortable && this.gridOptions
       && this.gridOptions.currentSort
-      && this.gridOptions.currentSort.field === this.gridOptions.fieldNames[this.fieldIndex]
+      && this.gridOptions.currentSort.field === this.gridOptions.fieldNames[this.sortFieldIndex]
       && this.gridOptions.currentSort.order === 'asc';
   }
 
   get sortDesc(): boolean {
-    return this.gridOptions
+    return this.isSortable && this.gridOptions
       && this.gridOptions.currentSort
-      && this.gridOptions.currentSort.field === this.gridOptions.fieldNames[this.fieldIndex]
+      && this.gridOptions.currentSort.field === this.gridOptions.fieldNames[this.sortFieldIndex]
       && this.gridOptions.currentSort.order === 'desc';
   }
 
   sort(): void {
-    this.gridOptions.updateSort(this.fieldIndex);
+    if (this.isSortable) {
+      this.gridOptions.updateSort(this.sortFieldIndex);
+    }
   }
 }
