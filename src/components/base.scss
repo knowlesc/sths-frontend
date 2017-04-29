@@ -2,11 +2,31 @@
   text-transform: uppercase;
 }
 
+$table-cell-border-color: #ddd;
+
 .table {
   font-size: 12px;
 
+  .header-cell {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    .glyphicon {
+      font-size: 8px;
+    }
+  }
+
   th {
     text-transform: uppercase;
+  }
+
+  td {
+    &:last-child {
+      border-right: none;
+    }
+
+    border-right: 1px dotted $table-cell-border-color
   }
 }
 

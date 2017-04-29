@@ -13,6 +13,7 @@ import { AppMain } from './components/appMain/appMain.component';
 import { AppHeader } from './components/appHeader/appHeader.component';
 import { PlayerStats } from './components/PlayerStats/playerStats.component';
 import { Services } from './services/services';
+import { Filters } from './filters/filters';
 import { Config } from './models/config';
 
 declare const config: Config;
@@ -22,7 +23,8 @@ const app = angular.module('sths.frontend', [
   AppMain.moduleName,
   AppHeader.moduleName,
   PlayerStats.moduleName,
-  Services.moduleName
+  Services.moduleName,
+  Filters.moduleName
 ]);
 
 app.constant('config', config);

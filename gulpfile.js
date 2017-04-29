@@ -10,6 +10,7 @@ const rename = require('gulp-rename');
 const pump = require('pump');
 const babelify = require('babelify');
 const ngAnnotate = require('gulp-ng-annotate');
+const flatten = require('gulp-flatten');
 
 gulp.task('default',
   ['watch', 'tslint', 'build']);
@@ -63,9 +64,15 @@ gulp.task('external-fonts', () => {
     .pipe(gulp.dest('build/fonts'));
 });
 
-gulp.task('html', () => {
-  return gulp.src(['src/**/*.html'])
+gulp.task('html', ['templates'], () => {
+  return gulp.src(['src/index.html'])
     .pipe(gulp.dest('build'));
+});
+
+gulp.task('templates', () => {
+  return gulp.src(['src/**/*.template.html'])
+    .pipe(flatten())
+    .pipe(gulp.dest('build/templates'));
 });
 
 gulp.task('tslint', () => {
