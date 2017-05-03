@@ -16,7 +16,7 @@ export class HeaderCell {
       transclude: true,
       scope: {},
       template: `
-        <div ng-class="{ 'text-centered': $ctrl.hcCenter }" class="text-nowrap header-cell" ng-click="$ctrl.sort()">
+        <div ng-class="{ 'text-center': $ctrl.hcCenter }" class="text-nowrap header-cell" ng-click="$ctrl.sort()">
           <span class="glyphicon glyphicon-triangle-top" ng-if="$ctrl.sortAsc"></span>
           <span class="glyphicon glyphicon-triangle-bottom" ng-if="$ctrl.sortDesc"></span>
           <ng-transclude></ng-transclude>

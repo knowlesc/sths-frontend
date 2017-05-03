@@ -49,7 +49,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="player in $ctrl.playerStats">
-                <td class="text-center">{{ $index + 1 }}</td>
+                <td class="text-center">{{ (($ctrl.currentPage - 1) * $ctrl.rowsPerPage) + ($index + 1) }}</td>
                 <td class="text-nowrap">{{ player.Name }}</td>
                 <td class="text-nowrap">{{ player.TeamName }}</td>
                 <td class="text-center">{{ player.Position }}</td>
@@ -76,21 +76,32 @@
         <div class="text-center">
           <ul class="pagination pagination-sm">
             <li>
-              <a>
+              <a ng-click="$ctrl.goToPage(1)">
                 <span>&laquo;</span>
               </a>
             </li>
-            <li><a>1</a></li>
-            <li><a>2</a></li>
-            <li><a>3</a></li>
-            <li><a>4</a></li>
-            <li><a>5</a></li>
+            <li ng-repeat="page in $ctrl.pagination track by $index"
+              class="page-item"
+              ng-class="{ 'active': page === $ctrl.currentPage, 'disabled': page < 0 }">
+              <a class="page-link" ng-if="page < 0">...</span>
+              <a class="page-link" ng-if="page > 0" ng-click="$ctrl.goToPage(page)">{{ page }}</a>
+            </li>
             <li>
-              <a>
+              <a ng-click="$ctrl.goToPage($ctrl.totalPages)">
                 <span>&raquo;</span>
               </a>
             </li>
           </ul>
+
+          <div>
+            <select class="form-control pagination-options"
+              ng-model="$ctrl.rowsPerPage"
+              ng-options="value for value in $ctrl.paginationOptions"
+              ng-change="$ctrl.onRowsPerPageUpdated()">
+            </select>
+            <label class="text-nowrap">Rows per page</label>
+          </div>
+
         </div>
       </div>
     </div>

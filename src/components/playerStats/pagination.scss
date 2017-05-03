@@ -1,0 +1,8 @@
+.pagination-options {
+  width: 45px;
+  display: inline-block;
+}
+
+.page-item.disabled > a.page-link {
+  cursor: default;
+}

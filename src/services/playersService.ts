@@ -12,12 +12,15 @@ export class PlayersService {
 
   }
 
-  getSkaterStats(params?: SkaterParams): Promise<PlayerStats[]> {
+  getSkaterStats(params?: SkaterParams): Promise<{ totalCount: number, rows: PlayerStats[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.skaterStats,
         { params: params })
         .then((response) => {
-          resolve(response.data);
+          resolve({
+            totalCount: response.headers('X-Total-Count') || 0,
+            rows: response.data
+          });
         }, (error) => reject);
     });
   }
