@@ -28,46 +28,20 @@
           <table class="table table-striped table-hover table-condensed">
             <thead>
               <th header-cell hc-center="true" grid-options="$ctrl.gridOptions">#</th>
-              <th header-cell sort-field-index="0" grid-options="$ctrl.gridOptions"></span>Name</th>
-              <th header-cell sort-field-index="1" grid-options="$ctrl.gridOptions">Team</th>
-              <th header-cell hc-center="true" sort-field-index="2" grid-options="$ctrl.gridOptions">Position</th>
-              <th header-cell hc-center="true" sort-field-index="3" grid-options="$ctrl.gridOptions">GP</th>
-              <th header-cell hc-center="true" sort-field-index="4" grid-options="$ctrl.gridOptions">G</th>
-              <th header-cell hc-center="true" sort-field-index="5" grid-options="$ctrl.gridOptions">A</th>
-              <th header-cell hc-center="true" sort-field-index="6" grid-options="$ctrl.gridOptions">P</th>
-              <th header-cell hc-center="true" sort-field-index="7" grid-options="$ctrl.gridOptions">+/-</th>
-              <th header-cell hc-center="true" sort-field-index="8" grid-options="$ctrl.gridOptions">PIM</th>
-              <th header-cell hc-center="true" sort-field-index="9" grid-options="$ctrl.gridOptions">Hits</th>
-              <th header-cell hc-center="true" sort-field-index="10" grid-options="$ctrl.gridOptions">Shots</th>
-              <th header-cell hc-center="true" sort-field-index="11" grid-options="$ctrl.gridOptions">Shot%</th>
-              <th header-cell hc-center="true" sort-field-index="12" grid-options="$ctrl.gridOptions">BkS</th>
-              <th header-cell hc-center="true" sort-field-index="13" grid-options="$ctrl.gridOptions">TOI/G</th>
-              <th header-cell hc-center="true" sort-field-index="14" grid-options="$ctrl.gridOptions">PPG</th>
-              <th header-cell hc-center="true" sort-field-index="15" grid-options="$ctrl.gridOptions">PPA</th>
-              <th header-cell hc-center="true" sort-field-index="16" grid-options="$ctrl.gridOptions">PPP</th>
-              <th header-cell hc-center="true" sort-field-index="17" grid-options="$ctrl.gridOptions">P/60</th>
+              <th ng-repeat="column in $ctrl.gridOptions.columns"
+                header-cell
+                hc-field-name="column.fieldName"
+                hc-centered="column.centered"
+                hc-sortable="column.sortable"
+                grid-options="$ctrl.gridOptions">{{ column.headerTitle || column.fieldName }}</th>
             </thead>
             <tbody>
               <tr ng-repeat="player in $ctrl.playerStats">
                 <td class="text-center">{{ (($ctrl.currentPage - 1) * $ctrl.rowsPerPage) + ($index + 1) }}</td>
-                <td class="text-nowrap">{{ player.Name }}</td>
-                <td class="text-nowrap">{{ player.TeamName }}</td>
-                <td class="text-center">{{ player.Position }}</td>
-                <td class="text-center">{{ player.GP }}</td>
-                <td class="text-center">{{ player.G }}</td>
-                <td class="text-center">{{ player.A }}</td>
-                <td class="text-center">{{ player.P }}</td>
-                <td class="text-center">{{ player.PlusMinus }}</td>
-                <td class="text-center">{{ player.Pim }}</td>
-                <td class="text-center">{{ player.Hits }}</td>
-                <td class="text-center">{{ player.Shots }}</td>
-                <td class="text-center">{{ player.ShotsPCT | number : 1 }}</td>
-                <td class="text-center">{{ player.ShotsBlock }}</td>
-                <td class="text-center">{{ player.AvgTOI | time }}</td>
-                <td class="text-center">{{ player.PPG }}</td>
-                <td class="text-center">{{ player.PPA }}</td>
-                <td class="text-center">{{ player.PPP }}</td>
-                <td class="text-center">{{ player.P60 || 0 }}</td>
+                <td ng-repeat="column in $ctrl.gridOptions.columns"
+                  grid-cell="player"
+                  column-def="column"
+                  field-name="column.fieldName"></td>
               </tr>
             </tbody>
           </table>

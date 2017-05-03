@@ -2,6 +2,7 @@ import { PlayersService } from '../../services/playersService';
 import { PlayerStats } from '../../models/players/skaterStats';
 import { SkaterParams } from '../../models/players/skaterParams';
 import { GridOptions } from '../grid/gridOptions';
+import { ColumnDef } from '../grid/columnDef';
 
 export class PlayerStatsController {
   playerStats: PlayerStats[];
@@ -14,9 +15,29 @@ export class PlayerStatsController {
 
   constructor(private $timeout: ng.ITimeoutService, private playersService: PlayersService) {
     this.gridOptions = new GridOptions();
-    this.gridOptions.fieldNames = ['Name', 'TeamName', 'Position', 'GP', 'G', 'A', 'P',
-      'PlusMinus', 'PIM', 'Hits', 'Shots', 'ShotsPCT', 'ShotsBlock', 'AvgTOI', 'PPG', 'PPA',
-      'PPP', 'P60'];
+    this.gridOptions.columns = [
+      { fieldName: 'Name', sortable: true },
+      { fieldName: 'TeamName', sortable: true, headerTitle: 'Team' },
+      { fieldName: 'Position', sortable: true, centered: true },
+      { fieldName: 'GP', sortable: true, centered: true },
+      { fieldName: 'G', sortable: true, centered: true },
+      { fieldName: 'A', sortable: true, centered: true },
+      { fieldName: 'P', sortable: true, centered: true},
+      { fieldName: 'PlusMinus', sortable: true, centered: true, headerTitle: '+/-' },
+      { fieldName: 'PIM', sortable: true, centered: true },
+      { fieldName: 'Hits', sortable: true, centered: true },
+      { fieldName: 'Shots', sortable: true, centered: true },
+      { fieldName: 'ShotsPCT', sortable: true, centered: true, headerTitle: 'Shot%',
+        template: `<span ng-bind="row.ShotsPCT | number : 1"></span>` },
+      { fieldName: 'ShotsBlock', sortable: true, centered: true, headerTitle: 'BkS' },
+      { fieldName: 'AvgTOI', sortable: true, centered: true, headerTitle: 'TOI/G',
+        template: '<span ng-bind="row.AvgTOI | time"></span>' },
+      { fieldName: 'PPG', sortable: true, centered: true },
+      { fieldName: 'PPA', sortable: true, centered: true },
+      { fieldName: 'PPP', sortable: true, centered: true },
+      { fieldName: 'P60', sortable: true, centered: true, headerTitle: 'P/60',
+        template: `<span ng-bind="row.P60 || 0"></span>` }
+    ];
 
     this.gridOptions.onSort(() => {
       this.loadStats();

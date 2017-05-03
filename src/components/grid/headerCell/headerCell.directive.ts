@@ -7,9 +7,10 @@ export class HeaderCell {
   static directiveOptions: ng.IDirectiveFactory = () => {
     return {
       bindToController: {
-        sortFieldIndex: '=',
         gridOptions: '=',
-        hcCenter: '='
+        hcFieldName: '=',
+        hcCentered: '=',
+        hcSortable: '='
       },
       controller: HeaderCellController,
       controllerAs: '$ctrl',

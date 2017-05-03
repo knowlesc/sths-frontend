@@ -1,7 +1,9 @@
+import { ColumnDef } from './columnDef';
+
 export class GridOptions {
   private sortListeners: Function[] = [];
 
-  fieldNames: string[];
+  columns: ColumnDef[];
   currentSort: { field: string, order: 'asc' | 'desc' };
 
   getCurrentSortAsString(): string {
@@ -18,19 +20,17 @@ export class GridOptions {
     }
   }
 
-  updateSort(fieldIndex: number): void {
-    if (!this.fieldNames) {
-      throw new Error('GridOptions: Field names not set.');
+  updateSort(fieldName: string): void {
+    if (!this.columns) {
+      throw new Error('GridOptions: Column defs not set.');
     }
 
-    const field = this.fieldNames[fieldIndex];
-
     if (!this.currentSort || !this.currentSort.field) {
-      this.currentSort = { field: field, order: 'asc' };
-    } else if (this.currentSort.field === field) {
+      this.currentSort = { field: fieldName, order: 'asc' };
+    } else if (this.currentSort.field === fieldName) {
       this.currentSort.order = this.currentSort.order === 'asc' ? 'desc' : 'asc';
     } else {
-      this.currentSort = { field: field, order: 'asc' };
+      this.currentSort = { field: fieldName, order: 'asc' };
     }
 
     this.sortListeners.forEach((cb) => { cb(); });
