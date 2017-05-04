@@ -9,7 +9,7 @@ export class HeaderCell {
       bindToController: {
         gridOptions: '=',
         hcFieldName: '=',
-        hcCentered: '=',
+        hcCenter: '=',
         hcSortable: '='
       },
       controller: HeaderCellController,

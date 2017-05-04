@@ -24,59 +24,7 @@
         Player Statistics
       </div>
       <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table table-striped table-hover table-condensed">
-            <thead>
-              <th header-cell hc-center="true" grid-options="$ctrl.gridOptions">#</th>
-              <th ng-repeat="column in $ctrl.gridOptions.columns"
-                header-cell
-                hc-field-name="column.fieldName"
-                hc-centered="column.centered"
-                hc-sortable="column.sortable"
-                grid-options="$ctrl.gridOptions">{{ column.headerTitle || column.fieldName }}</th>
-            </thead>
-            <tbody>
-              <tr ng-repeat="player in $ctrl.playerStats">
-                <td class="text-center">{{ (($ctrl.currentPage - 1) * $ctrl.rowsPerPage) + ($index + 1) }}</td>
-                <td ng-repeat="column in $ctrl.gridOptions.columns"
-                  grid-cell="player"
-                  column-def="column"
-                  field-name="column.fieldName"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="text-center">
-          <ul class="pagination pagination-sm">
-            <li>
-              <a ng-click="$ctrl.goToPage(1)">
-                <span>&laquo;</span>
-              </a>
-            </li>
-            <li ng-repeat="page in $ctrl.pagination track by $index"
-              class="page-item"
-              ng-class="{ 'active': page === $ctrl.currentPage, 'disabled': page < 0 }">
-              <a class="page-link" ng-if="page < 0">...</span>
-              <a class="page-link" ng-if="page > 0" ng-click="$ctrl.goToPage(page)">{{ page }}</a>
-            </li>
-            <li>
-              <a ng-click="$ctrl.goToPage($ctrl.totalPages)">
-                <span>&raquo;</span>
-              </a>
-            </li>
-          </ul>
-
-          <div>
-            <select class="form-control pagination-options"
-              ng-model="$ctrl.rowsPerPage"
-              ng-options="value for value in $ctrl.paginationOptions"
-              ng-change="$ctrl.onRowsPerPageUpdated()">
-            </select>
-            <label class="text-nowrap">Rows per page</label>
-          </div>
-
-        </div>
+        <grid grid-options="$ctrl.gridOptions"></grid>
       </div>
     </div>
   </div>

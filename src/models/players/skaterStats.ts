@@ -1,4 +1,4 @@
-export class PlayerStats {
+export class SkaterStats {
   Number: number;
   UniqueID: number;
   Name: string;
@@ -51,7 +51,7 @@ export class PlayerStats {
   StarPowerGoal30Days: number;
   StarPowerAssist30Days: number;
   Position: string;
-  TeamName: string;
+  TeamAbbre: string;
   ShotsPCT: number;
   AvgTOI: number;
   FaceoffPCT: number;

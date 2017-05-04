@@ -1,10 +1,11 @@
-import { ColumnDef } from './columnDef';
+import { GridOptions } from './gridOptions';
 
-export class GridOptions {
-  private sortListeners: Function[] = [];
-
-  columns: ColumnDef[];
+export class GridApi {
+  gridOptions: GridOptions;
   currentSort: { field: string, order: 'asc' | 'desc' };
+
+  loadData: Function;
+  reloadData: Function;
 
   getCurrentSortAsString(): string {
     if (!this.currentSort || !this.currentSort.field) {
@@ -14,14 +15,8 @@ export class GridOptions {
     return (this.currentSort.order === 'asc' ? '' : '-') + this.currentSort.field;
   }
 
-  onSort(cb: Function): void {
-    if (cb) {
-      this.sortListeners.push(cb);
-    }
-  }
-
-  updateSort(fieldName: string): void {
-    if (!this.columns) {
+  updateSort(fieldName: string) {
+    if (!this.gridOptions.columns) {
       throw new Error('GridOptions: Column defs not set.');
     }
 
@@ -33,6 +28,7 @@ export class GridOptions {
       this.currentSort = { field: fieldName, order: 'asc' };
     }
 
-    this.sortListeners.forEach((cb) => { cb(); });
+    this.gridOptions.dataSource.currentSort = this.getCurrentSortAsString();
+    this.loadData();
   }
 }

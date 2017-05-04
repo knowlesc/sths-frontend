@@ -1,7 +1,8 @@
 import * as angular from 'angular';
 import { PlayerStatsController } from './playerStats.controller';
-import { HeaderCell } from '../grid/headerCell/headerCell.directive';
-import { GridCell } from '../grid/gridCell/gridCell.directive';
+import { Grid } from '../grid/grid.component';
+import { PlayerStatsService } from './playerStats.service';
+import { PlayersService } from '../../services/playersService';
 
 export class PlayerStats {
   static moduleName = 'PlayerStats';
@@ -12,5 +13,6 @@ export class PlayerStats {
   };
 }
 
-angular.module(PlayerStats.moduleName, [HeaderCell.moduleName, GridCell.moduleName])
-  .component(PlayerStats.componentName, PlayerStats.componentOptions);
+angular.module(PlayerStats.moduleName, [Grid.moduleName, PlayersService.moduleName])
+  .component(PlayerStats.componentName, PlayerStats.componentOptions)
+  .service(PlayerStatsService.serviceName, PlayerStatsService);

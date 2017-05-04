@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import { Routes } from '../models/routes';
 import { Config } from '../models/config';
-import { PlayerStats } from '../models/players/skaterStats';
+import { SkaterStats } from '../models/players/skaterStats';
 import { SkaterParams } from '../models/players/skaterParams';
 
 export class PlayersService {
@@ -12,7 +12,7 @@ export class PlayersService {
 
   }
 
-  getSkaterStats(params?: SkaterParams): Promise<{ totalCount: number, rows: PlayerStats[] }> {
+  getSkaterStats(params?: SkaterParams): Promise<{ totalCount: number, rows: SkaterStats[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.skaterStats,
         { params: params })

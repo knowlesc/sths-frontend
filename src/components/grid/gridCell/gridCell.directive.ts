@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import { ColumnDef } from '../columnDef';
+import { ColumnDef } from '../models/columnDef';
 
 export class GridCell {
   static moduleName = 'GridCell';
@@ -7,8 +7,8 @@ export class GridCell {
   static directiveOptions: ng.IDirectiveFactory = ($compile: ng.ICompileService) => {
     return {
       scope: {
-        columnDef: '=',
         row: '=gridCell',
+        columnDef: '=',
         fieldName: '='
       },
       compile: (element, attributes) => {
@@ -21,6 +21,12 @@ export class GridCell {
               iElement.removeClass('text-center');
             }
             iElement.addClass('text-nowrap');
+
+            if (columnDef.width) {
+              iElement.css('width', columnDef.width);
+              iElement.css('min-width', columnDef.width);
+              iElement.css('max-width', columnDef.width);
+            }
 
             const template = columnDef.template || '<span ng-bind="row[fieldName]"></span>';
             const compiledTemplate = $compile(`${template}`)(scope);
