@@ -2,16 +2,8 @@
   <div class="container-fluid">
     <div class="col-md-2"><!-- spacer --></div>
     <div class="col-md-8">
-      <div class="btn-group pull-right league-select">
-        <button type="button"
-          class="btn btn-default"
-          ng-class="{ 'active': $ctrl.selectedLeague === 'pro' }"
-          ng-click="$ctrl.setLeague('pro')">NHL</button>
-        <button type="button"
-          class="btn btn-default"
-          ng-class="{ 'active': $ctrl.selectedLeague === 'farm' }"
-          ng-click="$ctrl.setLeague('farm')">AHL</button>
-      </div>
+      <league-selector initial-league="$ctrl.playerStatsService.selectedLeague"
+        on-change="$ctrl.leagueUpdated(league)"></league-selector>
     </div>
     <div class="col-md-2"><!-- spacer --></div>
   </div>

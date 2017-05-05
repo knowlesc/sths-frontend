@@ -6,7 +6,6 @@ import { PlayerStatsService } from './playerStats.service';
 export class PlayerStatsController {
   playerStats: SkaterStats[];
   gridOptions: GridOptions;
-  selectedLeague: 'farm' | 'pro' = 'pro';
 
   constructor(private playerStatsService: PlayerStatsService) {
     this.gridOptions = new GridOptions();
@@ -39,8 +38,8 @@ export class PlayerStatsController {
     ];
   }
 
-  setLeague(league: 'farm' | 'pro') {
-    this.selectedLeague = this.playerStatsService.selectedLeague = league;
+  leagueUpdated(league: 'farm' | 'pro') {
+    this.playerStatsService.selectedLeague = league;
     this.gridOptions.api.reloadData();
   }
 }
