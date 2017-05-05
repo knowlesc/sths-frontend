@@ -1,6 +1,6 @@
 import { SkaterStats } from '../../models/players/skaterStats';
-import { GridOptions } from '../grid/models/gridOptions';
-import { ColumnDef } from '../grid/models/columnDef';
+import { GridOptions } from '../../components/grid/models/gridOptions';
+import { ColumnDef } from '../../components/grid/models/columnDef';
 import { PlayerStatsService } from './playerStats.service';
 
 export class PlayerStatsController {

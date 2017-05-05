@@ -1,4 +1,4 @@
-import { GridDataSource } from '../grid/models/gridDataSource';
+import { GridDataSource } from '../../components/grid/models/gridDataSource';
 import { PlayerService } from '../../services/playerService';
 import { SkaterParams } from '../../models/players/skaterParams';
 

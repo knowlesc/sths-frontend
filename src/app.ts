@@ -9,34 +9,36 @@ import 'angular-animate';
 import 'angular-route';
 import 'bootstrap';
 
-import { AppMain } from './components/appMain/appMain.component';
-import { AppHeader } from './components/appHeader/appHeader.component';
-import { PlayerStats } from './components/PlayerStats/playerStats.component';
+import { PlayerStatsController } from './views/playerStats/playerStats.controller';
+import { PlayerStatsService } from './views/playerStats/playerStats.service';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamService } from './services/teamService';
 import { Services } from './services/services';
 import { Filters } from './filters/filters';
+import { Components } from './components/components';
 import { Config } from './models/config';
 
 declare const config: Config;
 
 const app = angular.module('sths.frontend', [
   'ngRoute',
-  AppMain.moduleName,
-  AppHeader.moduleName,
-  PlayerStats.moduleName,
   Services.moduleName,
-  Filters.moduleName
+  Filters.moduleName,
+  Components.moduleName
 ]);
+
+app.service(PlayerStatsService.serviceName, PlayerStatsService);
 
 app.constant('config', config);
 
 app.config(($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
-    template: '<app-main></app-main>'
+    templateUrl: '/templates/appMain.template.html'
   })
   .when('/playerStats', {
-    template: '<player-stats></player-stats>'
+    templateUrl: '/templates/playerStats.template.html',
+    controller: PlayerStatsController,
+    controllerAs: '$ctrl'
   })
   .when('/teams', {
     resolve: {
