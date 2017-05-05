@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="col-md-2"><!-- spacer --></div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        NHL
+      </div>
+      <div class="panel-body text-center">
+        <div class="team-list-item" ng-repeat="team in $ctrl.proTeamList">
+          <a ng-href="{{ '/#!/teams/' + team.Abbre }}">{{ team.Abbre }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        AHL
+      </div>
+      <div class="panel-body text-center">
+        <div class="team-list-item" ng-repeat="team in $ctrl.farmTeamList">
+          <a ng-href="{{ '/#!/teams/' + team.Abbre }}">{{ team.Abbre }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"><!-- spacer --></div>
+</div>

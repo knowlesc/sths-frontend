@@ -8,6 +8,10 @@ export class AppMenuController {
           url: '#!/playerStats'
         }
       ]
+    },
+    {
+      text: 'Teams',
+      url: '#!/teams'
     }
   ];
 }

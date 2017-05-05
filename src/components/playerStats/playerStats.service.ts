@@ -1,5 +1,5 @@
 import { GridDataSource } from '../grid/models/gridDataSource';
-import { PlayersService } from '../../services/playersService';
+import { PlayerService } from '../../services/playerService';
 import { SkaterParams } from '../../models/players/skaterParams';
 
 export class PlayerStatsService implements GridDataSource {
@@ -14,7 +14,7 @@ export class PlayerStatsService implements GridDataSource {
 
   selectedLeague: 'farm' | 'pro' = 'pro';
 
-  constructor(private playersService: PlayersService) {
+  constructor(private playerService: PlayerService) {
 
   }
 
@@ -28,7 +28,7 @@ export class PlayerStatsService implements GridDataSource {
       skip: (this.currentPage - 1) * this.rowsPerPage
     };
 
-    return this.playersService.getSkaterStats(params)
+    return this.playerService.getSkaterStats(params)
       .then((response) => {
         this.rows = response.rows;
         this.totalResults = response.totalCount;

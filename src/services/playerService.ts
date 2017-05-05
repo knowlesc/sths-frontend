@@ -1,12 +1,11 @@
-import * as angular from 'angular';
 import { Routes } from '../models/routes';
 import { Config } from '../models/config';
 import { SkaterStats } from '../models/players/skaterStats';
 import { SkaterParams } from '../models/players/skaterParams';
 
-export class PlayersService {
-  static moduleName = 'PlayersService';
-  static serviceName = 'playersService';
+export class PlayerService {
+  static moduleName = 'PlayerService';
+  static serviceName = 'playerService';
 
   constructor(private $http: ng.IHttpService, private config: Config) {
 
@@ -25,6 +24,3 @@ export class PlayersService {
     });
   }
 }
-
-angular.module(PlayersService.moduleName, [])
-  .service(PlayersService.serviceName, PlayersService);
