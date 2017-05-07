@@ -4,7 +4,6 @@ import { ColumnDef } from '../../components/grid/models/columnDef';
 import { PlayerStatsService } from './playerStats.service';
 
 export class PlayerStatsController {
-  playerStats: SkaterStats[];
   gridOptions: GridOptions;
 
   constructor(private playerStatsService: PlayerStatsService) {
@@ -22,7 +21,7 @@ export class PlayerStatsController {
       { fieldName: 'A', sortable: true, centered: true },
       { fieldName: 'P', sortable: true, centered: true},
       { fieldName: 'PlusMinus', sortable: true, centered: true, headerTitle: '+/-' },
-      { fieldName: 'PIM', sortable: true, centered: true },
+      { fieldName: 'Pim', sortable: true, centered: true },
       { fieldName: 'Hits', sortable: true, centered: true },
       { fieldName: 'Shots', sortable: true, centered: true },
       { fieldName: 'ShotsPCT', sortable: true, centered: true, headerTitle: 'Shot%',

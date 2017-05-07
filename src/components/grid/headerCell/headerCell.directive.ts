@@ -10,16 +10,20 @@ export class HeaderCell {
         gridOptions: '=',
         hcFieldName: '=',
         hcCenter: '=',
-        hcSortable: '='
+        hcSortable: '=',
+        hcTitle: '@'
       },
       controller: HeaderCellController,
       controllerAs: '$ctrl',
       transclude: true,
       scope: {},
       template: `
-        <div ng-class="{ 'text-center': $ctrl.hcCenter }" class="text-nowrap header-cell" ng-click="$ctrl.sort()">
-          <span class="glyphicon glyphicon-triangle-top" ng-if="$ctrl.sortAsc"></span>
-          <span class="glyphicon glyphicon-triangle-bottom" ng-if="$ctrl.sortDesc"></span>
+        <div ng-class="{ 'text-center': $ctrl.hcCenter }"
+          class="text-nowrap header-cell"
+          ng-click="$ctrl.sort()"
+          title="{{ $ctrl.hcTitle }}">
+          <span class="sort-icon" ng-if="$ctrl.sortAsc">&darr;</span>
+          <span class="sort-icon" ng-if="$ctrl.sortDesc">&uarr;</span>
           <ng-transclude></ng-transclude>
         </div>
       `

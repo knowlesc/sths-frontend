@@ -21,7 +21,7 @@ export class GridController {
     }
 
     this.paginationOptions = this.gridOptions.paginationOptions;
-    this.rowsPerPage = this.gridOptions.defaultRowsPerPage || 20;
+    this.rowsPerPage = this.gridOptions.defaultRowsPerPage;
 
     this.gridOptions.api = new GridApi();
     this.gridOptions.api.gridOptions = this.gridOptions;

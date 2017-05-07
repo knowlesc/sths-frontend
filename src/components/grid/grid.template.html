@@ -4,17 +4,20 @@
       <th ng-if="$ctrl.gridOptions.showIndexColumn"
         class="header-cell-index"
         header-cell
-        grid-options="$ctrl.gridOptions">#</th>
+        grid-options="$ctrl.gridOptions"></th>
       <th ng-repeat="column in $ctrl.gridOptions.columns"
         header-cell
         hc-field-name="column.fieldName"
         hc-center="column.centered"
         hc-sortable="column.sortable"
+        hc-title="{{ column.title }}"
         grid-options="$ctrl.gridOptions">{{ column.headerTitle || column.fieldName }}</th>
     </thead>
     <tbody>
       <tr ng-repeat="row in $ctrl.rows">
-        <td ng-if="$ctrl.gridOptions.showIndexColumn">{{ (($ctrl.currentPage - 1) * $ctrl.rowsPerPage) + ($index + 1) }}</td>
+        <td ng-if="$ctrl.gridOptions.showIndexColumn">
+          <span ng-bind="(($ctrl.currentPage - 1) * ($ctrl.rowsPerPage || 0)) + ($index + 1)"></span>
+        </td>
         <td ng-repeat="column in $ctrl.gridOptions.columns"
           grid-cell="row"
           column-def="column"
@@ -24,7 +27,7 @@
   </table>
 </div>
 
-<div class="text-center">
+<div class="text-center" ng-if="$ctrl.gridOptions.defaultRowsPerPage">
   <ul class="pagination pagination-sm">
     <li>
       <a ng-click="$ctrl.goToPage(1)">
