@@ -1,9 +1,27 @@
+$colour1: #0C84E4;
+$colour2: #FFFFFF;
+$colour3: #DDDDDD;
+$colour4: #666666;
+
 a {
   cursor: pointer;
 }
 
+.title-container {
+  margin-top: -23px;
+  background-color: $colour2;
+  border-bottom: 1px solid #ddd;
+}
+
+.panel-default > .panel-heading {
+  color: $colour4;
+  background-color: $colour2;
+}
+
 .panel-heading {
   text-transform: uppercase;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
 }
 
 $table-cell-border-color: #ddd;

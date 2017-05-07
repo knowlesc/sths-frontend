@@ -3,11 +3,12 @@
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        NHL
+        Pro
       </div>
       <div class="panel-body text-center">
         <div class="team-list-item" ng-repeat="team in $ctrl.proTeamList">
-          <a ng-href="{{ '/#!/teams/' + team.Abbre }}">{{ team.Abbre }}</a>
+          <a ng-href="{{ '/#!/teams/pro/' + team.Abbre }}"
+            title="{{ team.Name }}">{{ team.Abbre }}</a>
         </div>
       </div>
     </div>
@@ -15,11 +16,12 @@
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        AHL
+        Farm
       </div>
       <div class="panel-body text-center">
         <div class="team-list-item" ng-repeat="team in $ctrl.farmTeamList">
-          <a ng-href="{{ '/#!/teams/' + team.Abbre }}">{{ team.Abbre }}</a>
+          <a ng-href="{{ '/#!/teams/farm/' + team.Abbre }}"
+            title="{{ team.Name }}">{{ team.Abbre }}</a>
         </div>
       </div>
     </div>

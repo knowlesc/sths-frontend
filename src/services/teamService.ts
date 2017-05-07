@@ -10,10 +10,19 @@ export class TeamService {
 
   }
 
-  getTeamList(params: TeamListParams): Promise<TeamInfo> {
+  getTeamList(params: TeamListParams): Promise<TeamInfo[]> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.teamList,
         { params: params })
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => reject);
+    });
+  }
+
+  getTeamInfo(params: TeamListParams): Promise<TeamInfo> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}`)
         .then((response) => {
           resolve(response.data);
         }, (error) => reject);
