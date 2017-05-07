@@ -55,7 +55,7 @@ gulp.task('scss', () => {
 });
 
 gulp.task('external-css', () => {
-  return gulp.src(['src/css/*.css'])
+  return gulp.src(['node_modules/bootswatch-sass/cosmo/bootstrap.min.css'])
     .pipe(gulp.dest('build/css'));
 });
 

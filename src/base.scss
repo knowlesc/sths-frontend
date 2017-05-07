@@ -7,6 +7,10 @@ a {
   cursor: pointer;
 }
 
+.table-responsive {
+  overflow-x: auto;
+}
+
 .title-container {
   margin-top: -23px;
   background-color: $colour2;
