@@ -34,10 +34,10 @@ app.constant('config', config);
 
 app.config(($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
-    templateUrl: '/templates/appMain.template.html'
+    templateUrl: 'templates/appMain.template.html'
   })
   .when('/playerStats', {
-    templateUrl: '/templates/playerStats.template.html',
+    templateUrl: 'templates/playerStats.template.html',
     controller: PlayerStatsController,
     controllerAs: '$ctrl'
   })
@@ -46,7 +46,7 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
       teamInfo: ($route: ng.route.IRouteService, teamService: TeamService) =>
         teamService.getTeamInfo({ league: 'pro', id: $route.current.params.id })
     },
-    templateUrl: '/templates/teamInfo.template.html',
+    templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
     controllerAs: '$ctrl'
   })
@@ -55,7 +55,7 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
       teamInfo: ($route: ng.route.IRouteService, teamService: TeamService) =>
         teamService.getTeamInfo({ league: 'farm', id: $route.current.params.id })
     },
-    templateUrl: '/templates/teamInfo.template.html',
+    templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
     controllerAs: '$ctrl'
   })
@@ -64,7 +64,7 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
       proTeamList: (teamService: TeamService) => teamService.getTeamList({ league: 'pro' }),
       farmTeamList: (teamService: TeamService) => teamService.getTeamList({ league: 'farm' })
     },
-    templateUrl: '/templates/teamList.template.html',
+    templateUrl: 'templates/teamList.template.html',
     controller: TeamListController,
     controllerAs: '$ctrl'
   })

@@ -11,7 +11,7 @@ export class Grid {
       gridOptions: '='
     },
     controller: GridController,
-    templateUrl: '/templates/grid.template.html'
+    templateUrl: 'templates/grid.template.html'
   };
 }
 
