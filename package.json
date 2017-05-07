@@ -39,6 +39,7 @@
     "gulp-mocha": "^4.3.0",
     "gulp-tslint": "^8.0.0",
     "gulp-watch": "^4.3.11",
+    "loaders.css": "^0.1.2",
     "mocha": "^3.2.0",
     "tsify": "^3.0.1",
     "tslint": "^5.1.0",
