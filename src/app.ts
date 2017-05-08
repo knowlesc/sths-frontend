@@ -10,10 +10,10 @@ import 'angular-route';
 import 'bootstrap';
 
 import { PlayerStatsController } from './views/playerStats/playerStats.controller';
-import { PlayerStatsService } from './views/playerStats/playerStats.service';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { TeamService } from './services/teamService';
+import { GridServices } from './grids/gridServices';
 import { Services } from './services/services';
 import { Filters } from './filters/filters';
 import { Components } from './components/components';
@@ -23,12 +23,11 @@ declare const config: Config;
 
 const app = angular.module('sths.frontend', [
   'ngRoute',
+  GridServices.moduleName,
   Services.moduleName,
   Filters.moduleName,
   Components.moduleName
 ]);
-
-app.service(PlayerStatsService.serviceName, PlayerStatsService);
 
 app.constant('config', config);
 
@@ -43,6 +42,7 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
   })
   .when('/teams/pro/:id', {
     resolve: {
+      league: () => 'pro',
       teamInfo: ($route: ng.route.IRouteService, teamService: TeamService) =>
         teamService.getTeamInfo({ league: 'pro', id: $route.current.params.id })
     },
@@ -52,6 +52,7 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
   })
   .when('/teams/farm/:id', {
     resolve: {
+      league: () => 'farm',
       teamInfo: ($route: ng.route.IRouteService, teamService: TeamService) =>
         teamService.getTeamInfo({ league: 'farm', id: $route.current.params.id })
     },

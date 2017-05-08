@@ -18,8 +18,11 @@
       <div class="col-md-2"><!-- spacer --></div>
       <div class="col-md-8">
         <ul class="nav navbar-nav">
-          <li class="active">
-            <a>Roster</a>
+          <li ng-class="{ active: $ctrl.page === 'Roster' }">
+            <a ng-click="$ctrl.page = 'Roster'">Roster</a>
+          </li>
+          <li ng-class="{ active: $ctrl.page === 'Stats' }">
+            <a ng-click="$ctrl.page = 'Stats'">Stats</a>
           </li>
         </ul>
       </div>
@@ -34,10 +37,11 @@
     <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Roster
+          <span ng-bind="$ctrl.page"></span>
         </div>
         <div class="panel-body">
-          <roster-grid team="$ctrl.teamInfo.UniqueID"></roster-grid>
+          <grid ng-show="$ctrl.page === 'Roster'" grid-options="$ctrl.rosterGridOptions"></grid>
+          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.statsGridOptions"></grid>
         </div>
       </div>
     </div>

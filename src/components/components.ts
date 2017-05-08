@@ -2,7 +2,6 @@ import * as angular from 'angular';
 import { Grid } from './grid/grid.component';
 import { AppMenu } from './appMenu/appMenu.component';
 import { LeagueSelector } from './leagueSelector/leagueSelector.component';
-import { RosterGrid } from './rosterGrid/rosterGrid.component';
 
 export class Components {
   static moduleName = 'Components';
@@ -11,6 +10,5 @@ export class Components {
 angular.module(Components.moduleName, [
   Grid.moduleName,
   AppMenu.moduleName,
-  LeagueSelector.moduleName,
-  RosterGrid.moduleName
+  LeagueSelector.moduleName
 ]);
