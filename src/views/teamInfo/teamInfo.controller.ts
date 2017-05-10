@@ -26,28 +26,32 @@ export class TeamInfoController {
     this.skaterRatingsGridService.selectedLeague = league;
     this.skaterRatingsGridOptions = new GridOptions();
     this.skaterRatingsGridOptions.dataSource = this.skaterRatingsGridService;
-    this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns;
+    this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns.slice();
     this.skaterRatingsGridOptions.columns.splice(1, 1); // Remove team column
+    this.skaterRatingsGridOptions.defaultSortField = 'Overall';
 
     this.goalieRatingsGridService.selectedTeam = this.teamInfo.UniqueID;
     this.goalieRatingsGridService.selectedLeague = league;
     this.goalieRatingsGridOptions = new GridOptions();
     this.goalieRatingsGridOptions.dataSource = this.goalieRatingsGridService;
-    this.goalieRatingsGridOptions.columns = goalieRatingsGridColumns;
+    this.goalieRatingsGridOptions.columns = goalieRatingsGridColumns.slice();
     this.goalieRatingsGridOptions.columns.splice(1, 1); // Remove team column
+    this.goalieRatingsGridOptions.defaultSortField = 'Overall';
 
     this.skaterStatsGridService.selectedTeam = this.teamInfo.UniqueID;
     this.skaterStatsGridService.selectedLeague = league;
     this.skaterStatsGridOptions = new GridOptions();
     this.skaterStatsGridOptions.dataSource = this.skaterStatsGridService;
-    this.skaterStatsGridOptions.columns = skaterStatsGridColumns;
+    this.skaterStatsGridOptions.columns = skaterStatsGridColumns.slice();
     this.skaterStatsGridOptions.columns.splice(1, 1);
+    this.skaterStatsGridOptions.defaultSortField = 'P';
 
     this.goalieStatsGridService.selectedTeam = this.teamInfo.UniqueID;
     this.goalieStatsGridService.selectedLeague = league;
     this.goalieStatsGridOptions = new GridOptions();
     this.goalieStatsGridOptions.dataSource = this.goalieStatsGridService;
-    this.goalieStatsGridOptions.columns = goalieStatsGridColumns;
+    this.goalieStatsGridOptions.columns = goalieStatsGridColumns.slice();
     this.goalieStatsGridOptions.columns.splice(1, 1);
+    this.goalieStatsGridOptions.defaultSortField = 'GP';
   }
 }

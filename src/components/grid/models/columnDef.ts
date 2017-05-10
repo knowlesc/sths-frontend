@@ -4,6 +4,6 @@ export class ColumnDef {
   headerTitle?: string;
   title?: string;
   template?: string;
-  sortable? = false;
+  sortable?: 'asc' | 'desc';
   centered? = false;
 }

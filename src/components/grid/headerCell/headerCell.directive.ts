@@ -8,23 +8,19 @@ export class HeaderCell {
     return {
       bindToController: {
         gridOptions: '=',
-        hcFieldName: '=',
-        hcCenter: '=',
-        hcSortable: '=',
-        hcTitle: '@'
+        column: '='
       },
       controller: HeaderCellController,
       controllerAs: '$ctrl',
-      transclude: true,
       scope: {},
       template: `
-        <div ng-class="{ 'text-center': $ctrl.hcCenter }"
+        <div ng-class="{ 'text-center': $ctrl.column.center }"
           class="text-nowrap header-cell"
           ng-click="$ctrl.sort()"
-          title="{{ $ctrl.hcTitle }}">
+          title="{{ $ctrl.column.title }}">
           <span class="sort-icon" ng-if="$ctrl.sortAsc">&darr;</span>
           <span class="sort-icon" ng-if="$ctrl.sortDesc">&uarr;</span>
-          <ng-transclude></ng-transclude>
+          <span ng-bind="$ctrl.column.headerTitle || $ctrl.column.fieldName"></span>
         </div>
       `
     } as ng.IDirective;

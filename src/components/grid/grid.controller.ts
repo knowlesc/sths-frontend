@@ -43,7 +43,13 @@ export class GridController {
       this.currentPage = 1;
       this.gridOptions.api.loadData();
     };
-
+    if (this.gridOptions.defaultSortField) {
+      const sortColumn = this.gridOptions.columns.find((field) =>
+        field.fieldName === this.gridOptions.defaultSortField);
+      if (sortColumn) {
+        this.gridOptions.api.updateSort(sortColumn);
+      }
+    }
     this.gridOptions.api.loadData();
   }
 

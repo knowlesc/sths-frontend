@@ -15,6 +15,7 @@ export class GoalieStatsController {
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 50;
     this.gridOptions.paginationOptions = [20, 50, 100];
+    this.gridOptions.defaultSortField = 'W';
   }
 
   leagueUpdated(league: 'farm' | 'pro') {

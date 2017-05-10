@@ -15,6 +15,7 @@ export class SkaterStatsController {
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 50;
     this.gridOptions.paginationOptions = [20, 50, 100];
+    this.gridOptions.defaultSortField = 'P';
   }
 
   leagueUpdated(league: 'farm' | 'pro') {

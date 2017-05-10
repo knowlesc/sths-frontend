@@ -1,4 +1,5 @@
 import { ColumnDef } from './columnDef';
+import { SortDescriptor } from './sortDescriptor';
 import { GridApi } from './gridApi';
 import { GridDataSource } from './gridDataSource';
 
@@ -8,6 +9,7 @@ export class GridOptions {
   paginationOptions: number[];
   defaultRowsPerPage: number;
   showIndexColumn: boolean;
+  defaultSortField: string;
 
   api: GridApi;
 }

@@ -17,11 +17,8 @@
         grid-options="$ctrl.gridOptions"></th>
       <th ng-repeat="column in $ctrl.gridOptions.columns"
         header-cell
-        hc-field-name="column.fieldName"
-        hc-center="column.centered"
-        hc-sortable="column.sortable"
-        hc-title="{{ column.title }}"
-        grid-options="$ctrl.gridOptions">{{ column.headerTitle || column.fieldName }}</th>
+        column="column"
+        grid-options="$ctrl.gridOptions"></th>
     </thead>
     <tbody>
       <tr ng-repeat="row in $ctrl.rows">
