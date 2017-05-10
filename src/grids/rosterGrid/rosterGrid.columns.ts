@@ -2,7 +2,7 @@ export const rosterGridColumns = [
   { fieldName: 'Name', sortable: true, width: 180 },
   { fieldName: 'TeamAbbre', sortable: true, centered: true, headerTitle: 'Team' },
   { fieldName: 'Position', sortable: true, centered: true, headerTitle: 'Pos', title: 'Position' },
-  { fieldName: 'Condition', sortable: true, centered: true, headerTitle: 'CON', title: 'Condition' },
+  { fieldName: 'Condition', sortable: true, centered: true, headerTitle: 'Con', title: 'Condition' },
   { fieldName: 'CK', sortable: true, centered: true, title: 'Checking' },
   { fieldName: 'FG', sortable: true, centered: true, title: 'Fighting' },
   { fieldName: 'DI', sortable: true, centered: true, title: 'Discipline' },

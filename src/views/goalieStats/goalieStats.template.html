@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default navbar-stacked">
+  <div class="container-fluid">
+    <div class="col-md-2"><!-- spacer --></div>
+    <div class="col-md-8">
+      <league-selector initial-league="$ctrl.goalieStatsService.selectedLeague"
+        on-change="$ctrl.leagueUpdated(league)"></league-selector>
+    </div>
+    <div class="col-md-2"><!-- spacer --></div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="col-md-2"><!-- spacer --></div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Goalie Statistics
+      </div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.gridOptions"></grid>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"><!-- spacer --></div>
+</div>

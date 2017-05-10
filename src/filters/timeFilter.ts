@@ -17,8 +17,6 @@ export class TimeFilter {
       let hh = hours.toString();
       if (hours === 0) {
         hh = '';
-      } else {
-        hh = hours < 10 ? '0' + hh : hh;
       }
 
       let mm = minutes.toString();

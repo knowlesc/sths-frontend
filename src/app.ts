@@ -10,6 +10,7 @@ import 'angular-route';
 import 'bootstrap';
 
 import { PlayerStatsController } from './views/playerStats/playerStats.controller';
+import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { TeamService } from './services/teamService';
@@ -38,6 +39,11 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
   .when('/playerStats', {
     templateUrl: 'templates/playerStats.template.html',
     controller: PlayerStatsController,
+    controllerAs: '$ctrl'
+  })
+  .when('/goalieStats', {
+    templateUrl: 'templates/goalieStats.template.html',
+    controller: GoalieStatsController,
     controllerAs: '$ctrl'
   })
   .when('/teams/pro/:id', {

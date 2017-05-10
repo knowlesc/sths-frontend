@@ -35,15 +35,33 @@
   <div class="row">
     <div class="col-md-2"><!-- spacer --></div>
     <div class="col-md-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span ng-bind="$ctrl.page"></span>
-        </div>
+
+      <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
+        <div class="panel-heading">Skaters</div>
         <div class="panel-body">
-          <grid ng-show="$ctrl.page === 'Roster'" grid-options="$ctrl.rosterGridOptions"></grid>
-          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.statsGridOptions"></grid>
+          <grid grid-options="$ctrl.skaterRosterGridOptions"></grid>
         </div>
       </div>
+      <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
+        <div class="panel-heading">Goalies</div>
+        <div class="panel-body">
+          <grid grid-options="$ctrl.goalieRosterGridOptions"></grid>
+        </div>
+      </div>
+
+      <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
+        <div class="panel-heading">Skaters</div>
+        <div class="panel-body">
+          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.playerStatsGridOptions"></grid>
+        </div>
+      </div>
+      <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
+        <div class="panel-heading">Goalies</div>
+        <div class="panel-body">
+          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.goalieStatsGridOptions"></grid>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-2"><!-- spacer --></div>
   </div>

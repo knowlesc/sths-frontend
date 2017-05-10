@@ -6,6 +6,10 @@ export class AppMenuController {
         {
           text: 'Players',
           url: '#!/playerStats'
+        },
+        {
+          text: 'Goalies',
+          url: '#!/goalieStats'
         }
       ]
     },
