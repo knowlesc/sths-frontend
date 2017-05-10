@@ -9,7 +9,7 @@ import 'angular-animate';
 import 'angular-route';
 import 'bootstrap';
 
-import { PlayerStatsController } from './views/playerStats/playerStats.controller';
+import { SkaterStatsController } from './views/skaterStats/skaterStats.controller';
 import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
@@ -36,9 +36,9 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
     templateUrl: 'templates/appMain.template.html'
   })
-  .when('/playerStats', {
-    templateUrl: 'templates/playerStats.template.html',
-    controller: PlayerStatsController,
+  .when('/skaterStats', {
+    templateUrl: 'templates/skaterStats.template.html',
+    controller: SkaterStatsController,
     controllerAs: '$ctrl'
   })
   .when('/goalieStats', {

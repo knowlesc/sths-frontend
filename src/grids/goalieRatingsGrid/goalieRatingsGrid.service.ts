@@ -1,9 +1,9 @@
 import { GridDataSource } from '../../components/grid/models/gridDataSource';
 import { PlayerService } from '../../services/playerService';
-import { SkaterInfoParams } from '../../models/players/skaterInfoParams';
+import { GoalieInfoParams } from '../../models/players/goalieInfoParams';
 
-export class RosterGridService implements GridDataSource {
-  static serviceName = 'rosterGridService';
+export class GoalieRatingsGridService implements GridDataSource {
+  static serviceName = 'goalieRatingsGridService';
 
   rowsPerPage: number;
   totalResults: number;
@@ -20,17 +20,22 @@ export class RosterGridService implements GridDataSource {
   }
 
   loadData(): Promise<void> {
-    const params: SkaterInfoParams = {
+    const params: GoalieInfoParams = {
       limit: this.rowsPerPage,
-      hasTeam: 'true',
-      hasPlayedMinimumGames: 'true',
       league: this.selectedLeague,
-      team: this.selectedTeam,
       sort: this.currentSort,
+      hasTeam: 'true',
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0)
     };
 
-    return this.playerService.getSkaterInfo(params)
+    // If a team is selected, we want a list of all players for that specific team
+    if (this.selectedTeam !== null && !isNaN(this.selectedTeam)) {
+      params.team = this.selectedTeam;
+    } else {
+      params.hasPlayedMinimumGames = 'true';
+    }
+
+    return this.playerService.getGoalieInfo(params)
       .then((response) => {
         this.rows = response.rows;
         this.totalResults = response.totalCount;

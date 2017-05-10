@@ -1,4 +1,4 @@
-export const goalieInfoGridColumns = [
+export const goalieRatingsGridColumns = [
   { fieldName: 'Name', sortable: true, width: 180 },
   { fieldName: 'TeamAbbre', sortable: true, centered: true, headerTitle: 'Team' },
   { fieldName: 'Condition', sortable: true, centered: true, headerTitle: 'Con', title: 'Conditioning' },
@@ -20,5 +20,5 @@ export const goalieInfoGridColumns = [
   { fieldName: 'Overall', sortable: true, centered: true, headerTitle: 'OV', title: 'Overall' },
   { fieldName: 'AvailableforTrade', sortable: true, centered: true, headerTitle: 'TA', title: 'Trade Available',
     template: `<span>{{ row.AvailableForTrade === 'True' ? '&#10004' : '' }}</span>` },
-  { fieldName: 'StarPower', sortable: true, centered: true, headerTitle: 'SP', title: 'Star Power' },
+  { fieldName: 'StarPower', sortable: true, centered: true, headerTitle: 'SP', title: 'Star Power' }
 ];

@@ -1,0 +1,23 @@
+export const skaterStatsGridColumns = [
+  { fieldName: 'Name', sortable: true, width: 180 },
+  { fieldName: 'TeamAbbre', sortable: true, centered: true, headerTitle: 'Team' },
+  { fieldName: 'Position', sortable: true, centered: true, headerTitle: 'Pos', title: 'Position' },
+  { fieldName: 'GP', sortable: true, centered: true, title: 'Games Played' },
+  { fieldName: 'G', sortable: true, centered: true, title: 'Goals' },
+  { fieldName: 'A', sortable: true, centered: true, title: 'Assists' },
+  { fieldName: 'P', sortable: true, centered: true, title: 'Points'},
+  { fieldName: 'PlusMinus', sortable: true, centered: true, headerTitle: '+/-' },
+  { fieldName: 'Pim', sortable: true, centered: true, title: 'Penalty Minutes' },
+  { fieldName: 'Hits', sortable: true, centered: true },
+  { fieldName: 'Shots', sortable: true, centered: true },
+  { fieldName: 'ShotsPCT', sortable: true, centered: true, headerTitle: 'Shot%',
+    template: `<span ng-bind="row.ShotsPCT | number : 1"></span>` },
+  { fieldName: 'ShotsBlock', sortable: true, centered: true, headerTitle: 'BkS', title: 'Blocked Shots' },
+  { fieldName: 'AvgTOI', sortable: true, centered: true, headerTitle: 'TOI/G', title: 'Time-On-Ice per Game',
+    template: '<span ng-bind="row.AvgTOI | time"></span>' },
+  { fieldName: 'PPG', sortable: true, centered: true, title: 'Powerplay Goals' },
+  { fieldName: 'PPA', sortable: true, centered: true, title: 'Powerplay Assists' },
+  { fieldName: 'PPP', sortable: true, centered: true, title: 'Powerplay Points' },
+  { fieldName: 'P60', sortable: true, centered: true, headerTitle: 'P/60', title: 'Points per 60 Minutes',
+    template: `<span ng-bind="row.P60 || 0 | number : 1"></span>` }
+];

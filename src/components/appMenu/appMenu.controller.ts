@@ -4,8 +4,8 @@ export class AppMenuController {
       text: 'Stats',
       subItems: [
         {
-          text: 'Players',
-          url: '#!/playerStats'
+          text: 'Skaters',
+          url: '#!/skaterStats'
         },
         {
           text: 'Goalies',

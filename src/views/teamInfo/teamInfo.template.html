@@ -39,20 +39,20 @@
       <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
         <div class="panel-heading">Skaters</div>
         <div class="panel-body">
-          <grid grid-options="$ctrl.skaterRosterGridOptions"></grid>
+          <grid grid-options="$ctrl.skaterRatingsGridOptions"></grid>
         </div>
       </div>
       <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
         <div class="panel-heading">Goalies</div>
         <div class="panel-body">
-          <grid grid-options="$ctrl.goalieRosterGridOptions"></grid>
+          <grid grid-options="$ctrl.goalieRatingsGridOptions"></grid>
         </div>
       </div>
 
       <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
         <div class="panel-heading">Skaters</div>
         <div class="panel-body">
-          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.playerStatsGridOptions"></grid>
+          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.skaterStatsGridOptions"></grid>
         </div>
       </div>
       <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">

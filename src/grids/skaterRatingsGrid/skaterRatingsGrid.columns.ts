@@ -1,4 +1,4 @@
-export const rosterGridColumns = [
+export const skaterRatingsGridColumns = [
   { fieldName: 'Name', sortable: true, width: 180 },
   { fieldName: 'TeamAbbre', sortable: true, centered: true, headerTitle: 'Team' },
   { fieldName: 'Position', sortable: true, centered: true, headerTitle: 'Pos', title: 'Position' },

@@ -1,9 +1,9 @@
 import { GridDataSource } from '../../components/grid/models/gridDataSource';
 import { PlayerService } from '../../services/playerService';
-import { GoalieInfoParams } from '../../models/players/goalieInfoParams';
+import { SkaterStatsParams } from '../../models/players/skaterStatsParams';
 
-export class GoalieInfoGridService implements GridDataSource {
-  static serviceName = 'goalieInfoGridService';
+export class SkaterStatsGridService implements GridDataSource {
+  static serviceName = 'skaterStatsGridService';
 
   rowsPerPage: number;
   totalResults: number;
@@ -20,7 +20,7 @@ export class GoalieInfoGridService implements GridDataSource {
   }
 
   loadData(): Promise<void> {
-    const params: GoalieInfoParams = {
+    const params: SkaterStatsParams = {
       limit: this.rowsPerPage,
       league: this.selectedLeague,
       sort: this.currentSort,
@@ -35,7 +35,7 @@ export class GoalieInfoGridService implements GridDataSource {
       params.hasPlayedMinimumGames = 'true';
     }
 
-    return this.playerService.getGoalieInfo(params)
+    return this.playerService.getSkaterStats(params)
       .then((response) => {
         this.rows = response.rows;
         this.totalResults = response.totalCount;
