@@ -1,104 +1,90 @@
-<div class="container-fluid title-container">
-  <div class="row">
-    <div class="col-md-2"><!-- spacer --></div>
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-sm-6">
-          <h3><span ng-bind="$ctrl.teamInfo.Name"></span></h3>
-        </div>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="team-info-group">
-                <label>GM:</label>
-                <span ng-bind="$ctrl.teamInfo.GMName || 'None'"></span>
-              </div>
-              <div class="team-info-group">
-                <label>Coach: </label>
-                <span ng-bind="$ctrl.teamInfo.CoachName"></span>
-              </div>
-              <div class="team-info-group" ng-if="$ctrl.league === 'farm'">
-                <label>Pro Team:</label>
-                <a ng-href="{{ '#!/teams/pro/' + $ctrl.teamInfo.UniqueID }}">
-                  <span ng-bind="$ctrl.teamInfo.AssociatedTeamAbbre"></span>
-                </a>
-              </div>
-              <div class="team-info-group" ng-if="$ctrl.league === 'pro'">
-                <label>Farm Team:</label>
-                <a ng-href="{{ '#!/teams/farm/' + $ctrl.teamInfo.UniqueID }}">
-                  <span ng-bind="$ctrl.teamInfo.AssociatedTeamAbbre"></span>
-                </a>
-              </div>
+<div class="container title-container">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3><span ng-bind="$ctrl.teamInfo.Name"></span></h3>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="team-info-group">
+              <label>GM:</label>
+              <span ng-bind="$ctrl.teamInfo.GMName || 'None'"></span>
             </div>
-            <div class="col-xs-6">
-              <div class="team-info-group">
-                <label>Team Morale: </label>
-                <span ng-bind="$ctrl.teamInfo.Morale"></span>
-              </div>
-              <div class="team-info-group">
-                <label>Team Overall: </label>
-                <span ng-bind="$ctrl.teamInfo.TeamOverall"></span>
-              </div>
+            <div class="team-info-group">
+              <label>Coach: </label>
+              <span ng-bind="$ctrl.teamInfo.CoachName"></span>
+            </div>
+            <div class="team-info-group" ng-if="$ctrl.league === 'farm'">
+              <label>Pro Team:</label>
+              <a ng-href="{{ '#!/teams/pro/' + $ctrl.teamInfo.UniqueID }}">
+                <span ng-bind="$ctrl.teamInfo.AssociatedTeamAbbre"></span>
+              </a>
+            </div>
+            <div class="team-info-group" ng-if="$ctrl.league === 'pro'">
+              <label>Farm Team:</label>
+              <a ng-href="{{ '#!/teams/farm/' + $ctrl.teamInfo.UniqueID }}">
+                <span ng-bind="$ctrl.teamInfo.AssociatedTeamAbbre"></span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="team-info-group">
+              <label>Team Morale: </label>
+              <span ng-bind="$ctrl.teamInfo.Morale"></span>
+            </div>
+            <div class="team-info-group">
+              <label>Team Overall: </label>
+              <span ng-bind="$ctrl.teamInfo.TeamOverall"></span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-2"><!-- spacer --></div>
   </div>
 </div>
 
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2"><!-- spacer --></div>
-      <div class="col-md-8">
-        <ul class="nav navbar-nav">
-          <li ng-class="{ active: $ctrl.page === 'Roster' }">
-            <a ng-click="$ctrl.page = 'Roster'">Roster</a>
-          </li>
-          <li ng-class="{ active: $ctrl.page === 'Stats' }">
-            <a ng-click="$ctrl.page = 'Stats'">Stats</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-2"><!-- spacer --></div>
+  <div class="container">
+    <div class="col-md-12">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active: $ctrl.page === 'Roster' }">
+          <a ng-click="$ctrl.page = 'Roster'">Roster</a>
+        </li>
+        <li ng-class="{ active: $ctrl.page === 'Stats' }">
+          <a ng-click="$ctrl.page = 'Stats'">Stats</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2"><!-- spacer --></div>
-    <div class="col-md-8">
-
-      <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
-        <div class="panel-heading">Skaters</div>
-        <div class="panel-body">
-          <grid grid-options="$ctrl.skaterRatingsGridOptions"></grid>
-        </div>
+<div class="container">
+  <div class="col-md-12">
+    <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
+      <div class="panel-heading">Skaters</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.skaterRatingsGridOptions"></grid>
       </div>
-      <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
-        <div class="panel-heading">Goalies</div>
-        <div class="panel-body">
-          <grid grid-options="$ctrl.goalieRatingsGridOptions"></grid>
-        </div>
-      </div>
-
-      <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
-        <div class="panel-heading">Skaters</div>
-        <div class="panel-body">
-          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.skaterStatsGridOptions"></grid>
-        </div>
-      </div>
-      <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
-        <div class="panel-heading">Goalies</div>
-        <div class="panel-body">
-          <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.goalieStatsGridOptions"></grid>
-        </div>
-      </div>
-
     </div>
-    <div class="col-md-2"><!-- spacer --></div>
+    <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
+      <div class="panel-heading">Goalies</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.goalieRatingsGridOptions"></grid>
+      </div>
+    </div>
+
+    <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
+      <div class="panel-heading">Skaters</div>
+      <div class="panel-body">
+        <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.skaterStatsGridOptions"></grid>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
+      <div class="panel-heading">Goalies</div>
+      <div class="panel-body">
+        <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.goalieStatsGridOptions"></grid>
+      </div>
+    </div>
   </div>
 </div>
