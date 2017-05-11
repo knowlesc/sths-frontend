@@ -15,6 +15,7 @@ import { GoalieStatsController } from './views/goalieStats/goalieStats.controlle
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { TeamService } from './services/teamService';
+import { ScheduleService } from './services/scheduleService';
 import { GridServices } from './grids/gridServices';
 import { Services } from './services/services';
 import { Filters } from './filters/filters';
@@ -35,6 +36,10 @@ app.constant('config', config);
 
 app.config(($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
+    resolve: {
+      upcomingGames: (scheduleService: ScheduleService) =>
+        scheduleService.getSchedule({ nextSimOnly: 'true' })
+    },
     templateUrl: 'templates/appMain.template.html',
     controller: AppMainController,
     controllerAs: '$ctrl'

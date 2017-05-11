@@ -6,4 +6,5 @@ export class ColumnDef {
   template?: string;
   sortable?: 'asc' | 'desc';
   centered? = false;
+  wrap? = false;
 }

@@ -20,7 +20,11 @@ export class GridCell {
             } else {
               iElement.removeClass('text-center');
             }
-            iElement.addClass('text-nowrap');
+            if (columnDef.wrap) {
+              iElement.removeClass('text-nowrap');
+            } else {
+              iElement.addClass('text-nowrap');
+            }
 
             if (columnDef.width) {
               iElement.css('width', columnDef.width);

@@ -6,7 +6,8 @@ export class AppMainController {
 
   gridOptions: GridOptions;
 
-  constructor(private transactionsGridService: TransactionsGridService,
+  constructor(private upcomingGames: {}[],
+    private transactionsGridService: TransactionsGridService,
     private $timeout: ng.ITimeoutService) {
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.transactionsGridService;

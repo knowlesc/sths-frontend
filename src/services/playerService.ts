@@ -8,7 +8,6 @@ import { SkaterInfoParams } from '../models/players/skaterInfoParams';
 import { GoalieStatsParams } from '../models/players/goalieStatsParams';
 
 export class PlayerService {
-  static moduleName = 'PlayerService';
   static serviceName = 'playerService';
 
   constructor(private $http: ng.IHttpService, private config: Config) {

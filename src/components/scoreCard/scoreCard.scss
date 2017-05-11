@@ -1,0 +1,21 @@
+.score-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (min-width: 992px) {
+    flex-direction: column;
+  }
+
+  .score-card {
+    font-size: 12px;
+    min-width: 200px;
+    margin: 5px;
+
+    .score-card-date {
+      font-weight: 700;
+    }
+  }
+}
+

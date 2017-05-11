@@ -5,4 +5,5 @@ export class Routes {
   static skaterInfo = 'players/skaters';
   static teamList = 'teams';
   static leagueLog = 'league/log';
+  static schedule = 'schedule';
 }
