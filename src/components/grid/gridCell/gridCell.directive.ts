@@ -7,9 +7,9 @@ export class GridCell {
   static directiveOptions: ng.IDirectiveFactory = ($compile: ng.ICompileService) => {
     return {
       scope: {
-        row: '=gridCell',
-        columnDef: '=',
-        fieldName: '='
+        row: '<gridCell',
+        columnDef: '<',
+        fieldName: '<'
       },
       compile: (element, attributes) => {
         return {

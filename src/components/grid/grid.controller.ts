@@ -77,6 +77,11 @@ export class GridController {
     return pages;
   }
 
+  isSortedBy(fieldName: string) {
+    return this.gridOptions.api.getCurrentSortAsString() === fieldName ||
+      this.gridOptions.api.getCurrentSortAsString() === `-${fieldName}`;
+  }
+
   goToPage(page: number) {
     if (this.currentPage !== page) {
       this.currentPage = page;

@@ -28,7 +28,8 @@
         <td ng-repeat="column in $ctrl.gridOptions.columns"
           grid-cell="row"
           column-def="column"
-          field-name="column.fieldName"></td>
+          field-name="column.fieldName"
+          ng-class="{ 'active': $ctrl.isSortedBy(column.fieldName) }"></td>
       </tr>
     </tbody>
   </table>
