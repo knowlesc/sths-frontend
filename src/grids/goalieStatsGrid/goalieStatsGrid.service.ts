@@ -9,6 +9,7 @@ export class GoalieStatsGridService implements GridDataSource {
   totalResults: number;
   currentPage: number;
   currentSort: string;
+  fields: string;
 
   rows: {}[] = null;
 

@@ -9,6 +9,7 @@ export class SkaterRatingsGridService implements GridDataSource {
   totalResults: number;
   currentPage: number;
   currentSort: string;
+  fields: string;
 
   rows: {}[] = null;
 
@@ -27,7 +28,8 @@ export class SkaterRatingsGridService implements GridDataSource {
       league: this.selectedLeague,
       team: this.selectedTeam,
       sort: this.currentSort,
-      skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0)
+      skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
+      fields: this.fields
     };
 
     return this.playerService.getSkaterInfo(params)

@@ -4,7 +4,7 @@ export const goalieInfoGridColumns: ColumnDef[] = [
   { fieldName: 'Name', sortable: 'asc', width: 180 },
   { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
   { fieldName: 'Age', sortable: 'asc', centered: true },
-  { fieldName: 'Age', sortable: 'asc', headerTitle: 'Birthday',
+  { fieldName: 'AgeDate', headerTitle: 'Birthday',
     template: `<span ng-bind="row.AgeDate"></span>` },
   { fieldName: 'Rookie', sortable: 'desc', centered: true,
     template: `<span>{{ row.Rookie === 'True' ? '&#10004' : '' }}</span>` },

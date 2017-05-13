@@ -9,6 +9,7 @@ export class GoalieInfoGridService implements GridDataSource {
   totalResults: number;
   currentPage: number;
   currentSort: string;
+  fields: string;
 
   rows: {}[] = null;
 
@@ -25,7 +26,8 @@ export class GoalieInfoGridService implements GridDataSource {
       league: this.selectedLeague,
       sort: this.currentSort,
       hasTeam: 'true',
-      skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0)
+      skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
+      fields: this.fields
     };
 
     // If a team is selected, we want a list of all players for that specific team

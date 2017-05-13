@@ -9,6 +9,7 @@ export class SkaterStatsGridService implements GridDataSource {
   totalResults: number;
   currentPage: number;
   currentSort: string;
+  fields: string;
 
   rows: {}[] = null;
 

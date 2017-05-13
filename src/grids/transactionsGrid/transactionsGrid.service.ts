@@ -9,6 +9,7 @@ export class TransactionsGridService implements GridDataSource {
   totalResults: number;
   currentPage: number;
   currentSort: string;
+  fields: string;
 
   rows: {}[] = null;
 

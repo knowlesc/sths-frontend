@@ -23,6 +23,8 @@ export class GridController {
 
     this.paginationOptions = this.gridOptions.paginationOptions;
     this.rowsPerPage = this.gridOptions.defaultRowsPerPage;
+    this.gridOptions.dataSource.fields = this.gridOptions.columns
+      .map((column) => column.fieldName).join(',');
 
     this.gridOptions.api = new GridApi();
     this.gridOptions.api.gridOptions = this.gridOptions;
@@ -50,7 +52,9 @@ export class GridController {
         this.gridOptions.api.updateSort(sortColumn);
       }
     }
-    this.gridOptions.api.loadData();
+    if (!this.loading) {
+      this.gridOptions.api.loadData();
+    }
   }
 
   get totalPages(): number {

@@ -5,7 +5,7 @@ export const skaterInfoGridColumns: ColumnDef[] = [
   { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
   { fieldName: 'Position', sortable: 'asc', centered: true, headerTitle: 'Pos', title: 'Position' },
   { fieldName: 'Age', sortable: 'asc', centered: true },
-  { fieldName: 'Age', sortable: 'asc', headerTitle: 'Birthday',
+  { fieldName: 'AgeDate', headerTitle: 'Birthday',
     template: `<span ng-bind="row.AgeDate"></span>` },
   { fieldName: 'Rookie', sortable: 'desc', centered: true,
     template: `<span>{{ row.Rookie === 'True' ? '&#10004' : '' }}</span>` },
