@@ -1,8 +1,10 @@
 import * as angular from 'angular';
-import { SkaterRatingsGridService } from './skaterRatingsGrid/skaterRatingsGrid.service';
+import { SkaterInfoGridService } from './skaterInfoGrid/skaterInfoGrid.service';
 import { SkaterStatsGridService } from './skaterStatsGrid/skaterStatsGrid.service';
+import { SkaterRatingsGridService } from './skaterRatingsGrid/skaterRatingsGrid.service';
 import { GoalieStatsGridService } from './goalieStatsGrid/goalieStatsGrid.service';
 import { GoalieRatingsGridService } from './goalieRatingsGrid/goalieRatingsGrid.service';
+import { GoalieInfoGridService } from './goalieInfoGrid/goalieInfoGrid.service';
 import { TransactionsGridService } from './transactionsGrid/transactionsGrid.service';
 
 export class GridServices {
@@ -10,8 +12,10 @@ export class GridServices {
 }
 
 angular.module(GridServices.moduleName, [])
-  .service(SkaterRatingsGridService.serviceName, SkaterRatingsGridService)
+  .service(SkaterInfoGridService.serviceName, SkaterInfoGridService)
   .service(SkaterStatsGridService.serviceName, SkaterStatsGridService)
+  .service(SkaterRatingsGridService.serviceName, SkaterRatingsGridService)
+  .service(GoalieInfoGridService.serviceName, GoalieInfoGridService)
   .service(GoalieRatingsGridService.serviceName, GoalieRatingsGridService)
   .service(TransactionsGridService.serviceName, TransactionsGridService)
   .service(GoalieStatsGridService.serviceName, GoalieStatsGridService);

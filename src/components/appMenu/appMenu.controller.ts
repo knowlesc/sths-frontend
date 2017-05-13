@@ -14,6 +14,19 @@ export class AppMenuController {
       ]
     },
     {
+      text: 'Players',
+      subItems: [
+        {
+          text: 'Skaters',
+          url: '#!/skaters'
+        },
+        {
+          text: 'Goalies',
+          url: '#!/goalies'
+        }
+      ]
+    },
+    {
       text: 'Teams',
       url: '#!/teams'
     }

@@ -1,31 +1,50 @@
 import { TeamInfo } from '../../models/teams/teamInfo';
 import { GridOptions } from '../../components/grid/models/gridOptions';
-import { GoalieRatingsGridService } from '../../grids/goalieRatingsGrid/goalieRatingsGrid.service';
+import { GoalieInfoGridService } from '../../grids/goalieInfoGrid/goalieInfoGrid.service';
 import { goalieRatingsGridColumns } from '../../grids/goalieRatingsGrid/goalieRatingsGrid.columns';
+import { GoalieRatingsGridService } from '../../grids/goalieRatingsGrid/goalieRatingsGrid.service';
+import { goalieInfoGridColumns } from '../../grids/goalieInfoGrid/goalieInfoGrid.columns';
 import { GoalieStatsGridService } from '../../grids/goalieStatsGrid/goalieStatsGrid.service';
 import { goalieStatsGridColumns } from '../../grids/goalieStatsGrid/goalieStatsGrid.columns';
 import { SkaterStatsGridService } from '../../grids/skaterStatsGrid/skaterStatsGrid.service';
 import { skaterStatsGridColumns } from '../../grids/skaterStatsGrid/skaterStatsGrid.columns';
-import { SkaterRatingsGridService } from '../../grids/skaterRatingsGrid/skaterRatingsGrid.service';
+import { SkaterInfoGridService } from '../../grids/skaterInfoGrid/skaterInfoGrid.service';
 import { skaterRatingsGridColumns } from '../../grids/skaterRatingsGrid/skaterRatingsGrid.columns';
-import { skaterInfoGridColumns } from '../../grids/skaterRatingsGrid/skaterInfoGrid.columns';
+import { SkaterRatingsGridService } from '../../grids/skaterRatingsGrid/skaterRatingsGrid.service';
+import { skaterInfoGridColumns } from '../../grids/skaterInfoGrid/skaterInfoGrid.columns';
 
 export class TeamInfoController {
   skaterRatingsGridOptions: GridOptions;
   skaterStatsGridOptions: GridOptions;
   skaterInfoGridOptions: GridOptions;
+  goalieInfoGridOptions: GridOptions;
   goalieRatingsGridOptions: GridOptions;
   goalieStatsGridOptions: GridOptions;
   page = 'Roster';
 
   constructor(private teamInfo: TeamInfo,
     private league: 'farm' | 'pro',
-    private skaterRatingsGridService: SkaterRatingsGridService,
+    private skaterInfoGridService: SkaterInfoGridService,
+    private goalieInfoGridService: GoalieInfoGridService,
     private goalieRatingsGridService: GoalieRatingsGridService,
+    private skaterRatingsGridService: SkaterRatingsGridService,
     private skaterStatsGridService: SkaterStatsGridService,
     private goalieStatsGridService: GoalieStatsGridService) {
+
+    this.skaterInfoGridService.selectedTeam = this.teamInfo.UniqueID;
+    this.skaterStatsGridService.selectedTeam = this.teamInfo.UniqueID;
     this.skaterRatingsGridService.selectedTeam = this.teamInfo.UniqueID;
+    this.goalieInfoGridService.selectedTeam = this.teamInfo.UniqueID;
+    this.goalieStatsGridService.selectedTeam = this.teamInfo.UniqueID;
+    this.goalieRatingsGridService.selectedTeam = this.teamInfo.UniqueID;
+
+    this.skaterInfoGridService.selectedLeague = league;
+    this.skaterStatsGridService.selectedLeague = league;
     this.skaterRatingsGridService.selectedLeague = league;
+    this.goalieInfoGridService.selectedLeague = league;
+    this.goalieStatsGridService.selectedLeague = league;
+    this.goalieRatingsGridService.selectedLeague = league;
+
     this.skaterRatingsGridOptions = new GridOptions();
     this.skaterRatingsGridOptions.dataSource = this.skaterRatingsGridService;
     this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns.slice();
@@ -33,29 +52,35 @@ export class TeamInfoController {
     this.skaterRatingsGridOptions.defaultSortField = 'Overall';
 
     this.skaterInfoGridOptions = new GridOptions();
-    this.skaterInfoGridOptions.dataSource = this.skaterRatingsGridService;
+    this.skaterInfoGridOptions.dataSource = this.skaterInfoGridService;
     this.skaterInfoGridOptions.columns = skaterInfoGridColumns.slice();
-    this.skaterInfoGridOptions.columns.splice(1, 1); // Remove team column
+    this.skaterInfoGridOptions.columns.splice(1, 1);
     this.skaterInfoGridOptions.defaultSortField = 'Overall';
 
-    this.goalieRatingsGridService.selectedTeam = this.teamInfo.UniqueID;
-    this.goalieRatingsGridService.selectedLeague = league;
     this.goalieRatingsGridOptions = new GridOptions();
     this.goalieRatingsGridOptions.dataSource = this.goalieRatingsGridService;
     this.goalieRatingsGridOptions.columns = goalieRatingsGridColumns.slice();
-    this.goalieRatingsGridOptions.columns.splice(1, 1); // Remove team column
+    this.goalieRatingsGridOptions.columns.splice(1, 1);
     this.goalieRatingsGridOptions.defaultSortField = 'Overall';
 
-    this.skaterStatsGridService.selectedTeam = this.teamInfo.UniqueID;
-    this.skaterStatsGridService.selectedLeague = league;
+    this.goalieInfoGridOptions = new GridOptions();
+    this.goalieInfoGridOptions.dataSource = this.goalieInfoGridService;
+    this.goalieInfoGridOptions.columns = goalieInfoGridColumns.slice();
+    this.goalieInfoGridOptions.columns.splice(1, 1);
+    this.goalieInfoGridOptions.defaultSortField = 'Salary1';
+
+    this.skaterInfoGridOptions = new GridOptions();
+    this.skaterInfoGridOptions.dataSource = this.skaterInfoGridService;
+    this.skaterInfoGridOptions.columns = skaterInfoGridColumns.slice();
+    this.skaterInfoGridOptions.columns.splice(1, 1);
+    this.skaterInfoGridOptions.defaultSortField = 'Salary1';
+
     this.skaterStatsGridOptions = new GridOptions();
     this.skaterStatsGridOptions.dataSource = this.skaterStatsGridService;
     this.skaterStatsGridOptions.columns = skaterStatsGridColumns.slice();
     this.skaterStatsGridOptions.columns.splice(1, 1);
     this.skaterStatsGridOptions.defaultSortField = 'P';
 
-    this.goalieStatsGridService.selectedTeam = this.teamInfo.UniqueID;
-    this.goalieStatsGridService.selectedLeague = league;
     this.goalieStatsGridOptions = new GridOptions();
     this.goalieStatsGridOptions.dataSource = this.goalieStatsGridService;
     this.goalieStatsGridOptions.columns = goalieStatsGridColumns.slice();

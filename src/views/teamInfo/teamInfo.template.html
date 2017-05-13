@@ -71,6 +71,13 @@
       </div>
     </div>
 
+    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
+      <div class="panel-heading">Goalies</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.goalieInfoGridOptions"></grid>
+      </div>
+    </div>
+
     <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
       <div class="panel-heading">Skaters</div>
       <div class="panel-body">
