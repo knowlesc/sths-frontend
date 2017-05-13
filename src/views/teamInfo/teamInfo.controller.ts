@@ -8,10 +8,12 @@ import { SkaterStatsGridService } from '../../grids/skaterStatsGrid/skaterStatsG
 import { skaterStatsGridColumns } from '../../grids/skaterStatsGrid/skaterStatsGrid.columns';
 import { SkaterRatingsGridService } from '../../grids/skaterRatingsGrid/skaterRatingsGrid.service';
 import { skaterRatingsGridColumns } from '../../grids/skaterRatingsGrid/skaterRatingsGrid.columns';
+import { skaterInfoGridColumns } from '../../grids/skaterRatingsGrid/skaterInfoGrid.columns';
 
 export class TeamInfoController {
   skaterRatingsGridOptions: GridOptions;
   skaterStatsGridOptions: GridOptions;
+  skaterInfoGridOptions: GridOptions;
   goalieRatingsGridOptions: GridOptions;
   goalieStatsGridOptions: GridOptions;
   page = 'Roster';
@@ -29,6 +31,12 @@ export class TeamInfoController {
     this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns.slice();
     this.skaterRatingsGridOptions.columns.splice(1, 1); // Remove team column
     this.skaterRatingsGridOptions.defaultSortField = 'Overall';
+
+    this.skaterInfoGridOptions = new GridOptions();
+    this.skaterInfoGridOptions.dataSource = this.skaterRatingsGridService;
+    this.skaterInfoGridOptions.columns = skaterInfoGridColumns.slice();
+    this.skaterInfoGridOptions.columns.splice(1, 1); // Remove team column
+    this.skaterInfoGridOptions.defaultSortField = 'Overall';
 
     this.goalieRatingsGridService.selectedTeam = this.teamInfo.UniqueID;
     this.goalieRatingsGridService.selectedLeague = league;

@@ -4,6 +4,7 @@
       <div class="panel-heading">Upcoming Games</div>
       <div class="panel-body">
         <div class="score-card-container">
+          <span ng-if="$ctrl.upcomingGames.rows.length === 0">No upcoming games.</span>
           <score-card ng-repeat="upcomingGame in $ctrl.upcomingGames.rows"
             game-info="upcomingGame">
           </score-card>

@@ -14,7 +14,7 @@ export class HeaderCell {
       controllerAs: '$ctrl',
       scope: {},
       template: `
-        <div ng-class="{ 'text-center': $ctrl.column.center }"
+        <div ng-class="{ 'text-center': $ctrl.column.centered }"
           class="text-nowrap header-cell"
           ng-click="$ctrl.sort()"
           title="{{ $ctrl.column.title }}">

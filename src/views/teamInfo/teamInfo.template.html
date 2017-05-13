@@ -1,5 +1,5 @@
 <div class="container title-container">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="row">
       <div class="col-sm-6">
         <h3><span ng-bind="$ctrl.teamInfo.Name"></span></h3>
@@ -54,6 +54,9 @@
         <li ng-class="{ active: $ctrl.page === 'Stats' }">
           <a ng-click="$ctrl.page = 'Stats'">Stats</a>
         </li>
+        <li ng-class="{ active: $ctrl.page === 'PlayerInfo' }">
+          <a ng-click="$ctrl.page = 'PlayerInfo'">Player Info</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -61,6 +64,13 @@
 
 <div class="container">
   <div class="col-md-12">
+    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
+      <div class="panel-heading">Skaters</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.skaterInfoGridOptions"></grid>
+      </div>
+    </div>
+
     <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
       <div class="panel-heading">Skaters</div>
       <div class="panel-body">

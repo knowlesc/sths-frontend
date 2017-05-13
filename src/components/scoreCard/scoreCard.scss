@@ -2,19 +2,25 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 
   @media (min-width: 992px) {
     flex-direction: column;
   }
 
-  .score-card {
-    font-size: 12px;
-    min-width: 200px;
-    margin: 5px;
+  score-card {
+     @media (max-width: 991px) {
+        width: 33%;
+        padding: 2px;
+        min-width: 200px;
+      }
 
-    .score-card-date {
-      font-weight: 700;
+    .score-card {
+      font-size: 12px;
+
+      .score-card-date {
+        font-weight: 700;
+      }
     }
   }
 }
