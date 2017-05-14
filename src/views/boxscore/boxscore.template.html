@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Boxscore</div>
+      <div class="panel-body">
+        <div ng-if="$ctrl.fail">
+          Unable to load boxscore.
+        </div>
+        <ng-include ng-if="!$ctrl.fail" src="$ctrl.boxscoreUrl"></div>
+      </div>
+    </div>
+  </div>
+</div>

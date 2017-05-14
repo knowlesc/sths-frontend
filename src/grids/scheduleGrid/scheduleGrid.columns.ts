@@ -21,5 +21,7 @@ export const scheduleGridColumns: ColumnDef[] = [
       <span ng-if="row.Shootout === 'True'">
         (SO)
       </span>
-    </span>`}
+    </span>` },
+  { fieldName: 'Link',  headerTitle: 'Boxscore',
+    template: `<span ng-if="row.Play === 'True'"><a ng-href="{{ '#!/boxscore/' + row.Link }}">Boxscore</a></span>` }
 ];
