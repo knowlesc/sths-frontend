@@ -29,6 +29,10 @@ export class AppMenuController {
     {
       text: 'Teams',
       url: '#!/teams'
+    },
+    {
+      text: 'Schedule',
+      url: '#!/schedule'
     }
   ];
 }

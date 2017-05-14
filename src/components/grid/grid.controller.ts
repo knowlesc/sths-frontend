@@ -50,9 +50,10 @@ export class GridController {
         field.fieldName === this.gridOptions.defaultSortField);
       if (sortColumn) {
         this.gridOptions.api.updateSort(sortColumn);
+      } else {
+        this.gridOptions.api.loadData();
       }
-    }
-    if (!this.loading) {
+    } else {
       this.gridOptions.api.loadData();
     }
   }

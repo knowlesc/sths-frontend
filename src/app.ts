@@ -14,6 +14,7 @@ import { SkaterStatsController } from './views/skaterStats/skaterStats.controlle
 import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
+import { ScheduleController } from './views/schedule/schedule.controller';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
 import { GridServices } from './grids/gridServices';
@@ -81,6 +82,11 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/teamList.template.html',
     controller: TeamListController,
+    controllerAs: '$ctrl'
+  })
+  .when('/schedule', {
+    templateUrl: 'templates/schedule.template.html',
+    controller: ScheduleController,
     controllerAs: '$ctrl'
   })
   .otherwise({
