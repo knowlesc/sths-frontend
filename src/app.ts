@@ -12,6 +12,8 @@ import 'bootstrap';
 import { AppMainController } from './views/appMain/appMain.controller';
 import { SkaterStatsController } from './views/skaterStats/skaterStats.controller';
 import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
+import { GoalieRatingsController } from './views/goalieRatings/goalieRatings.controller';
+import { SkaterRatingsController } from './views/skaterRatings/skaterRatings.controller';
 import { TeamStatsController } from './views/teamStats/teamStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
@@ -94,6 +96,16 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
   .when('/schedule', {
     templateUrl: 'templates/schedule.template.html',
     controller: ScheduleController,
+    controllerAs: '$ctrl'
+  })
+  .when('/skaters', {
+    templateUrl: 'templates/skaterRatings.template.html',
+    controller: SkaterRatingsController,
+    controllerAs: '$ctrl'
+  })
+  .when('/goalies', {
+    templateUrl: 'templates/goalieRatings.template.html',
+    controller: GoalieRatingsController,
     controllerAs: '$ctrl'
   })
   .when('/boxscore/:id', {

@@ -10,7 +10,7 @@ export class ScheduleController {
     this.gridOptions.dataSource = this.scheduleGridService;
     this.gridOptions.columns = scheduleGridColumns;
     this.gridOptions.paginationOptions = [20, 50, 100];
-    this.gridOptions.defaultRowsPerPage = 50;
+    this.gridOptions.defaultRowsPerPage = 20;
     this.gridOptions.showIndexColumn = true;
   }
 }
