@@ -12,6 +12,7 @@ import 'bootstrap';
 import { AppMainController } from './views/appMain/appMain.controller';
 import { SkaterStatsController } from './views/skaterStats/skaterStats.controller';
 import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
+import { TeamStatsController } from './views/teamStats/teamStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { ScheduleController } from './views/schedule/schedule.controller';
@@ -74,6 +75,11 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
+    controllerAs: '$ctrl'
+  })
+  .when('/teamStats', {
+    templateUrl: 'templates/teamStats.template.html',
+    controller: TeamStatsController,
     controllerAs: '$ctrl'
   })
   .when('/teams', {

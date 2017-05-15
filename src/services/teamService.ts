@@ -2,6 +2,7 @@ import { Config } from '../models/config';
 import { Routes } from '../models/routes';
 import { TeamInfo } from '../models/teams/teamInfo';
 import { TeamListParams } from '../models/teams/teamListParams';
+import { TeamStatsParams } from '../models/teams/teamStatsParams';
 
 export class TeamService {
   static serviceName = 'teamService';
@@ -25,6 +26,19 @@ export class TeamService {
       this.$http.get(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}`)
         .then((response) => {
           resolve(response.data);
+        }, (error) => reject);
+    });
+  }
+
+  getTeamStats(params?: TeamStatsParams): Promise<{ totalCount: number, rows: {}[] }> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(this.config.apiUrl + Routes.teamStats,
+        { params: params })
+        .then((response) => {
+          resolve({
+            totalCount: response.headers('X-Total-Count') || 0,
+            rows: response.data
+          });
         }, (error) => reject);
     });
   }

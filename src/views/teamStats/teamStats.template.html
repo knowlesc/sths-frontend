@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-stacked">
   <div class="container">
     <div class="col-md-12">
-      <league-selector initial-league="$ctrl.goalieStatsGridService.selectedLeague"
+      <league-selector initial-league="$ctrl.teamStatsGridService.selectedLeague"
         on-change="$ctrl.leagueUpdated(league)"></league-selector>
     </div>
   </div>
@@ -11,7 +11,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Goalie Statistics
+        Team Statistics
       </div>
       <div class="panel-body">
         <grid grid-options="$ctrl.gridOptions"></grid>

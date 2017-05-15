@@ -5,6 +5,7 @@ import { GoalieStats } from '../models/players/goalieStats';
 import { GoalieInfoParams } from '../models/players/goalieInfoParams';
 import { SkaterInfo } from '../models/players/skaterInfo';
 import { SkaterInfoParams } from '../models/players/skaterInfoParams';
+import { SkaterStatsParams } from '../models/players/skaterStatsParams';
 import { GoalieStatsParams } from '../models/players/goalieStatsParams';
 
 export class PlayerService {
@@ -27,7 +28,7 @@ export class PlayerService {
     });
   }
 
-  getSkaterStats(params?: SkaterInfoParams): Promise<{ totalCount: number, rows: SkaterStats[] }> {
+  getSkaterStats(params?: SkaterStatsParams): Promise<{ totalCount: number, rows: SkaterStats[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.skaterStats,
         { params: params })

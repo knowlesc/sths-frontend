@@ -10,6 +10,10 @@ export class AppMenuController {
         {
           text: 'Goalies',
           url: '#!/goalieStats'
+        },
+        {
+          text: 'Teams',
+          url: '#!/teamStats'
         }
       ]
     },

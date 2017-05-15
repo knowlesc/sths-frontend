@@ -4,6 +4,7 @@ export class Routes {
   static goalieInfo = 'players/goalies';
   static skaterInfo = 'players/skaters';
   static teamList = 'teams';
+  static teamStats = 'teams/stats';
   static leagueLog = 'league/log';
   static schedule = 'schedule';
 }

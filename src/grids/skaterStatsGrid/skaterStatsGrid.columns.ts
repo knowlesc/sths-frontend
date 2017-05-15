@@ -11,8 +11,8 @@ export const skaterStatsGridColumns: ColumnDef[] = [
   { fieldName: 'PlusMinus', sortable: 'desc', centered: true, headerTitle: '+/-' },
   { fieldName: 'Pim', sortable: 'desc', centered: true, title: 'Penalty Minutes' },
   { fieldName: 'Hits', sortable: 'desc', centered: true },
-  { fieldName: 'Shots', sortable: 'desc', centered: true },
-  { fieldName: 'ShotsPCT', sortable: 'desc', centered: true, headerTitle: 'Shot%',
+  { fieldName: 'Shots', sortable: 'desc', centered: true, headerTitle: 'SH', title: 'Shots' },
+  { fieldName: 'ShotsPCT', sortable: 'desc', centered: true, headerTitle: 'SH%', title: 'Shooting Percentage',
     template: `<span ng-bind="row.ShotsPCT | number : 1"></span>` },
   { fieldName: 'ShotsBlock', sortable: 'desc', centered: true, headerTitle: 'BkS', title: 'Blocked Shots' },
   { fieldName: 'AvgTOI', sortable: 'desc', centered: true, headerTitle: 'TOI/G', title: 'Time-On-Ice per Game',
@@ -20,6 +20,7 @@ export const skaterStatsGridColumns: ColumnDef[] = [
   { fieldName: 'PPG', sortable: 'desc', centered: true, title: 'Powerplay Goals' },
   { fieldName: 'PPA', sortable: 'desc', centered: true, title: 'Powerplay Assists' },
   { fieldName: 'PPP', sortable: 'desc', centered: true, title: 'Powerplay Points' },
+  { fieldName: 'PKG', sortable: 'desc', centered: true, headerTitle: 'SHG', title: 'Short-Handed Goals' },
   { fieldName: 'P60', sortable: 'desc', centered: true, headerTitle: 'P/60', title: 'Points per 60 Minutes',
     template: `<span ng-bind="row.P60 || 0 | number : 1"></span>` }
 ];
