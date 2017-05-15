@@ -51,11 +51,14 @@
         <li ng-class="{ active: $ctrl.page === 'Roster' }">
           <a ng-click="$ctrl.page = 'Roster'">Roster</a>
         </li>
-        <li ng-class="{ active: $ctrl.page === 'Stats' }">
-          <a ng-click="$ctrl.page = 'Stats'">Stats</a>
+        <li ng-class="{ active: $ctrl.page === 'PlayerStats' }">
+          <a ng-click="$ctrl.page = 'PlayerStats'">Player Stats</a>
         </li>
         <li ng-class="{ active: $ctrl.page === 'PlayerInfo' }">
           <a ng-click="$ctrl.page = 'PlayerInfo'">Player Info</a>
+        </li>
+        <li ng-class="{ active: $ctrl.page === 'TeamStats' }">
+          <a ng-click="$ctrl.page = 'TeamStats'">Team Stats</a>
         </li>
       </ul>
     </div>
@@ -91,17 +94,25 @@
       </div>
     </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
+    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerStats'">
       <div class="panel-heading">Skaters</div>
       <div class="panel-body">
-        <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.skaterStatsGridOptions"></grid>
+        <grid grid-options="$ctrl.skaterStatsGridOptions"></grid>
       </div>
     </div>
-    <div class="panel panel-default" ng-show="$ctrl.page === 'Stats'">
+    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerStats'">
       <div class="panel-heading">Goalies</div>
       <div class="panel-body">
-        <grid ng-show="$ctrl.page === 'Stats'" grid-options="$ctrl.goalieStatsGridOptions"></grid>
+        <grid grid-options="$ctrl.goalieStatsGridOptions"></grid>
       </div>
     </div>
+
+    <div class="panel panel-default" ng-show="$ctrl.page === 'TeamStats'">
+      <div class="panel-heading">Overview</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.teamStatsGridOptions"></grid>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -24,6 +24,7 @@ export class TeamStatsGridService implements GridDataSource {
     const params: TeamStatsParams = {
       limit: this.rowsPerPage,
       league: this.selectedLeague,
+      team: this.selectedTeam,
       sort: this.currentSort,
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0)
     };

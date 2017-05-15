@@ -6,6 +6,8 @@ import { GoalieRatingsGridService } from '../../grids/goalieRatingsGrid/goalieRa
 import { goalieInfoGridColumns } from '../../grids/goalieInfoGrid/goalieInfoGrid.columns';
 import { GoalieStatsGridService } from '../../grids/goalieStatsGrid/goalieStatsGrid.service';
 import { goalieStatsGridColumns } from '../../grids/goalieStatsGrid/goalieStatsGrid.columns';
+import { TeamStatsGridService } from '../../grids/teamStatsGrid/teamStatsGrid.service';
+import { teamStatsGridColumns } from '../../grids/teamStatsGrid/teamStatsGrid.columns';
 import { SkaterStatsGridService } from '../../grids/skaterStatsGrid/skaterStatsGrid.service';
 import { skaterStatsGridColumns } from '../../grids/skaterStatsGrid/skaterStatsGrid.columns';
 import { SkaterInfoGridService } from '../../grids/skaterInfoGrid/skaterInfoGrid.service';
@@ -20,6 +22,7 @@ export class TeamInfoController {
   goalieInfoGridOptions: GridOptions;
   goalieRatingsGridOptions: GridOptions;
   goalieStatsGridOptions: GridOptions;
+  teamStatsGridOptions: GridOptions;
   page = 'Roster';
 
   constructor(private teamInfo: TeamInfo,
@@ -29,7 +32,8 @@ export class TeamInfoController {
     private goalieRatingsGridService: GoalieRatingsGridService,
     private skaterRatingsGridService: SkaterRatingsGridService,
     private skaterStatsGridService: SkaterStatsGridService,
-    private goalieStatsGridService: GoalieStatsGridService) {
+    private goalieStatsGridService: GoalieStatsGridService,
+    private teamStatsGridService: TeamStatsGridService) {
 
     this.skaterInfoGridService.selectedTeam = this.teamInfo.UniqueID;
     this.skaterStatsGridService.selectedTeam = this.teamInfo.UniqueID;
@@ -37,6 +41,7 @@ export class TeamInfoController {
     this.goalieInfoGridService.selectedTeam = this.teamInfo.UniqueID;
     this.goalieStatsGridService.selectedTeam = this.teamInfo.UniqueID;
     this.goalieRatingsGridService.selectedTeam = this.teamInfo.UniqueID;
+    this.teamStatsGridService.selectedTeam = this.teamInfo.UniqueID;
 
     this.skaterInfoGridService.selectedLeague = league;
     this.skaterStatsGridService.selectedLeague = league;
@@ -86,5 +91,11 @@ export class TeamInfoController {
     this.goalieStatsGridOptions.columns = goalieStatsGridColumns.slice();
     this.goalieStatsGridOptions.columns.splice(1, 1);
     this.goalieStatsGridOptions.defaultSortField = 'GP';
+
+    this.teamStatsGridOptions = new GridOptions();
+    this.teamStatsGridOptions.dataSource = this.teamStatsGridService;
+    this.teamStatsGridOptions.columns = teamStatsGridColumns.slice();
+    this.teamStatsGridOptions.columns.splice(0, 1);
+    this.teamStatsGridOptions.columns.forEach((column) => column.sortable = null);
   }
 }
