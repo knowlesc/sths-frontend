@@ -16,6 +16,7 @@ export class TransactionsGridService implements GridDataSource {
   selectedLeague: 'farm' | 'pro' = 'pro';
   selectedTeam: number;
 
+  static $inject = ['leagueService'];
   constructor(private leagueService: LeagueService) {
 
   }

@@ -5,6 +5,7 @@ import { Routes } from '../models/routes';
 export class LeagueService {
   static serviceName = 'leagueService';
 
+  static $inject = ['$http', 'config'];
   constructor(private $http: ng.IHttpService, private config: Config) {
 
   }

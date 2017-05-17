@@ -35,7 +35,7 @@ gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'config'],
 gulp.task('build-minified', ['build'], () => {
   pump([
     gulp.src('build/bundle.js'),
-    ngAnnotate(),
+    //ngAnnotate(),
     uglify(),
     rename('bundle.min.js'),
     gulp.dest('build')

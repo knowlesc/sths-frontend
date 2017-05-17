@@ -42,8 +42,8 @@ app.constant('config', config);
 app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
     resolve: {
-      upcomingGames: (scheduleService: ScheduleService) =>
-        scheduleService.getSchedule({ nextSimOnly: 'true' })
+      upcomingGames: ['scheduleService', (scheduleService: ScheduleService) =>
+        scheduleService.getSchedule({ nextSimOnly: 'true' })]
     },
     templateUrl: 'templates/appMain.template.html',
     controller: AppMainController,
@@ -62,8 +62,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/teams/pro/:id', {
     resolve: {
       league: () => 'pro',
-      teamInfo: ($route: ng.route.IRouteService, teamService: TeamService) =>
-        teamService.getTeamInfo({ league: 'pro', id: $route.current.params.id })
+      teamInfo: ['$route', 'teamService', ($route: ng.route.IRouteService, teamService: TeamService) =>
+        teamService.getTeamInfo({ league: 'pro', id: $route.current.params.id })]
     },
     templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
@@ -72,8 +72,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/teams/farm/:id', {
     resolve: {
       league: () => 'farm',
-      teamInfo: ($route: ng.route.IRouteService, teamService: TeamService) =>
-        teamService.getTeamInfo({ league: 'farm', id: $route.current.params.id })
+      teamInfo: ['$route', 'teamService', ($route: ng.route.IRouteService, teamService: TeamService) =>
+        teamService.getTeamInfo({ league: 'farm', id: $route.current.params.id })]
     },
     templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
@@ -86,8 +86,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   })
   .when('/teams', {
     resolve: {
-      proTeamList: (teamService: TeamService) => teamService.getTeamList({ league: 'pro' }),
-      farmTeamList: (teamService: TeamService) => teamService.getTeamList({ league: 'farm' })
+      proTeamList: ['teamService', (teamService: TeamService) => teamService.getTeamList({ league: 'pro' })],
+      farmTeamList: ['teamService', (teamService: TeamService) => teamService.getTeamList({ league: 'farm' })]
     },
     templateUrl: 'templates/teamList.template.html',
     controller: TeamListController,

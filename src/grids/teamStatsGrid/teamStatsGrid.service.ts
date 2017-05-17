@@ -16,6 +16,7 @@ export class TeamStatsGridService implements GridDataSource {
   selectedLeague: 'farm' | 'pro' = 'pro';
   selectedTeam: number;
 
+  static $inject = ['teamService'];
   constructor(private teamService: TeamService) {
 
   }

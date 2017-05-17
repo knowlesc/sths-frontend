@@ -25,6 +25,9 @@ export class TeamInfoController {
   teamStatsGridOptions: GridOptions;
   page = 'Roster';
 
+  static $inject = ['teamInfo', 'league', 'skaterInfoGridService', 'goalieInfoGridService',
+    'goalieRatingsGridService', 'skaterRatingsGridService', 'skaterStatsGridService',
+    'goalieStatsGridService', 'teamStatsGridService'];
   constructor(private teamInfo: TeamInfo,
     private league: 'farm' | 'pro',
     private skaterInfoGridService: SkaterInfoGridService,

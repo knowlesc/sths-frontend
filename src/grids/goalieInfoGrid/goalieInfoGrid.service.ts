@@ -16,6 +16,7 @@ export class GoalieInfoGridService implements GridDataSource {
   selectedLeague: 'farm' | 'pro' = 'pro';
   selectedTeam: number;
 
+  static $inject = ['playerService'];
   constructor(private playerService: PlayerService) {
 
   }

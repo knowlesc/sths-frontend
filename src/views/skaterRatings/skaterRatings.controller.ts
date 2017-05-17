@@ -5,6 +5,7 @@ import { GridOptions } from '../../components/grid/models/gridOptions';
 export class SkaterRatingsController {
   gridOptions: GridOptions;
 
+  static $inject = ['skaterRatingsGridService'];
   constructor(private skaterRatingsGridService: SkaterRatingsGridService) {
     this.skaterRatingsGridService.selectedTeam = null;
     this.skaterRatingsGridService.selectedLeague = 'pro';

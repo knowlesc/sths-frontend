@@ -11,6 +11,7 @@ import { GoalieStatsParams } from '../models/players/goalieStatsParams';
 export class PlayerService {
   static serviceName = 'playerService';
 
+  static $inject = ['$http', 'config'];
   constructor(private $http: ng.IHttpService, private config: Config) {
 
   }

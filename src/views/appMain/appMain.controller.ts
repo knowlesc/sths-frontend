@@ -6,6 +6,7 @@ export class AppMainController {
 
   gridOptions: GridOptions;
 
+  static $inject = ['upcomingGames', 'transactionsGridService'];
   constructor(private upcomingGames: {}[],
     private transactionsGridService: TransactionsGridService,
     private $timeout: ng.ITimeoutService) {

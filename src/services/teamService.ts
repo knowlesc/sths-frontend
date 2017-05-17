@@ -7,6 +7,7 @@ import { TeamStatsParams } from '../models/teams/teamStatsParams';
 export class TeamService {
   static serviceName = 'teamService';
 
+  static $inject = ['$http', 'config'];
   constructor(private $http: ng.IHttpService, private config: Config) {
 
   }
