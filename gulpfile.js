@@ -9,7 +9,6 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const pump = require('pump');
 const babelify = require('babelify');
-const ngAnnotate = require('gulp-ng-annotate');
 const flatten = require('gulp-flatten');
 
 gulp.task('default',
@@ -35,7 +34,6 @@ gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'config'],
 gulp.task('build-minified', ['build'], () => {
   pump([
     gulp.src('build/bundle.js'),
-    //ngAnnotate(),
     uglify(),
     rename('bundle.min.js'),
     gulp.dest('build')
@@ -49,15 +47,14 @@ gulp.task('config', () => {
 
 gulp.task('scss', () => {
   return gulp.src('./src/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('external-css', () => {
   return gulp.src([
-    'node_modules/bootswatch-sass/cosmo/bootstrap.min.css',
-    'node_modules/loaders.css/loaders.min.css'
+    'node_modules/bootswatch-sass/cosmo/bootstrap.min.css'
     ])
     .pipe(gulp.dest('build/css'));
 });
