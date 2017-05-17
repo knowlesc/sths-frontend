@@ -44,4 +44,4 @@ export class GridCell {
 }
 
 angular.module(GridCell.moduleName, [])
-  .directive(GridCell.directiveName, GridCell.directiveOptions);
+  .directive(GridCell.directiveName, ['$compile', GridCell.directiveOptions]);

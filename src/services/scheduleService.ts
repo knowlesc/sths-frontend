@@ -5,6 +5,7 @@ import { ScheduleParams } from '../models/schedule/scheduleParams';
 export class ScheduleService {
   static serviceName = 'scheduleService';
 
+  static $inject = ['$http', 'config'];
   constructor(private $http: ng.IHttpService, private config: Config) {
 
   }

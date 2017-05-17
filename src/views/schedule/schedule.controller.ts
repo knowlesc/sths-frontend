@@ -5,6 +5,7 @@ import { GridOptions } from '../../components/grid/models/gridOptions';
 export class ScheduleController {
   gridOptions: GridOptions;
 
+  static $inject = ['scheduleGridService'];
   constructor(private scheduleGridService: ScheduleGridService) {
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.scheduleGridService;

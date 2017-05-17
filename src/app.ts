@@ -39,7 +39,7 @@ const app = angular.module('sths.frontend', [
 
 app.constant('config', config);
 
-app.config(($routeProvider: ng.route.IRouteProvider) => {
+app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
     resolve: {
       upcomingGames: (scheduleService: ScheduleService) =>
@@ -116,4 +116,4 @@ app.config(($routeProvider: ng.route.IRouteProvider) => {
   .otherwise({
     redirectTo: '/'
   });
-});
+}]);

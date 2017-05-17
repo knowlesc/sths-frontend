@@ -16,6 +16,7 @@ export class ScheduleGridService implements GridDataSource {
   selectedLeague: 'farm' | 'pro' = 'pro';
   selectedTeam: number;
 
+  static $inject = ['scheduleService'];
   constructor(private scheduleService: ScheduleService) {
 
   }

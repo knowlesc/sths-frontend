@@ -12,6 +12,7 @@ export class GridController {
 
   rows: {}[];
 
+  static $inject = ['$timeout'];
   constructor(private $timeout: ng.ITimeoutService) {
 
   }

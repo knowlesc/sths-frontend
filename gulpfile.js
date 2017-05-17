@@ -13,12 +13,12 @@ const ngAnnotate = require('gulp-ng-annotate');
 const flatten = require('gulp-flatten');
 
 gulp.task('default',
-  ['watch', 'tslint', 'build']);
+  ['watch', 'tslint', 'build', 'build-minified']);
 
 gulp.task('watch', () => {
   gulp.watch(
     ['src/**/*.ts', 'src/**/*.html', 'src/**/*.scss'],
-    ['tslint', 'build']);
+    ['tslint', 'build', 'build-minified']);
 });
 
 gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'config'], () => {
