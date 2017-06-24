@@ -1,12 +1,14 @@
+import { Config } from '../../models/config';
+
 export class BoxscoreController {
 
   boxscoreUrl: string;
   fail = true;
 
-  static $inject = ['$routeParams'];
-  constructor($routeParams: ng.route.IRouteParamsService) {
+  static $inject = ['$routeParams', 'config'];
+  constructor($routeParams: ng.route.IRouteParamsService, config: Config) {
     if ($routeParams['id'] && /^\w+-\d+\.html$/.test($routeParams['id'])) {
-      this.boxscoreUrl = `/boxscores/${$routeParams['id']}`;
+      this.boxscoreUrl = `${config.boxscorePath}${$routeParams['id']}`;
       this.fail = false;
     }
   }

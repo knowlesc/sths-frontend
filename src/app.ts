@@ -14,11 +14,13 @@ import { SkaterStatsController } from './views/skaterStats/skaterStats.controlle
 import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
 import { GoalieRatingsController } from './views/goalieRatings/goalieRatings.controller';
 import { SkaterRatingsController } from './views/skaterRatings/skaterRatings.controller';
+import { SkaterInfoController } from './views/skaterInfo/skaterInfo.controller';
 import { TeamStatsController } from './views/teamStats/teamStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { ScheduleController } from './views/schedule/schedule.controller';
 import { BoxscoreController } from './views/boxscore/boxscore.controller';
+import { PlayerService } from './services/playerService';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
 import { GridServices } from './grids/gridServices';
@@ -101,6 +103,15 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/skaters', {
     templateUrl: 'templates/skaterRatings.template.html',
     controller: SkaterRatingsController,
+    controllerAs: '$ctrl'
+  })
+  .when('/skaters/:id', {
+    resolve: {
+      skaterInfo: ['$route', 'playerService', ($route: ng.route.IRouteService, playerService: PlayerService) =>
+        playerService.getSingleSkaterInfo({ id: $route.current.params.id })]
+    },
+    templateUrl: 'templates/skaterInfo.template.html',
+    controller: SkaterInfoController,
     controllerAs: '$ctrl'
   })
   .when('/goalies', {

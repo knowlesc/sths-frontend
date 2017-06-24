@@ -12,16 +12,16 @@ const babelify = require('babelify');
 const flatten = require('gulp-flatten');
 
 gulp.task('default',
-  ['watch', 'tslint', 'build', 'build-minified']);
+  ['watch', 'tslint', 'build']);
 
 gulp.task('watch', () => {
   gulp.watch(
     ['src/**/*.ts', 'src/**/*.html', 'src/**/*.scss'],
-    ['tslint', 'build', 'build-minified']);
+    ['tslint', 'build']);
 });
 
-gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'config'], () => {
-  browserify()
+gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'images', 'config'], () => {
+  return browserify()
     .add('src/app.ts')
     .plugin(tsify, { noImplicitAny: true })
     .transform(babelify, { extensions: ['.ts'], presets: ["es2015"] })
@@ -50,6 +50,12 @@ gulp.task('scss', () => {
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(gulp.dest('build/css'));
+});
+
+gulp.task('images', () => {
+  return gulp.src('./src/**/*.png')
+    .pipe(flatten())
+    .pipe(gulp.dest('build/images'));
 });
 
 gulp.task('external-css', () => {

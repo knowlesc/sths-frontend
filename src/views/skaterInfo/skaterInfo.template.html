@@ -1,0 +1,108 @@
+<div class="container title-container">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3><span ng-bind="$ctrl.skaterInfo.Name"></span></h3>
+        <span ng-bind="$ctrl.skaterInfo.TeamName"></span>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="skater-info-group">
+              <label>Position:</label>
+              <span ng-bind="$ctrl.skaterInfo.Position"></span>
+            </div>
+            <div class="skater-info-group">
+              <label>Age: </label>
+              <span ng-bind="$ctrl.skaterInfo.Age"></span>
+            </div>
+            <div class="skater-info-group">
+              <label>Condition: </label>
+              <span ng-bind="$ctrl.skaterInfo.Condition"></span>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="skater-info-group">
+              <label>Weight: </label>
+              <span ng-bind="$ctrl.skaterInfo.Weight"></span>
+            </div>
+            <div class="skater-info-group">
+              <label>Height: </label>
+              <span ng-bind="$ctrl.skaterInfo.Height | height"></span>
+            </div>
+            <div class="skater-info-group">
+              <label>Overall: </label>
+              <span ng-bind="$ctrl.skaterInfo.Overall"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="col-md-12">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active: $ctrl.page === 'PlayerInfo' }">
+          <a ng-click="$ctrl.page = 'PlayerInfo'">Player Info</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
+      <div class="panel-heading">Player Info</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-condensed">
+            <thead>
+              <th title="Checking">CK</th>
+              <th title="Fighting">FG</th>
+              <th title="Discipline">DI</th>
+              <th title="Skating">ST</th>
+              <th title="Strength">CK</th>
+              <th title="Endurance">EN</th>
+              <th title="Durability">DU</th>
+              <th title="Puck Handling">PH</th>
+              <th title="Faceoffs">FO</th>
+              <th title="Passing">PA</th>
+              <th title="Scoring">SC</th>
+              <th title="Defense">DF</th>
+              <th title="Penalty Shot">PS</th>
+              <th title="Experience">EX</th>
+              <th title="Leadership">LD</th>
+              <th title="Potential">PO</th>
+              <th title="Morale">MO</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span ng-bind="$ctrl.skaterInfo.CK"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.FG"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.DI"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.SK"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.ST"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.EN"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.DU"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.PH"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.FO"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.PA"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.SC"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.DF"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.PS"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.EX"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.LD"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.PO"></span></td>
+                <td><span ng-bind="$ctrl.skaterInfo.MO"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

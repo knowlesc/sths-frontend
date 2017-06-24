@@ -1,10 +1,10 @@
 export class Routes {
-  static skaterStats = 'players/skaters/stats';
-  static goalieStats = 'players/goalies/stats';
+  static skaterStats = 'stats/skaters';
+  static goalieStats = 'stats/goalies';
+  static teamStats = 'stats/teams';
   static goalieInfo = 'players/goalies';
   static skaterInfo = 'players/skaters';
   static teamList = 'teams';
-  static teamStats = 'teams/stats';
   static leagueLog = 'league/log';
   static schedule = 'schedule';
 }

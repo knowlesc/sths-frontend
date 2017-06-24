@@ -60,6 +60,9 @@
         <li ng-class="{ active: $ctrl.page === 'TeamStats' }">
           <a ng-click="$ctrl.page = 'TeamStats'">Team Stats</a>
         </li>
+        <li ng-class="{ active: $ctrl.page === 'Schedule' }">
+          <a ng-click="$ctrl.page = 'Schedule'">Schedule</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -111,6 +114,13 @@
       <div class="panel-heading">Overview</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.teamStatsGridOptions"></grid>
+      </div>
+    </div>
+
+    <div class="panel panel-default" ng-show="$ctrl.page === 'Schedule'">
+      <div class="panel-heading">Schedule</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.scheduleGridOptions"></grid>
       </div>
     </div>
 

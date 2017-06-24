@@ -12,6 +12,6 @@ export class AppMainController {
     private $timeout: ng.ITimeoutService) {
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.transactionsGridService;
-    this.gridOptions.columns = transactionsGridColumns;
+    this.gridOptions.columns = transactionsGridColumns();
   }
 }

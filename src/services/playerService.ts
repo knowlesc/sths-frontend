@@ -16,6 +16,16 @@ export class PlayerService {
 
   }
 
+  getSingleSkaterInfo(params?: SkaterInfoParams): Promise<SkaterInfo[]> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(`${this.config.apiUrl + Routes.skaterInfo}/${params.id}`,
+        { params: params })
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => reject);
+    });
+  }
+
   getSkaterInfo(params?: SkaterInfoParams): Promise<{ totalCount: number, rows: SkaterInfo[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.skaterInfo,

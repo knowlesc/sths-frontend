@@ -12,7 +12,7 @@ export class GoalieStatsController {
 
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.goalieStatsGridService;
-    this.gridOptions.columns = goalieStatsGridColumns;
+    this.gridOptions.columns = goalieStatsGridColumns();
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 20;
     this.gridOptions.paginationOptions = [20, 50, 100];

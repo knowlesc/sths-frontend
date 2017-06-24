@@ -1,3 +1,10 @@
 a.dropdown-toggle {
   cursor: pointer;
 }
+
+.navbar-brand.brand-image {
+  width: 80px;
+  background-image: url("/images/SHL_small.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}

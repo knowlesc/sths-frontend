@@ -12,7 +12,7 @@ export class SkaterRatingsController {
 
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.skaterRatingsGridService;
-    this.gridOptions.columns = skaterRatingsGridColumns;
+    this.gridOptions.columns = skaterRatingsGridColumns();
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 20;
     this.gridOptions.paginationOptions = [20, 50, 100];

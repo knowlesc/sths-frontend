@@ -1,8 +1,25 @@
+<nav class="navbar navbar-default navbar-stacked">
+  <div class="container">
+    <div class="col-md-12">
+      <league-selector initial-league="$ctrl.goalieStatsGridService.selectedLeague"
+        on-change="$ctrl.leagueUpdated(league)"></league-selector>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">Schedule</div>
       <div class="panel-body">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"
+              ng-model="$ctrl.showTodaysGames"
+              ng-change="$ctrl.showTodaysGamesChanged()">Show Today's Games Only
+          </label>
+        </div>
+
         <grid grid-options="$ctrl.gridOptions"></grid>
       </div>
     </div>

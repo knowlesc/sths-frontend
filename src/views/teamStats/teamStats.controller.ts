@@ -12,10 +12,8 @@ export class TeamStatsController {
 
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.teamStatsGridService;
-    this.gridOptions.columns = teamStatsGridColumns;
+    this.gridOptions.columns = teamStatsGridColumns();
     this.gridOptions.showIndexColumn = true;
-    this.gridOptions.defaultRowsPerPage = 20;
-    this.gridOptions.paginationOptions = [20, 50, 100];
     this.gridOptions.defaultSortField = 'Points';
   }
 

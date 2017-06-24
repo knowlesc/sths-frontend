@@ -12,7 +12,7 @@ export class SkaterStatsController {
 
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.skaterStatsGridService;
-    this.gridOptions.columns = skaterStatsGridColumns;
+    this.gridOptions.columns = skaterStatsGridColumns();
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 20;
     this.gridOptions.paginationOptions = [20, 50, 100];
