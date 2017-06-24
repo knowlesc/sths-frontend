@@ -1,0 +1,15 @@
+.schedule-day-select {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+
+  .glyphicon {
+    font-size: 16px;
+    margin: 10px;
+
+    &:hover {
+      color: grey;
+      cursor: pointer;
+    }
+  }
+}

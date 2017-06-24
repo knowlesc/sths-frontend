@@ -23,6 +23,7 @@ import { BoxscoreController } from './views/boxscore/boxscore.controller';
 import { PlayerService } from './services/playerService';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
+import { LeagueService } from './services/leagueService';
 import { GridServices } from './grids/gridServices';
 import { Services } from './services/services';
 import { Filters } from './filters/filters';
@@ -96,6 +97,9 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     controllerAs: '$ctrl'
   })
   .when('/schedule', {
+    resolve: {
+      leagueInfo: ['leagueService', (leagueService: LeagueService) => leagueService.getLeagueInfo()]
+    },
     templateUrl: 'templates/schedule.template.html',
     controller: ScheduleController,
     controllerAs: '$ctrl'

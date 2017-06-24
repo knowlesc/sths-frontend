@@ -15,6 +15,8 @@ export class ScheduleGridService implements GridDataSource {
 
   selectedLeague: 'farm' | 'pro' = 'pro';
   selectedTeam: number;
+  startDay: number;
+  endDay: number;
   nextSimOnly: boolean;
 
   static $inject = ['scheduleService'];
@@ -28,6 +30,8 @@ export class ScheduleGridService implements GridDataSource {
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
       team: this.selectedTeam,
       league: this.selectedLeague,
+      startDay: this.startDay,
+      endDay: this.endDay,
       nextSimOnly: this.nextSimOnly ? 'true' : 'false'
     };
 

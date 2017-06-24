@@ -1,6 +1,7 @@
 import { LeagueLogParams } from '../models/league/leagueLogParams';
 import { Config } from '../models/config';
 import { Routes } from '../models/routes';
+import { LeagueInfo } from '../models/league/leagueInfo';
 
 export class LeagueService {
   static serviceName = 'leagueService';
@@ -19,6 +20,15 @@ export class LeagueService {
             totalCount: response.headers('X-Total-Count') || 0,
             rows: response.data
           });
+        }, (error) => reject);
+    });
+  }
+
+  getLeagueInfo(): Promise<LeagueInfo> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(this.config.apiUrl + Routes.leagueInfo)
+        .then((response) => {
+          resolve(response.data);
         }, (error) => reject);
     });
   }

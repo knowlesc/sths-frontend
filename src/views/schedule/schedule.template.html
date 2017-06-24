@@ -12,14 +12,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">Schedule</div>
       <div class="panel-body">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"
-              ng-model="$ctrl.showTodaysGames"
-              ng-change="$ctrl.showTodaysGamesChanged()">Show Today's Games Only
-          </label>
+        <div class="schedule-day-select">
+          <span class="glyphicon glyphicon-chevron-left" ng-click="$ctrl.daysMinus()"></span>
+          <span ng-bind="$ctrl.currentSelection"></span>
+          <span class="glyphicon glyphicon-chevron-right" ng-click="$ctrl.daysPlus()"></span>
         </div>
-
         <grid grid-options="$ctrl.gridOptions"></grid>
       </div>
     </div>
