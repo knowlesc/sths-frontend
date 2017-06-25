@@ -28,7 +28,7 @@ export class GoalieRatingsGridService implements GridDataSource {
       sort: this.currentSort,
       hasTeam: 'true',
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
-      fields: this.fields
+      fields: 'UniqueID,' + this.fields
     };
 
     // If a team is selected, we want a list of all players for that specific team

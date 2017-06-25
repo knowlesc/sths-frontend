@@ -15,6 +15,7 @@ import { GoalieStatsController } from './views/goalieStats/goalieStats.controlle
 import { GoalieRatingsController } from './views/goalieRatings/goalieRatings.controller';
 import { SkaterRatingsController } from './views/skaterRatings/skaterRatings.controller';
 import { SkaterInfoController } from './views/skaterInfo/skaterInfo.controller';
+import { GoalieInfoController } from './views/goalieInfo/goalieInfo.controller';
 import { TeamStatsController } from './views/teamStats/teamStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
@@ -127,6 +128,15 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/goalies', {
     templateUrl: 'templates/goalieRatings.template.html',
     controller: GoalieRatingsController,
+    controllerAs: '$ctrl'
+  })
+  .when('/goalies/:id', {
+    resolve: {
+      goalieInfo: ['$route', 'playerService', ($route: ng.route.IRouteService, playerService: PlayerService) =>
+        playerService.getSingleGoalieInfo({ id: $route.current.params.id })]
+    },
+    templateUrl: 'templates/goalieInfo.template.html',
+    controller: GoalieInfoController,
     controllerAs: '$ctrl'
   })
   .when('/boxscore/:id', {

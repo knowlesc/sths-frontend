@@ -2,7 +2,8 @@ import { ColumnDef } from '../../components/grid/models/columnDef';
 
 export function goalieRatingsGridColumns(): ColumnDef[] {
   return [
-    { fieldName: 'Name', sortable: 'asc', width: 180 },
+    { fieldName: 'Name', sortable: 'asc', width: 180,
+      template: `<a ng-href="/#!/goalies/{{ row.UniqueID }}"><span ng-bind="row.Name"></span></a>` },
     { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
     { fieldName: 'Condition', sortable: 'desc', centered: true, headerTitle: 'Con', title: 'Conditioning' },
     { fieldName: 'SK', sortable: 'desc', centered: true, title: 'Skating' },

@@ -4,6 +4,7 @@ import { SkaterStats } from '../models/players/skaterStats';
 import { GoalieStats } from '../models/players/goalieStats';
 import { GoalieInfoParams } from '../models/players/goalieInfoParams';
 import { SkaterInfo } from '../models/players/skaterInfo';
+import { GoalieInfo } from '../models/players/goalieInfo';
 import { SkaterInfoParams } from '../models/players/skaterInfoParams';
 import { SkaterStatsParams } from '../models/players/skaterStatsParams';
 import { GoalieStatsParams } from '../models/players/goalieStatsParams';
@@ -48,6 +49,16 @@ export class PlayerService {
             totalCount: response.headers('X-Total-Count') || 0,
             rows: response.data
           });
+        }, (error) => reject);
+    });
+  }
+
+  getSingleGoalieInfo(params?: GoalieInfoParams): Promise<GoalieInfo[]> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(`${this.config.apiUrl + Routes.goalieInfo}/${params.id}`,
+        { params: params })
+        .then((response) => {
+          resolve(response.data);
         }, (error) => reject);
     });
   }
