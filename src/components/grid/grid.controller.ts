@@ -4,7 +4,9 @@ import { GridApi } from './models/gridApi';
 export class GridController {
   gridOptions: GridOptions;
 
+  firstTimeLoading = true;
   loading = true;
+  failed = false;
   paginationOptions: number[];
   rowsPerPage: number;
   totalResults: number;
@@ -31,6 +33,7 @@ export class GridController {
     this.gridOptions.api.gridOptions = this.gridOptions;
     this.gridOptions.api.loadData = () => {
       this.loading = true;
+      this.failed = false;
       this.gridOptions.dataSource.currentPage = this.currentPage;
       this.gridOptions.dataSource.rowsPerPage = this.rowsPerPage;
       this.gridOptions.dataSource.loadData()
@@ -38,7 +41,14 @@ export class GridController {
           this.$timeout(() => {
             this.rows = this.gridOptions.dataSource.rows;
             this.totalResults = this.gridOptions.dataSource.totalResults;
+            this.firstTimeLoading = false;
             this.loading = false;
+          });
+        })
+        .catch(() => {
+          this.$timeout(() => {
+            this.loading = false;
+            this.failed = true;
           });
         });
     };

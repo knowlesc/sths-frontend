@@ -1,4 +1,5 @@
 import { TeamInfo } from '../../models/teams/teamInfo';
+import { TeamService } from '../../services/teamService';
 import { GridOptions } from '../../components/grid/models/gridOptions';
 
 import { GoalieInfoGridService } from '../../grids/goalieInfoGrid/goalieInfoGrid.service';
@@ -25,7 +26,18 @@ import { skaterRatingsGridColumns } from '../../grids/skaterRatingsGrid/skaterRa
 import { ScheduleGridService } from '../../grids/scheduleGrid/scheduleGrid.service';
 import { scheduleGridColumns } from '../../grids/scheduleGrid/scheduleGrid.columns';
 
+interface TeamInfoPages {
+  Roster: boolean;
+  PlayerStats: boolean;
+  PlayerInfo: boolean;
+  TeamStats: boolean;
+  Schedule: boolean;
+}
+
 export class TeamInfoController {
+  teamInfo: TeamInfo;
+  loadingTeamInfo = true;
+  loadingTeamInfoFailed = false;
   skaterRatingsGridOptions: GridOptions;
   skaterStatsGridOptions: GridOptions;
   skaterInfoGridOptions: GridOptions;
@@ -36,12 +48,21 @@ export class TeamInfoController {
   scheduleGridOptions: GridOptions;
 
   page = 'Roster';
+  openedPages: TeamInfoPages = {
+    Roster: true,
+    PlayerStats: false,
+    PlayerInfo: false,
+    TeamStats: false,
+    Schedule: false
+  };
 
-  static $inject = ['teamInfo', 'league', 'skaterInfoGridService', 'goalieInfoGridService',
-    'goalieRatingsGridService', 'skaterRatingsGridService', 'skaterStatsGridService',
-    'goalieStatsGridService', 'scheduleGridService', 'teamStatsGridService'];
-  constructor(private teamInfo: TeamInfo,
+  static $inject = ['$routeParams', '$timeout', 'league', 'teamService', 'skaterInfoGridService',
+    'goalieInfoGridService', 'goalieRatingsGridService', 'skaterRatingsGridService',
+    'skaterStatsGridService', 'goalieStatsGridService', 'scheduleGridService', 'teamStatsGridService'];
+  constructor($routeParams: ng.route.IRouteParamsService,
+    private $timeout: ng.ITimeoutService,
     private league: 'farm' | 'pro',
+    private teamService: TeamService,
     private skaterInfoGridService: SkaterInfoGridService,
     private goalieInfoGridService: GoalieInfoGridService,
     private goalieRatingsGridService: GoalieRatingsGridService,
@@ -50,12 +71,33 @@ export class TeamInfoController {
     private goalieStatsGridService: GoalieStatsGridService,
     private scheduleGridService: ScheduleGridService,
     private teamStatsGridService: TeamStatsGridService) {
+    teamService.getTeamInfo({ league: 'pro', id: $routeParams.id })
+      .then((results) => {
+        $timeout(() => {
+          this.teamInfo = results;
+          this.loadingTeamInfo = false;
+          this.setUpGrids();
+        });
+      })
+      .catch(() => {
+        $timeout(() => {
+          this.loadingTeamInfo = false;
+          this.loadingTeamInfoFailed = true;
+        });
+      });
+  }
 
-    [this.skaterInfoGridService, this.skaterStatsGridService, this.skaterRatingsGridService,
+  open(pageName: 'Roster' | 'PlayerInfo' | 'PlayerStats' | 'TeamStats' | 'Schedule') {
+    this.page = pageName;
+    this.openedPages[pageName] = true;
+  }
+
+  private setUpGrids() {
+        [this.skaterInfoGridService, this.skaterStatsGridService, this.skaterRatingsGridService,
       this.goalieInfoGridService, this.goalieStatsGridService, this.goalieRatingsGridService,
       this.teamStatsGridService, this.scheduleGridService].forEach((gridService) => {
       gridService.selectedTeam = this.teamInfo.UniqueID;
-      gridService.selectedLeague = league;
+      gridService.selectedLeague = this.league;
     });
 
     this.scheduleGridService.endDay = null;

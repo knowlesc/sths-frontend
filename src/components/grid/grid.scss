@@ -1,4 +1,12 @@
 .base-grid {
   position: relative;
   min-height: 100px;
+
+  .loader-inner {
+    margin-top: 20px;
+  }
+}
+
+.grid-retry {
+  float: right;
 }

@@ -1,4 +1,16 @@
-<div class="container title-container">
+<div class="full-screen-loader">
+  <div class="loader-overlay" ng-if="$ctrl.loadingTeamInfo">
+    <div class="loader-inner line-scale">
+      <div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container" ng-if="$ctrl.loadingTeamInfoFailed">
+  <div class="col-md-12">Error loading team info.</div>
+</div>
+
+<div class="container title-container" ng-if="!$ctrl.loadingTeamInfo && !$ctrl.loadingTeamInfoFailed">
   <div class="col-md-12">
     <div class="row">
       <div class="col-sm-6">
@@ -44,80 +56,80 @@
   </div>
 </div>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-if="!$ctrl.loadingTeamInfo && !$ctrl.loadingTeamInfoFailed">
   <div class="container">
     <div class="col-md-12">
       <ul class="nav navbar-nav">
         <li ng-class="{ active: $ctrl.page === 'Roster' }">
-          <a ng-click="$ctrl.page = 'Roster'">Roster</a>
+          <a ng-click="$ctrl.open('Roster')">Roster</a>
         </li>
         <li ng-class="{ active: $ctrl.page === 'PlayerStats' }">
-          <a ng-click="$ctrl.page = 'PlayerStats'">Player Stats</a>
+          <a ng-click="$ctrl.open('PlayerStats')">Player Stats</a>
         </li>
         <li ng-class="{ active: $ctrl.page === 'PlayerInfo' }">
-          <a ng-click="$ctrl.page = 'PlayerInfo'">Player Info</a>
+          <a ng-click="$ctrl.open('PlayerInfo')">Player Info</a>
         </li>
         <li ng-class="{ active: $ctrl.page === 'TeamStats' }">
-          <a ng-click="$ctrl.page = 'TeamStats'">Team Stats</a>
+          <a ng-click="$ctrl.open('TeamStats')">Team Stats</a>
         </li>
         <li ng-class="{ active: $ctrl.page === 'Schedule' }">
-          <a ng-click="$ctrl.page = 'Schedule'">Schedule</a>
+          <a ng-click="$ctrl.open('Schedule')">Schedule</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container">
+<div class="container" ng-if="!$ctrl.loadingTeamInfo && !$ctrl.loadingTeamInfoFailed">
   <div class="col-md-12">
-    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.PlayerInfo" ng-show="$ctrl.page === 'PlayerInfo'">
       <div class="panel-heading">Skaters</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.skaterInfoGridOptions"></grid>
       </div>
     </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.PlayerInfo"  ng-show="$ctrl.page === 'PlayerInfo'">
       <div class="panel-heading">Goalies</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.goalieInfoGridOptions"></grid>
       </div>
     </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.Roster" ng-show="$ctrl.page === 'Roster'">
       <div class="panel-heading">Skaters</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.skaterRatingsGridOptions"></grid>
       </div>
     </div>
-    <div class="panel panel-default" ng-show="$ctrl.page === 'Roster'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.Roster" ng-show="$ctrl.page === 'Roster'">
       <div class="panel-heading">Goalies</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.goalieRatingsGridOptions"></grid>
       </div>
     </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerStats'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.PlayerStats" ng-show="$ctrl.page === 'PlayerStats'">
       <div class="panel-heading">Skaters</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.skaterStatsGridOptions"></grid>
       </div>
     </div>
-    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerStats'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.PlayerStats" ng-show="$ctrl.page === 'PlayerStats'">
       <div class="panel-heading">Goalies</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.goalieStatsGridOptions"></grid>
       </div>
     </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'TeamStats'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.TeamStats" ng-show="$ctrl.page === 'TeamStats'">
       <div class="panel-heading">Overview</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.teamStatsGridOptions"></grid>
       </div>
     </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'Schedule'">
+    <div class="panel panel-default" ng-if="$ctrl.openedPages.Schedule" ng-show="$ctrl.page === 'Schedule'">
       <div class="panel-heading">Schedule</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.scheduleGridOptions"></grid>

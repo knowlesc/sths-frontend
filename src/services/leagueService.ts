@@ -20,7 +20,9 @@ export class LeagueService {
             totalCount: response.headers('X-Total-Count') || 0,
             rows: response.data
           });
-        }, (error) => reject);
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 
@@ -29,7 +31,9 @@ export class LeagueService {
       this.$http.get(this.config.apiUrl + Routes.leagueInfo)
         .then((response) => {
           resolve(response.data);
-        }, (error) => reject);
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 }

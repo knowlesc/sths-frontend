@@ -19,7 +19,9 @@ export class TeamService {
         { params: params })
         .then((response) => {
           resolve(response.data);
-        }, (error) => reject);
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 
@@ -28,7 +30,9 @@ export class TeamService {
       this.$http.get(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}`)
         .then((response) => {
           resolve(response.data);
-        }, (error) => reject);
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 
@@ -41,7 +45,9 @@ export class TeamService {
             totalCount: response.headers('X-Total-Count') || 0,
             rows: response.data
           });
-        }, (error) => reject);
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 }

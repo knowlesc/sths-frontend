@@ -9,11 +9,11 @@
   }
 
   score-card {
-     @media (max-width: 991px) {
-        width: 33%;
-        padding: 2px;
-        min-width: 200px;
-      }
+    @media (max-width: 991px) {
+      width: 33%;
+      padding: 2px;
+      min-width: 200px;
+    }
 
     .score-card {
       font-size: 12px;

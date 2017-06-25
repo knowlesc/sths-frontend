@@ -6,7 +6,12 @@
     </div>
   </div>
 
-  <span ng-if="!$ctrl.loading && !$ctrl.rows || $ctrl.rows.length === 0">No results found.</span>
+  <span ng-if="$ctrl.failed">Error loading results.
+    <a ng-click="$ctrl.gridOptions.api.loadData()">
+      <span title="Retry" class="grid-retry glyphicon glyphicon-refresh"></span>
+    </a>
+  </span>
+  <span ng-if="!$ctrl.loading && !$ctrl.failed && !$ctrl.rows || $ctrl.rows.length === 0">No results found.</span>
 
   <table class="table table-hover table-condensed"
     ng-hide="!$ctrl.loading && !$ctrl.rows || $ctrl.rows.length === 0">
@@ -36,7 +41,7 @@
   </table>
 </div>
 
-<div class="text-center" ng-if="$ctrl.gridOptions.defaultRowsPerPage">
+<div class="text-center" ng-if="$ctrl.gridOptions.defaultRowsPerPage" ng-hide="$ctrl.firstTimeLoading">
   <ul class="pagination pagination-sm">
     <li>
       <a ng-click="$ctrl.goToPage(1)">

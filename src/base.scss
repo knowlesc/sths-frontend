@@ -28,6 +28,11 @@ a {
   border-bottom: 1px solid #ddd;
 }
 
+.panel-body {
+  min-height: 100px;
+  position: relative;
+}
+
 .panel-default > .panel-heading {
   color: $colour4;
   background-color: $colour2;

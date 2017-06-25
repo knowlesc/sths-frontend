@@ -7,6 +7,7 @@ export class LeagueSelector {
   static componentOptions: ng.IComponentOptions = {
     bindings: {
       initialLeague: '<',
+      disabled: '<',
       onChange: '&'
     },
     controller: LeagueSelectorController,

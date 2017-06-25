@@ -3,6 +3,8 @@ import { TeamStatsParams } from '../../models/teams/teamStatsParams';
 import { TeamStats } from '../../models/teams/teamStats';
 
 export class StandingsController {
+  loading = true;
+  loadingFailed = false;
   selectedLeague: 'pro' | 'farm' = 'pro';
   selectedFormat: 'Conference' | 'Division' | 'League';
   groups: { title: string; teams: TeamStats[] }[] = [];
@@ -18,9 +20,13 @@ export class StandingsController {
   }
 
   updateFormat(format: 'Conference' | 'Division' | 'League') {
-    this.selectedFormat = format;
     this.groups = [];
 
+    if (this.loading || this.loadingFailed) {
+      return;
+    }
+
+    this.selectedFormat = format;
     if (this.selectedFormat === 'League') {
       this.groups.push({
         title: 'League',
@@ -53,6 +59,8 @@ export class StandingsController {
 
   leagueUpdated(league: 'farm' | 'pro' = 'pro') {
     this.selectedLeague = league;
+    this.loading = true;
+    this.loadingFailed = false;
 
     const params: TeamStatsParams = {
       league: this.selectedLeague,
@@ -62,8 +70,15 @@ export class StandingsController {
     this.teamService.getTeamStats(params)
       .then((results) => {
         this.$timeout(() => {
+          this.loading = false;
           this.teams = results.rows;
           this.updateFormat('League');
+        });
+      })
+      .catch(() => {
+        this.$timeout(() => {
+          this.loading = false;
+          this.loadingFailed = true;
         });
       });
   }

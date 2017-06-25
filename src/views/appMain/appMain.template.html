@@ -3,9 +3,15 @@
     <div class="panel panel-default">
       <div class="panel-heading">Upcoming Games</div>
       <div class="panel-body">
+        <span ng-if="$ctrl.upcomingGames.length === 0">No upcoming games.</span>
+        <span ng-if="!$ctrl.upcomingGames && !$ctrl.loadingUpcomingGames">Error loading upcoming games.</span>
+        <div class="loader-overlay" ng-if="$ctrl.loadingUpcomingGames">
+          <div class="loader-inner line-scale">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
         <div class="score-card-container">
-          <span ng-if="$ctrl.upcomingGames.rows.length === 0">No upcoming games.</span>
-          <score-card ng-repeat="upcomingGame in $ctrl.upcomingGames.rows"
+          <score-card ng-repeat="upcomingGame in $ctrl.upcomingGames"
             game-info="upcomingGame">
           </score-card>
         </div>

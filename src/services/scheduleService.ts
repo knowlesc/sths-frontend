@@ -19,7 +19,9 @@ export class ScheduleService {
             totalCount: response.headers('X-Total-Count') || 0,
             rows: response.data
           });
-        }, (error) => reject);
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 }

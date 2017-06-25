@@ -5,6 +5,12 @@
         Pro
       </div>
       <div class="panel-body text-center">
+        <span ng-if="$ctrl.loadingProTeamListFailed">Error loading teams.</span>
+        <div class="loader-overlay" ng-if="$ctrl.loadingProTeamList">
+          <div class="loader-inner line-scale">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
         <div class="team-list-item" ng-repeat="team in $ctrl.proTeamList">
           <a ng-href="{{ '#!/teams/pro/' + team.UniqueID }}"
             title="{{ team.Name }}">{{ team.Abbre }}</a>
@@ -18,6 +24,12 @@
         Farm
       </div>
       <div class="panel-body text-center">
+        <span ng-if="$ctrl.loadingFarmTeamListFailed">Error loading teams.</span>
+        <div class="loader-overlay" ng-if="$ctrl.loadingFarmTeamList">
+          <div class="loader-inner line-scale">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
         <div class="team-list-item" ng-repeat="team in $ctrl.farmTeamList">
           <a ng-href="{{ '#!/teams/farm/' + team.UniqueID }}"
             title="{{ team.Name }}">{{ team.Abbre }}</a>

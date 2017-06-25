@@ -17,7 +17,8 @@
       </div>
 
       <league-selector initial-league="$ctrl.selectedLeague"
-        on-change="$ctrl.leagueUpdated(league)"></league-selector>
+        on-change="$ctrl.leagueUpdated(league)"
+        disabled="$ctrl.loading || $ctrl.loadingFailed"></league-selector>
     </div>
   </div>
 </nav>
@@ -27,7 +28,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">Standings</div>
       <div class="panel-body">
-        <div class="table-responsive">
+        <span ng-if="$ctrl.loadingFailed">Error loading standings.</span>
+        <div class="loader-overlay" ng-if="$ctrl.loading">
+          <div class="loader-inner line-scale">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+        <div class="table-responsive" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
           <table class="table table-condensed" ng-repeat="group in $ctrl.groups | orderBy: 'title'">
             <thead>
               <th style="width: 250px">{{ group.title }}</th>

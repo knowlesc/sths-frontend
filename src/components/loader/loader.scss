@@ -2,6 +2,14 @@
 
 $colour1: #0C84E4;
 
+.full-screen-loader {
+  position: absolute;
+  top: 52px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .loader-overlay {
   position: absolute;
   top: 0;
@@ -15,6 +23,7 @@ $colour1: #0C84E4;
     position: absolute;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
