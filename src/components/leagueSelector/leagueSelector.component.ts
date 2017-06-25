@@ -11,7 +11,7 @@ export class LeagueSelector {
     },
     controller: LeagueSelectorController,
     template: `
-      <div class="btn-group pull-right league-select">
+      <div class="btn-group pull-right button-group-margin">
         <button type="button"
           class="btn btn-default"
           ng-class="{ 'active': $ctrl.selectedLeague === 'pro' }"

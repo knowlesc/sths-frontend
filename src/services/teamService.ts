@@ -3,6 +3,7 @@ import { Routes } from '../models/routes';
 import { TeamInfo } from '../models/teams/teamInfo';
 import { TeamListParams } from '../models/teams/teamListParams';
 import { TeamStatsParams } from '../models/teams/teamStatsParams';
+import { TeamStats } from '../models/teams/teamStats';
 
 export class TeamService {
   static serviceName = 'teamService';
@@ -31,7 +32,7 @@ export class TeamService {
     });
   }
 
-  getTeamStats(params?: TeamStatsParams): Promise<{ totalCount: number, rows: {}[] }> {
+  getTeamStats(params?: TeamStatsParams): Promise<{ totalCount: number, rows: TeamStats[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.teamStats,
         { params: params })

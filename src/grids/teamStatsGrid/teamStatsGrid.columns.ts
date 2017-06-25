@@ -8,7 +8,6 @@ export function teamStatsGridColumns(): ColumnDef[] {
     { fieldName: 'TotalLosses', sortable: 'desc', centered: true, headerTitle: 'L' },
     { fieldName: 'TotalOther', sortable: 'desc', centered: true, headerTitle: 'OT' },
     { fieldName: 'Points', sortable: 'desc', centered: true, headerTitle: 'P' },
-    { fieldName: 'Streak' },
     { fieldName: 'GF', sortable: 'desc', centered: true },
     { fieldName: 'GA', sortable: 'desc', centered: true },
     { fieldName: 'PPGoal', sortable: 'desc', centered: true, headerTitle: 'PPGF', title: 'Powerplay Goals For' },

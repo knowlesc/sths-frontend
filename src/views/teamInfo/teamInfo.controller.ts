@@ -58,6 +58,9 @@ export class TeamInfoController {
       gridService.selectedLeague = league;
     });
 
+    this.scheduleGridService.endDay = null;
+    this.scheduleGridService.startDay = null;
+
     this.skaterRatingsGridOptions = new GridOptions();
     this.skaterRatingsGridOptions.dataSource = this.skaterRatingsGridService;
     this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns();

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-stacked">
   <div class="container">
     <div class="col-md-12">
-      <league-selector initial-league="$ctrl.goalieStatsGridService.selectedLeague"
+      <league-selector initial-league="$ctrl.scheduleGridService.selectedLeague"
         on-change="$ctrl.leagueUpdated(league)"></league-selector>
     </div>
   </div>
@@ -12,7 +12,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Schedule</div>
       <div class="panel-body">
-        <div class="schedule-day-select">
+        <div class="schedule-day-select noselect">
           <span class="glyphicon glyphicon-chevron-left" ng-click="$ctrl.daysMinus()"></span>
           <span ng-bind="$ctrl.currentSelection"></span>
           <span class="glyphicon glyphicon-chevron-right" ng-click="$ctrl.daysPlus()"></span>

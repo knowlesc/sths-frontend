@@ -43,6 +43,10 @@ export class AppMenuController {
         url: '#!/schedule'
       },
       {
+        text: 'Standings',
+        url: '#!/standings'
+      },
+      {
         text: 'Generated Pages',
         url: config.generatedSiteUrl
       }

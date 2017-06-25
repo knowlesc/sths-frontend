@@ -20,6 +20,7 @@ import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { ScheduleController } from './views/schedule/schedule.controller';
 import { BoxscoreController } from './views/boxscore/boxscore.controller';
+import { StandingsController } from './views/standings/standings.controller';
 import { PlayerService } from './services/playerService';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
@@ -60,6 +61,11 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/goalieStats', {
     templateUrl: 'templates/goalieStats.template.html',
     controller: GoalieStatsController,
+    controllerAs: '$ctrl'
+  })
+  .when('/standings', {
+    templateUrl: 'templates/standings.template.html',
+    controller: StandingsController,
     controllerAs: '$ctrl'
   })
   .when('/teams/pro/:id', {

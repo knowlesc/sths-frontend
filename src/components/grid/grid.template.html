@@ -18,6 +18,7 @@
       <th ng-repeat="column in $ctrl.gridOptions.columns"
         header-cell
         column="column"
+        ng-style="{ width: column.width }"
         grid-options="$ctrl.gridOptions"></th>
     </thead>
     <tbody>
