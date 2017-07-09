@@ -13,11 +13,15 @@ export class ScoreCard {
       <div class="well well-sm score-card">
         <div class="score-card-date">Day {{ $ctrl.gameInfo.Day }}</div>
         <div class="score-card-team">
-          <span ng-bind="$ctrl.gameInfo.HomeTeamName"></span>
+          <a ng-href="{{ '#!/teams/pro/' + $ctrl.gameInfo.HomeTeam }}">
+            <span ng-bind="$ctrl.gameInfo.HomeTeamName"></span>
+          </a>
           <span ng-bind="$ctrl.homeRecord"></span>
         </div>
         <div class="score-card-team">
-          <span ng-bind="$ctrl.gameInfo.VisitorTeamName"></span>
+          <a ng-href="{{ '#!/teams/pro/' + $ctrl.gameInfo.VisitorTeam }}">
+            <span ng-bind="$ctrl.gameInfo.VisitorTeamName"></span>
+          </a>
           <span ng-bind="$ctrl.visitorRecord"></span>
         </div>
       </div>
