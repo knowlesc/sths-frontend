@@ -8,6 +8,7 @@ import { GoalieInfoGridService } from './goalieInfoGrid/goalieInfoGrid.service';
 import { TransactionsGridService } from './transactionsGrid/transactionsGrid.service';
 import { ScheduleGridService } from './scheduleGrid/scheduleGrid.service';
 import { TeamStatsGridService } from './teamStatsGrid/teamStatsGrid.service';
+import { WaiversGridService } from './waiversGrid/waiversGrid.service';
 
 export class GridServices {
   static moduleName = 'GridServices';
@@ -22,4 +23,5 @@ angular.module(GridServices.moduleName, [])
   .service(TransactionsGridService.serviceName, TransactionsGridService)
   .service(ScheduleGridService.serviceName, ScheduleGridService)
   .service(TeamStatsGridService.serviceName, TeamStatsGridService)
+  .service(WaiversGridService.serviceName, WaiversGridService)
   .service(GoalieStatsGridService.serviceName, GoalieStatsGridService);

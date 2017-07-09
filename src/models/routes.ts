@@ -4,8 +4,11 @@ export class Routes {
   static teamStats = 'stats/teams';
   static goalieInfo = 'players/goalies';
   static skaterInfo = 'players/skaters';
+  static injuredPlayers = 'players/injured';
   static teamList = 'teams';
   static leagueLog = 'league/log';
   static leagueInfo = 'league/info';
   static schedule = 'schedule';
+  static waiversList = 'waivers/list';
+  static waiversOrder = 'waivers/order';
 }

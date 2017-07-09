@@ -25,6 +25,8 @@ export class AppMainController {
         });
       });
 
+    this.transactionsGridService.types = null;
+
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.transactionsGridService;
     this.gridOptions.columns = transactionsGridColumns();

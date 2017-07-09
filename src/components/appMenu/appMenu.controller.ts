@@ -31,6 +31,10 @@ export class AppMenuController {
           {
             text: 'Goalies',
             url: '#!/goalies'
+          },
+          {
+            text: 'Injuries',
+            url: '#!/injuries'
           }
         ]
       },
@@ -47,8 +51,30 @@ export class AppMenuController {
         url: '#!/standings'
       },
       {
-        text: 'Generated Pages',
-        url: config.generatedSiteUrl
+        text: 'Transactions',
+        subItems: [
+          {
+            text: 'Waivers',
+            url: '#!/waivers'
+          },
+          {
+            text: 'Trades',
+            url: '#!/trades'
+          }
+        ]
+      },
+      {
+        text: 'League',
+        subItems: [
+          {
+            text: 'Generated Pages',
+            url: config.generatedSiteUrl
+          },
+          {
+            text: 'Client File',
+            url: `${config.generatedSiteUrl}/${config.clientFileName}`
+          }
+        ]
       }
     ];
   }

@@ -13,20 +13,27 @@ export class ScheduleController {
   startDay = 1;
   endDay = 2;
 
-  static $inject = ['$timeout', 'scheduleGridService', 'leagueService'];
+  static $inject = ['$timeout', '$location', '$routeParams', 'scheduleGridService', 'leagueService'];
   constructor(private $timeout: ng.ITimeoutService,
+    private $location: ng.ILocationService,
+    private $routeParams: ng.route.IRouteParamsService,
     private scheduleGridService: ScheduleGridService,
     private leagueService: LeagueService) {
+    this.scheduleGridService.selectedTeam = null;
+    this.scheduleGridService.selectedLeague = 'pro';
+    this.scheduleGridService.nextSimOnly = false;
+
     leagueService.getLeagueInfo()
       .then((results) => {
         $timeout(() => {
           this.leagueInfo = results;
           this.loading = false;
 
-          this.scheduleGridService.selectedTeam = null;
-          this.scheduleGridService.selectedLeague = 'pro';
-          this.scheduleGridService.nextSimOnly = false;
-          this.scheduleGridService.startDay = this.startDay = this.leagueInfo.ScheduleNextDay;
+          if (!isNaN($routeParams['day']) && parseInt($routeParams['day']) > 0) {
+            this.scheduleGridService.startDay = this.startDay = parseInt($routeParams['day']);
+          } else {
+            this.scheduleGridService.startDay = this.startDay = this.leagueInfo.ScheduleNextDay;
+          }
           this.scheduleGridService.endDay = this.endDay = this.startDay + this.leagueInfo.DefaultSimulationPerDay;
         });
       })
@@ -37,9 +44,9 @@ export class ScheduleController {
         });
       });
 
-      this.gridOptions = new GridOptions();
-      this.gridOptions.dataSource = this.scheduleGridService;
-      this.gridOptions.columns = scheduleGridColumns();
+    this.gridOptions = new GridOptions();
+    this.gridOptions.dataSource = this.scheduleGridService;
+    this.gridOptions.columns = scheduleGridColumns();
   }
 
   get currentSelection() {
@@ -61,9 +68,7 @@ export class ScheduleController {
   }
 
   daysUpdated() {
-    this.scheduleGridService.startDay = this.startDay;
-    this.scheduleGridService.endDay = this.endDay;
-    this.gridOptions.api.reloadData();
+    this.$location.url(`/schedule/${this.startDay}`);
   }
 
   leagueUpdated(league: 'farm' | 'pro') {

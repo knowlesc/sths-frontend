@@ -5,6 +5,7 @@ import { GoalieStats } from '../models/players/goalieStats';
 import { GoalieInfoParams } from '../models/players/goalieInfoParams';
 import { SkaterInfo } from '../models/players/skaterInfo';
 import { GoalieInfo } from '../models/players/goalieInfo';
+import { PlayerInjury } from '../models/players/playerInjury';
 import { SkaterInfoParams } from '../models/players/skaterInfoParams';
 import { SkaterStatsParams } from '../models/players/skaterStatsParams';
 import { GoalieStatsParams } from '../models/players/goalieStatsParams';
@@ -21,6 +22,17 @@ export class PlayerService {
     return new Promise((resolve, reject) => {
       this.$http.get(`${this.config.apiUrl + Routes.skaterInfo}/${params.id}`,
         { params: params })
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  getInjuredPlayers(): Promise<PlayerInjury[]> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(this.config.apiUrl + Routes.injuredPlayers)
         .then((response) => {
           resolve(response.data);
         }, (error) => {

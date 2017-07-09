@@ -16,11 +16,17 @@ export class GoalieRatingsController {
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 20;
     this.gridOptions.paginationOptions = [20, 50, 100];
-    this.gridOptions.defaultSortField = 'Name';
+    this.gridOptions.defaultSortField = 'Overall';
   }
 
   leagueUpdated(league: 'farm' | 'pro') {
-    this.goalieRatingsGridService.selectedLeague = league;
+    if (league === null) {
+      this.goalieRatingsGridService.selectedTeam = 0;
+      this.goalieRatingsGridService.selectedLeague = null;
+    } else {
+      this.goalieRatingsGridService.selectedTeam = null;
+      this.goalieRatingsGridService.selectedLeague = league;
+    }
     this.gridOptions.api.reloadData();
   }
 }

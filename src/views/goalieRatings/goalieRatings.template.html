@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default navbar-stacked">
   <div class="container">
     <div class="col-md-12">
-      <league-selector initial-league="$ctrl.goalieRatingsGridService.selectedLeague"
+      <league-selector show-unassigned="true"
+        initial-league="$ctrl.goalieRatingsGridService.selectedLeague"
         on-change="$ctrl.leagueUpdated(league)"></league-selector>
     </div>
   </div>

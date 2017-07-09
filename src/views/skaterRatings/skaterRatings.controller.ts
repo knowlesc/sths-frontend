@@ -16,11 +16,17 @@ export class SkaterRatingsController {
     this.gridOptions.showIndexColumn = true;
     this.gridOptions.defaultRowsPerPage = 20;
     this.gridOptions.paginationOptions = [20, 50, 100];
-    this.gridOptions.defaultSortField = 'Name';
+    this.gridOptions.defaultSortField = 'Overall';
   }
 
   leagueUpdated(league: 'farm' | 'pro') {
-    this.skaterRatingsGridService.selectedLeague = league;
+    if (league === null) {
+      this.skaterRatingsGridService.selectedTeam = 0;
+      this.skaterRatingsGridService.selectedLeague = null;
+    } else {
+      this.skaterRatingsGridService.selectedTeam = null;
+      this.skaterRatingsGridService.selectedLeague = league;
+    }
     this.gridOptions.api.reloadData();
   }
 }

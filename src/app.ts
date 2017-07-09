@@ -20,8 +20,11 @@ import { TeamStatsController } from './views/teamStats/teamStats.controller';
 import { TeamListController } from './views/teamList/teamList.controller';
 import { TeamInfoController } from './views/teamInfo/teamInfo.controller';
 import { ScheduleController } from './views/schedule/schedule.controller';
+import { WaiversController } from './views/waivers/waivers.controller';
 import { BoxscoreController } from './views/boxscore/boxscore.controller';
 import { StandingsController } from './views/standings/standings.controller';
+import { InjuriesController } from './views/injuries/injuries.controller';
+import { TradesController } from './views/trades/trades.controller';
 import { PlayerService } from './services/playerService';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
@@ -91,7 +94,7 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     controller: TeamListController,
     controllerAs: '$ctrl'
   })
-  .when('/schedule', {
+  .when('/schedule/:day?', {
     templateUrl: 'templates/schedule.template.html',
     controller: ScheduleController,
     controllerAs: '$ctrl'
@@ -122,6 +125,21 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/goalieInfo.template.html',
     controller: GoalieInfoController,
+    controllerAs: '$ctrl'
+  })
+  .when('/waivers', {
+    templateUrl: 'templates/waivers.template.html',
+    controller: WaiversController,
+    controllerAs: '$ctrl'
+  })
+  .when('/trades', {
+    templateUrl: 'templates/trades.template.html',
+    controller: TradesController,
+    controllerAs: '$ctrl'
+  })
+  .when('/injuries', {
+    templateUrl: 'templates/injuries.template.html',
+    controller: InjuriesController,
     controllerAs: '$ctrl'
   })
   .when('/boxscore/:id', {

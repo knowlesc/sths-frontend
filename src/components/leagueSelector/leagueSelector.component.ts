@@ -8,6 +8,7 @@ export class LeagueSelector {
     bindings: {
       initialLeague: '<',
       disabled: '<',
+      showUnassigned: '<',
       onChange: '&'
     },
     controller: LeagueSelectorController,
@@ -21,6 +22,11 @@ export class LeagueSelector {
           class="btn btn-default"
           ng-class="{ 'active': $ctrl.selectedLeague === 'farm' }"
           ng-click="$ctrl.updateLeague('farm')">AHL</button>
+        <button type="button"
+          class="btn btn-default"
+          ng-if="$ctrl.showUnassigned"
+          ng-class="{ 'active': $ctrl.selectedLeague === null }"
+          ng-click="$ctrl.updateLeague(null)">Unassigned</button>
       </div>
     `
   };

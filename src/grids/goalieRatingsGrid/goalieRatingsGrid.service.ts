@@ -26,7 +26,7 @@ export class GoalieRatingsGridService implements GridDataSource {
       limit: this.rowsPerPage,
       league: this.selectedLeague,
       sort: this.currentSort,
-      hasTeam: 'true',
+      hasTeam: this.selectedTeam === 0 ? 'false' : 'true',
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
       fields: 'UniqueID,' + this.fields
     };

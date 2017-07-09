@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Waivers Order</div>
+      <div class="panel-body">
+        <span ng-if="$ctrl.waiversOrder.length === 0">No waivers order.</span>
+        <span ng-if="!$ctrl.waiversOrder && !$ctrl.loadingWaiversOrder">Error loading waivers order.</span>
+        <div class="loader-overlay" ng-if="$ctrl.loadingWaiversOrder">
+          <div class="loader-inner line-scale">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+        <div ng-repeat="team in $ctrl.waiversOrder">
+          <span ng-bind="$index + 1"></span>. <span class="text-nowrap" ng-bind="team.Name"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">Current Waivers</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.currentWaiversGridOptions"></grid>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Waivers History</div>
+      <div class="panel-body">
+        <grid grid-options="$ctrl.waiversHistoryGridOptions"></grid>
+      </div>
+    </div>
+  </div>
+</div>
