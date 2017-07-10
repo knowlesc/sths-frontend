@@ -7,4 +7,5 @@ export class GameInfo {
   HTotalLosses: string;
   HTotalOther: string;
   HStreak: string;
+  Play: string;
 }

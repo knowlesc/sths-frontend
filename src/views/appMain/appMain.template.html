@@ -1,5 +1,22 @@
 <div class="container">
-  <div class="col-md-4">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">Recent Games</div>
+      <div class="panel-body">
+        <span ng-if="$ctrl.recentGames.length === 0">No recent games.</span>
+        <span ng-if="!$ctrl.recentGames && !$ctrl.loadingRecentGames">Error loading recent games.</span>
+        <div class="loader-overlay" ng-if="$ctrl.loadingRecentGames">
+          <div class="loader-inner line-scale">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+        <div class="score-card-container">
+          <score-card ng-repeat="recentGame in $ctrl.recentGames"
+            game-info="recentGame">
+          </score-card>
+        </div>
+      </div>
+    </div>
     <div class="panel panel-default">
       <div class="panel-heading">Upcoming Games</div>
       <div class="panel-body">
@@ -17,12 +34,18 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">Latest Transactions, Injuries, and Suspensions</div>
       <div class="panel-body">
         <grid grid-options="$ctrl.gridOptions"></grid>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Commissioner</div>
+      <div class="panel-body">
+        <twitter-timeline></twitter-timeline>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Routes } from '../models/routes';
 import { Config } from '../models/config';
 import { ScheduleParams } from '../models/schedule/scheduleParams';
+import { GameInfo } from '../models/schedule/gameInfo';
 
 export class ScheduleService {
   static serviceName = 'scheduleService';
@@ -10,7 +11,7 @@ export class ScheduleService {
 
   }
 
-  getSchedule(params?: ScheduleParams): Promise<{ totalCount: number, rows: ScheduleParams[] }> {
+  getSchedule(params?: ScheduleParams): Promise<{ totalCount: number, rows: GameInfo[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get(this.config.apiUrl + Routes.schedule,
         { params: params })
