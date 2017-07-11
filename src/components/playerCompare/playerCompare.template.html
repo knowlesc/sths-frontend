@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="form-group col-md-6">
+    <loader ng-if="$ctrl.loadingTeams"></loader>
+    <select class="form-control"
+      ng-model="$ctrl.selectedTeamId"
+      ng-change="$ctrl.teamSelected()"
+      ng-options="team.UniqueID as team.Name for team in $ctrl.teams">
+      <option value="" selected>Select a team...</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-6">
+    <loader ng-if="$ctrl.loadingPlayers"></loader>
+    <select class="form-control"
+      ng-show="$ctrl.selectedTeamId"
+      ng-model="$ctrl.comparePlayerId"
+      ng-change="$ctrl.playerSelected()"
+      ng-options="player.UniqueID as player.Name for player in $ctrl.playersOnSelectedTeam">
+      <option value="" selected>Select a player...</option>
+    </select>
+  </div>
+</div>
+
+<div class="table-responsive base-grid">
+  <loader ng-if="$ctrl.loadingComparePlayer"></loader>
+  <table ng-if="$ctrl.comparePlayer" class="table table-striped player-compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="text-center force-wrap">
+          <span ng-bind="$ctrl.player.Name">
+        </th>
+        <th class="text-center force-wrap">
+          <span ng-bind="$ctrl.comparePlayer.Name">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="field in $ctrl.compareFields">
+        <td class="force-wrap">
+          <strong><span ng-bind="field.name"></strong>
+        </td>
+        <td class="text-center">
+          <span ng-bind="$ctrl.player[field.fieldName]"></span>
+          <span class="better"
+            ng-if="$ctrl.player[field.fieldName] > $ctrl.comparePlayer[field.fieldName]">
+            (+{{ $ctrl.player[field.fieldName] - $ctrl.comparePlayer[field.fieldName] }})
+          </span>
+        </td>
+        <td class="text-center">
+          <span ng-bind="$ctrl.comparePlayer[field.fieldName]"></span>
+          <span class="better"
+            ng-if="$ctrl.player[field.fieldName] < $ctrl.comparePlayer[field.fieldName]">
+            (+{{ $ctrl.comparePlayer[field.fieldName] - $ctrl.player[field.fieldName] }})
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -3,7 +3,9 @@ import { Grid } from './grid/grid.component';
 import { AppMenu } from './appMenu/appMenu.component';
 import { LeagueSelector } from './leagueSelector/leagueSelector.component';
 import { ScoreCard } from './scoreCard/scoreCard.component';
-import { TwitterTimeline } from './TwitterTimeline/twitterTimeline.component';
+import { TwitterTimeline } from './twitterTimeline/twitterTimeline.component';
+import { PlayerCompare } from './playerCompare/playerCompare.component';
+import { Loader } from './loader/loader.component';
 
 export class Components {
   static moduleName = 'Components';
@@ -14,5 +16,7 @@ angular.module(Components.moduleName, [
   AppMenu.moduleName,
   LeagueSelector.moduleName,
   ScoreCard.moduleName,
-  TwitterTimeline.moduleName
+  TwitterTimeline.moduleName,
+  PlayerCompare.moduleName,
+  Loader.moduleName
 ]);

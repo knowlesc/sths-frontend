@@ -18,7 +18,7 @@ export class PlayerService {
 
   }
 
-  getSingleSkaterInfo(params?: SkaterInfoParams): Promise<SkaterInfo[]> {
+  getSingleSkaterInfo(params?: SkaterInfoParams): Promise<SkaterInfo> {
     return new Promise((resolve, reject) => {
       this.$http.get(`${this.config.apiUrl + Routes.skaterInfo}/${params.id}`,
         { params: params })
@@ -71,7 +71,7 @@ export class PlayerService {
     });
   }
 
-  getSingleGoalieInfo(params?: GoalieInfoParams): Promise<GoalieInfo[]> {
+  getSingleGoalieInfo(params?: GoalieInfoParams): Promise<GoalieInfo> {
     return new Promise((resolve, reject) => {
       this.$http.get(`${this.config.apiUrl + Routes.goalieInfo}/${params.id}`,
         { params: params })
