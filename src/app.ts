@@ -47,6 +47,22 @@ const app = angular.module('sths.frontend', [
 
 app.constant('config', config);
 
+app.config(['$provide', ($provide: ng.auto.IProvideService) => {
+  return $provide.decorator('$http', ['$delegate', ($delegate: ng.IHttpService) => {
+    const get = $delegate.get;
+    $delegate.get = (url: string, conf?: ng.IRequestShortcutConfig) => {
+      if (url.indexOf('templates/') >= 0) {
+        url += (url.indexOf('?') === -1 ? '?' : '&');
+        url += 'version=' + (config.cacheBustVersion || '1.0');
+      }
+
+      return get(url, conf);
+    };
+
+    return $delegate;
+  }]);
+}]);
+
 app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
     templateUrl: 'templates/appMain.template.html',

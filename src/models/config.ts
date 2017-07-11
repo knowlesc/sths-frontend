@@ -3,4 +3,5 @@ export class Config {
   generatedSiteUrl: string;
   boxscorePath: string;
   clientFileName: string;
+  cacheBustVersion: string;
 }
