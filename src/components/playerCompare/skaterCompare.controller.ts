@@ -8,8 +8,8 @@ export class SkaterCompareController implements PlayerCompareController {
   player: SkaterInfo;
   comparePlayer: SkaterInfo;
   comparePlayerId: string;
-  teams: TeamInfo[];
-  selectedTeamId: string;
+  teams: TeamInfo[] = [{ Abbre: 'FA', Name: 'Free Agents', UniqueID: 0 }];
+  selectedTeamId: number = -1;
   playersOnSelectedTeam: SkaterInfo[];
   loadingTeams = true;
   loadingPlayers = false;
@@ -44,7 +44,7 @@ export class SkaterCompareController implements PlayerCompareController {
     this.teamService.getTeamList({ league: 'pro' })
       .then((teams) => {
         this.$timeout(() => {
-          this.teams = teams;
+          this.teams = this.teams.concat(teams);
           this.loadingTeams = false;
         });
       });
@@ -53,9 +53,9 @@ export class SkaterCompareController implements PlayerCompareController {
   teamSelected() {
     this.comparePlayer = null;
 
-    if (this.selectedTeamId) {
+    if (this.selectedTeamId >= 0) {
       this.loadingPlayers = true;
-      this.playerService.getSkaterInfo({ fields: 'Name,UniqueID', team: parseInt(this.selectedTeamId) })
+      this.playerService.getSkaterInfo({ fields: 'Name,UniqueID', team: this.selectedTeamId })
         .then((results) => {
           this.$timeout(() => {
             this.playersOnSelectedTeam = results.rows;

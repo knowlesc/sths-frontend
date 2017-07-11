@@ -1,35 +1,37 @@
 <div class="container title-container">
-  <div class="col-md-12">
-    <div class="row">
-      <div class="col-sm-6">
-        <h3><span ng-bind="$ctrl.skaterInfo.Name"></span></h3>
-        <span ng-bind="$ctrl.skaterInfo.TeamName"></span>
-      </div>
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="skater-info-group">
-              <label>Position:</label>
-              <span ng-bind="$ctrl.skaterInfo.Position"></span>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3><span ng-bind="$ctrl.skaterInfo.Name"></span></h3>
+          <span ng-bind="$ctrl.skaterInfo.TeamName"></span>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="skater-info-group">
+                <label>Position:</label>
+                <span ng-bind="$ctrl.skaterInfo.Position"></span>
+              </div>
+              <div class="skater-info-group">
+                <label>Age: </label>
+                <span ng-bind="$ctrl.skaterInfo.Age"></span>
+              </div>
+              <div class="skater-info-group">
+                <label>Salary: </label>
+                <span ng-if="$ctrl.skaterInfo.Salary1" ng-bind="$ctrl.skaterInfo.Salary1 | currency : '$' : 0"></span>
+                <span ng-if="!$ctrl.skaterInfo.Salary1">N/A</span>
+              </div>
             </div>
-            <div class="skater-info-group">
-              <label>Age: </label>
-              <span ng-bind="$ctrl.skaterInfo.Age"></span>
-            </div>
-            <div class="skater-info-group">
-              <label>Salary: </label>
-              <span ng-if="$ctrl.skaterInfo.Salary1" ng-bind="$ctrl.skaterInfo.Salary1 | currency : '$' : 0"></span>
-              <span ng-if="!$ctrl.skaterInfo.Salary1">N/A</span>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="skater-info-group">
-              <label>Weight: </label>
-              <span ng-bind="$ctrl.skaterInfo.Weight"></span>
-            </div>
-            <div class="skater-info-group">
-              <label>Height: </label>
-              <span ng-bind="$ctrl.skaterInfo.Height | height"></span>
+            <div class="col-xs-6">
+              <div class="skater-info-group">
+                <label>Weight: </label>
+                <span ng-bind="$ctrl.skaterInfo.Weight"></span>
+              </div>
+              <div class="skater-info-group">
+                <label>Height: </label>
+                <span ng-bind="$ctrl.skaterInfo.Height | height"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -40,115 +42,119 @@
 
 <nav class="navbar navbar-default">
   <div class="container">
-    <div class="col-md-12">
-      <ul class="nav navbar-nav">
-        <li ng-class="{ active: $ctrl.page === 'PlayerInfo' }">
-          <a ng-click="$ctrl.page = 'PlayerInfo'">Player Info</a>
-        </li>
-        <li ng-class="{ active: $ctrl.page === 'Compare' }">
-          <a ng-click="$ctrl.page = 'Compare'">Compare</a>
-        </li>
-      </ul>
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav navbar-nav">
+          <li ng-class="{ active: $ctrl.page === 'PlayerInfo' }">
+            <a ng-click="$ctrl.page = 'PlayerInfo'">Player Info</a>
+          </li>
+          <li ng-class="{ active: $ctrl.page === 'Compare' }">
+            <a ng-click="$ctrl.page = 'Compare'">Compare</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="col-md-12">
-    <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
-      <div class="panel-heading">Player Info</div>
-      <div class="panel-body skater-info-full">
-        <div class="col-xs-6 col-sm-3">
-          <div class="skater-info-group">
-            <label>Scoring</label>
-            <span ng-bind="$ctrl.skaterInfo.SC"></span>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default" ng-show="$ctrl.page === 'PlayerInfo'">
+        <div class="panel-heading">Player Info</div>
+        <div class="panel-body skater-info-full">
+          <div class="col-xs-6 col-sm-3">
+            <div class="skater-info-group">
+              <label title="Scoring">Scoring</label>
+              <span ng-bind="$ctrl.skaterInfo.SC"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Puck Handling">Puck Handling</label>
+              <span ng-bind="$ctrl.skaterInfo.PH"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Faceoffs">Faceoffs</label>
+              <span ng-bind="$ctrl.skaterInfo.FO"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Passing">Passing</label>
+              <span ng-bind="$ctrl.skaterInfo.PA"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Penalty Shot">Penalty Shot</label>
+              <span ng-bind="$ctrl.skaterInfo.PS"></span>
+            </div>
           </div>
-          <div class="skater-info-group">
-            <label>Puck Handling</label>
-            <span ng-bind="$ctrl.skaterInfo.PH"></span>
+          <div class="col-xs-6 col-sm-3">
+            <div class="skater-info-group">
+              <label title="Skating">Skating</label>
+              <span ng-bind="$ctrl.skaterInfo.SK"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Endurance">Endurance</label>
+              <span ng-bind="$ctrl.skaterInfo.EN"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Durability">Durability</label>
+              <span ng-bind="$ctrl.skaterInfo.DU"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Defense">Defense</label>
+              <span ng-bind="$ctrl.skaterInfo.DF"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Leadership">Leadership</label>
+              <span ng-bind="$ctrl.skaterInfo.LD"></span>
+            </div>
           </div>
-          <div class="skater-info-group">
-            <label>Faceoffs</label>
-            <span ng-bind="$ctrl.skaterInfo.FO"></span>
+          <div class="col-xs-6 col-sm-3">
+            <div class="skater-info-group">
+              <label title="Checking">Checking</label>
+              <span ng-bind="$ctrl.skaterInfo.CK"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Fighting">Fighting</label>
+              <span ng-bind="$ctrl.skaterInfo.FG"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Discipline">Discipline</label>
+              <span ng-bind="$ctrl.skaterInfo.DI"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Strength">Strength</label>
+              <span ng-bind="$ctrl.skaterInfo.ST"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Experience">Experience</label>
+              <span ng-bind="$ctrl.skaterInfo.EX"></span>
+            </div>
           </div>
-          <div class="skater-info-group">
-            <label>Passing</label>
-            <span ng-bind="$ctrl.skaterInfo.PA"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Penalty Shot</label>
-            <span ng-bind="$ctrl.skaterInfo.PS"></span>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <div class="skater-info-group">
-            <label>Skating</label>
-            <span ng-bind="$ctrl.skaterInfo.SK"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Endurance</label>
-            <span ng-bind="$ctrl.skaterInfo.EN"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Durability</label>
-            <span ng-bind="$ctrl.skaterInfo.DU"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Defense</label>
-            <span ng-bind="$ctrl.skaterInfo.DF"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Leadership</label>
-            <span ng-bind="$ctrl.skaterInfo.LD"></span>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <div class="skater-info-group">
-            <label>Checking</label>
-            <span ng-bind="$ctrl.skaterInfo.CK"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Fighting</label>
-            <span ng-bind="$ctrl.skaterInfo.FG"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Discipline</label>
-            <span ng-bind="$ctrl.skaterInfo.DI"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Strength</label>
-            <span ng-bind="$ctrl.skaterInfo.ST"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Experience</label>
-            <span ng-bind="$ctrl.skaterInfo.EX"></span>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <div class="skater-info-group">
-            <label>Overall</label>
-            <span ng-bind="$ctrl.skaterInfo.Overall"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Potential</label>
-            <span ng-bind="$ctrl.skaterInfo.PO"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Condition</label>
-            <span ng-bind="$ctrl.skaterInfo.Condition"></span>
-          </div>
-          <div class="skater-info-group">
-            <label>Morale</label>
-            <span ng-bind="$ctrl.skaterInfo.MO"></span>
+          <div class="col-xs-6 col-sm-3">
+            <div class="skater-info-group">
+              <label title="Overall">Overall</label>
+              <span ng-bind="$ctrl.skaterInfo.Overall"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Potential">Potential</label>
+              <span ng-bind="$ctrl.skaterInfo.PO"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Condition">Condition</label>
+              <span ng-bind="$ctrl.skaterInfo.Condition"></span>
+            </div>
+            <div class="skater-info-group">
+              <label title="Morale">Morale</label>
+              <span ng-bind="$ctrl.skaterInfo.MO"></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="panel panel-default" ng-show="$ctrl.page === 'Compare'">
-      <div class="panel-heading">Compare</div>
-      <div class="panel-body">
-        <skater-compare player="$ctrl.skaterInfo"></skater-compare>
+      <div class="panel panel-default" ng-show="$ctrl.page === 'Compare'">
+        <div class="panel-heading">Compare</div>
+        <div class="panel-body">
+          <skater-compare player="$ctrl.skaterInfo"></skater-compare>
+        </div>
       </div>
     </div>
   </div>

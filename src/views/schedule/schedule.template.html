@@ -1,30 +1,34 @@
 <nav class="navbar navbar-default navbar-stacked">
   <div class="container">
-    <div class="col-md-12">
-      <league-selector initial-league="$ctrl.scheduleGridService.selectedLeague"
-        on-change="$ctrl.leagueUpdated(league)"
-        disabled="$ctrl.loading || $ctrl.loadingFailed"></league-selector>
+    <div class="row">
+      <div class="col-md-12">
+        <league-selector initial-league="$ctrl.scheduleGridService.selectedLeague"
+          on-change="$ctrl.leagueUpdated(league)"
+          disabled="$ctrl.loading || $ctrl.loadingFailed"></league-selector>
+      </div>
     </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">Schedule</div>
-      <div class="panel-body">
-        <span ng-if="$ctrl.loadingFailed">Error loading schedule.</span>
-        <div class="loader-overlay" ng-if="$ctrl.loading">
-          <div class="loader-inner line-scale">
-            <div></div><div></div><div></div><div></div><div></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Schedule</div>
+        <div class="panel-body">
+          <span ng-if="$ctrl.loadingFailed">Error loading schedule.</span>
+          <div class="loader-overlay" ng-if="$ctrl.loading">
+            <div class="loader-inner line-scale">
+              <div></div><div></div><div></div><div></div><div></div>
+            </div>
           </div>
+          <div class="schedule-day-select noselect" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
+            <span class="glyphicon glyphicon-chevron-left" ng-click="$ctrl.daysMinus()"></span>
+            <span ng-bind="$ctrl.currentSelection"></span>
+            <span class="glyphicon glyphicon-chevron-right" ng-click="$ctrl.daysPlus()"></span>
+          </div>
+          <grid grid-options="$ctrl.gridOptions" ng-if="!$ctrl.loading && !$ctrl.loadingFailed"></grid>
         </div>
-        <div class="schedule-day-select noselect" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
-          <span class="glyphicon glyphicon-chevron-left" ng-click="$ctrl.daysMinus()"></span>
-          <span ng-bind="$ctrl.currentSelection"></span>
-          <span class="glyphicon glyphicon-chevron-right" ng-click="$ctrl.daysPlus()"></span>
-        </div>
-        <grid grid-options="$ctrl.gridOptions" ng-if="!$ctrl.loading && !$ctrl.loadingFailed"></grid>
       </div>
     </div>
   </div>

@@ -2,8 +2,9 @@ import { ColumnDef } from '../../components/grid/models/columnDef';
 
 export function goalieInfoGridColumns(): ColumnDef[] {
   return [
-    { fieldName: 'Name', sortable: 'asc', width: 180,
-      template: `<a ng-href="/#!/goalies/{{ row.UniqueID }}"><span ng-bind="row.Name"></span></a>` },
+    { fieldName: 'Name', sortable: 'asc', width: 120, maxWidth: 180,
+      template: `<a ng-href="/#!/goalies/{{ row.UniqueID }}">
+        <div class="player-name-cell" ng-bind="row.Name"></div></a>` },
     { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
     { fieldName: 'Age', sortable: 'asc', centered: true },
     { fieldName: 'AgeDate', headerTitle: 'Birthday',

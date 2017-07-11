@@ -26,7 +26,7 @@ export class LeagueSelector {
           class="btn btn-default"
           ng-if="$ctrl.showUnassigned"
           ng-class="{ 'active': $ctrl.selectedLeague === null }"
-          ng-click="$ctrl.updateLeague(null)">Unassigned</button>
+          ng-click="$ctrl.updateLeague(null)">Free Agents</button>
       </div>
     `
   };

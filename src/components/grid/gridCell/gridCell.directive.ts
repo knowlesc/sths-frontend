@@ -22,14 +22,17 @@ export class GridCell {
             }
             if (columnDef.wrap) {
               iElement.removeClass('text-nowrap');
+              iElement.addClass('force-wrap');
             } else {
               iElement.addClass('text-nowrap');
             }
-
             if (columnDef.width) {
               iElement.css('width', columnDef.width);
               iElement.css('min-width', columnDef.width);
               iElement.css('max-width', columnDef.width);
+            }
+            if (columnDef.maxWidth) {
+              iElement.css('max-width', columnDef.maxWidth);
             }
 
             const template = columnDef.template || '<span ng-bind="row[fieldName]"></span>';

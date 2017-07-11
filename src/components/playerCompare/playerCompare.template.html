@@ -12,7 +12,7 @@
   <div class="form-group col-md-6">
     <loader ng-if="$ctrl.loadingPlayers"></loader>
     <select class="form-control"
-      ng-show="$ctrl.selectedTeamId"
+      ng-show="$ctrl.selectedTeamId >= 0"
       ng-model="$ctrl.comparePlayerId"
       ng-change="$ctrl.playerSelected()"
       ng-options="player.UniqueID as player.Name for player in $ctrl.playersOnSelectedTeam">
@@ -21,9 +21,9 @@
   </div>
 </div>
 
-<div class="table-responsive base-grid">
-  <loader ng-if="$ctrl.loadingComparePlayer"></loader>
-  <table ng-if="$ctrl.comparePlayer" class="table table-striped player-compare-table">
+<loader ng-if="$ctrl.loadingComparePlayer"></loader>
+<div class="table-responsive base-grid" ng-if="$ctrl.comparePlayer">
+  <table class="table table-striped player-compare-table">
     <thead>
       <tr>
         <th></th>

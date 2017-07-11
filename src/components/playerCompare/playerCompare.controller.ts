@@ -9,7 +9,7 @@ export interface PlayerCompareController {
   comparePlayer: SkaterInfo | GoalieInfo;
   comparePlayerId: string;
   teams: TeamInfo[];
-  selectedTeamId: string;
+  selectedTeamId: number;
   playersOnSelectedTeam: SkaterInfo[] | GoalieInfo[];
   loadingTeams: boolean;
   loadingPlayers: boolean;

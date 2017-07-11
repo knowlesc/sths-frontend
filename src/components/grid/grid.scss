@@ -7,6 +7,23 @@
   }
 }
 
+.base-grid > .table > tbody > tr > td.force-wrap,
+.base-grid > .table > thead > tr > th.force-wrap {
+  white-space: normal;
+  min-width: 80px;
+}
+
 .grid-retry {
   float: right;
+}
+
+.player-name-cell {
+  width: 120px;
+  white-space: normal;
+}
+
+@media (min-width: 992px) {
+  .player-name-cell {
+    width: 180px;
+  }
 }

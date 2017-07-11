@@ -1,121 +1,125 @@
 <nav class="navbar navbar-default navbar-stacked">
   <div class="container">
-    <div class="col-md-12">
-      <div class="btn-group button-group-margin">
-        <button type="button"
-          class="btn btn-default"
-          ng-class="{ 'active': $ctrl.selectedFormat === 'League' }"
-          ng-click="$ctrl.updateFormat('League')">League</button>
-        <button type="button"
-          class="btn btn-default"
-          ng-class="{ 'active': $ctrl.selectedFormat === 'Conference' }"
-          ng-click="$ctrl.updateFormat('Conference')">Conference</button>
-        <button type="button"
-          class="btn btn-default"
-          ng-class="{ 'active': $ctrl.selectedFormat === 'Division' }"
-          ng-click="$ctrl.updateFormat('Division')">Division</button>
-      </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="btn-group button-group-margin">
+          <button type="button"
+            class="btn btn-default"
+            ng-class="{ 'active': $ctrl.selectedFormat === 'League' }"
+            ng-click="$ctrl.updateFormat('League')">League</button>
+          <button type="button"
+            class="btn btn-default"
+            ng-class="{ 'active': $ctrl.selectedFormat === 'Conference' }"
+            ng-click="$ctrl.updateFormat('Conference')">Conference</button>
+          <button type="button"
+            class="btn btn-default"
+            ng-class="{ 'active': $ctrl.selectedFormat === 'Division' }"
+            ng-click="$ctrl.updateFormat('Division')">Division</button>
+        </div>
 
-      <league-selector initial-league="$ctrl.selectedLeague"
-        on-change="$ctrl.leagueUpdated(league)"
-        disabled="$ctrl.loading || $ctrl.loadingFailed"></league-selector>
+        <league-selector initial-league="$ctrl.selectedLeague"
+          on-change="$ctrl.leagueUpdated(league)"
+          disabled="$ctrl.loading || $ctrl.loadingFailed"></league-selector>
+      </div>
     </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">Standings</div>
-      <div class="panel-body">
-        <span ng-if="$ctrl.loadingFailed">Error loading standings.</span>
-        <div class="loader-overlay" ng-if="$ctrl.loading">
-          <div class="loader-inner line-scale">
-            <div></div><div></div><div></div><div></div><div></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Standings</div>
+        <div class="panel-body">
+          <span ng-if="$ctrl.loadingFailed">Error loading standings.</span>
+          <div class="loader-overlay" ng-if="$ctrl.loading">
+            <div class="loader-inner line-scale">
+              <div></div><div></div><div></div><div></div><div></div>
+            </div>
           </div>
-        </div>
-        <div class="table-responsive" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
-          <table class="table table-condensed" ng-repeat="group in $ctrl.groups | orderBy: 'title'">
-            <thead>
-              <th style="width: 250px">{{ group.title }}</th>
-              <th ng-click="$ctrl.orderBy('GP')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'GP'">&darr;</span>
-                <span>GP</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('TotalWins')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'TotalWins'">&darr;</span>
-                <span>W</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('TotalLosses')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'TotalLosses'">&darr;</span>
-                <span>L</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('TotalOther')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'TotalOther'">&darr;</span>
-                <span>OT</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('Points')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'Points'">&darr;</span>
-                <span>PTS</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('ROW')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'ROW'">&darr;</span>
-                <span>ROW</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('GF')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'GF'">&darr;</span>
-                <span>GF</span>
-              </th>
-              <th ng-click="$ctrl.orderBy('GA')" class="standings-header-sortable">
-                <span class="sort-icon" ng-if="$ctrl.orderByField === 'GA'">&darr;</span>
-                <span>GA</span>
-              </th>
-              <th>DIFF</th>
-              <th>Home</th>
-              <th>Away</th>
-              <th>L10</th>
-              <th>Streak</th>
-            </thead>
-            <tbody>
-              <tr ng-repeat="team in group.teams | orderBy: $ctrl.orderByField: true">
-                <td>
-                  <span class="team-standing-title"
-                    ng-if="team.StandingPlayoffTitle && team.StandingPlayoffTitle !== 'E'"
-                    ng-bind="team.StandingPlayoffTitle + '-'"></span>
-                  <span ng-bind="team.Name"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'GP' }">
-                  <span ng-bind="team.GP"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'TotalWins' }">
-                  <span ng-bind="team.TotalWins"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'TotalLosses' }">
-                  <span ng-bind="team.TotalLosses"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'TotalOther' }">
-                  <span ng-bind="team.TotalOther"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'Points' }">
-                  <span ng-bind="team.Points"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'ROW' }">
-                  <span ng-bind="team.ROW"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'GF' }">
-                  <span ng-bind="team.GF"></span>
-                </td>
-                <td ng-class="{ active: $ctrl.orderByField === 'GA' }">
-                  <span ng-bind="team.GA"></span>
-                </td>
-                <td><span ng-bind="team.GF - team.GA"></span></td>
-                <td><span class="text-nowrap" ng-bind="team.TotalHomeWins + '-' + team.TotalHomeLosses + '-' + team.TotalHomeOther"></span></td>
-                <td><span class="text-nowrap" ng-bind="(team.TotalWins - team.TotalHomeWins) + '-' + (team.TotalLosses - team.TotalHomeLosses) + '-' + (team.TotalOther - team.TotalHomeOther)"></span></td>
-                <td><span class="text-nowrap" ng-bind="team.TotalL10Wins + '-' + team.TotalL10Losses + '-' + team.TotalL10Other"></span></td>
-                <td><span ng-bind="team.Streak"></span></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
+            <table class="table table-condensed" ng-repeat="group in $ctrl.groups | orderBy: 'title'">
+              <thead>
+                <th style="width: 250px">{{ group.title }}</th>
+                <th ng-click="$ctrl.orderBy('GP')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'GP'">&darr;</span>
+                  <span>GP</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('TotalWins')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'TotalWins'">&darr;</span>
+                  <span>W</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('TotalLosses')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'TotalLosses'">&darr;</span>
+                  <span>L</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('TotalOther')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'TotalOther'">&darr;</span>
+                  <span>OT</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('Points')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'Points'">&darr;</span>
+                  <span>PTS</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('ROW')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'ROW'">&darr;</span>
+                  <span>ROW</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('GF')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'GF'">&darr;</span>
+                  <span>GF</span>
+                </th>
+                <th ng-click="$ctrl.orderBy('GA')" class="standings-header-sortable">
+                  <span class="sort-icon" ng-if="$ctrl.orderByField === 'GA'">&darr;</span>
+                  <span>GA</span>
+                </th>
+                <th>DIFF</th>
+                <th>Home</th>
+                <th>Away</th>
+                <th>L10</th>
+                <th>Streak</th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="team in group.teams | orderBy: $ctrl.orderByField: true">
+                  <td>
+                    <span class="team-standing-title"
+                      ng-if="team.StandingPlayoffTitle && team.StandingPlayoffTitle !== 'E'"
+                      ng-bind="team.StandingPlayoffTitle + '-'"></span>
+                    <span ng-bind="team.Name"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'GP' }">
+                    <span ng-bind="team.GP"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'TotalWins' }">
+                    <span ng-bind="team.TotalWins"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'TotalLosses' }">
+                    <span ng-bind="team.TotalLosses"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'TotalOther' }">
+                    <span ng-bind="team.TotalOther"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'Points' }">
+                    <span ng-bind="team.Points"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'ROW' }">
+                    <span ng-bind="team.ROW"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'GF' }">
+                    <span ng-bind="team.GF"></span>
+                  </td>
+                  <td ng-class="{ active: $ctrl.orderByField === 'GA' }">
+                    <span ng-bind="team.GA"></span>
+                  </td>
+                  <td><span ng-bind="team.GF - team.GA"></span></td>
+                  <td><span class="text-nowrap" ng-bind="team.TotalHomeWins + '-' + team.TotalHomeLosses + '-' + team.TotalHomeOther"></span></td>
+                  <td><span class="text-nowrap" ng-bind="(team.TotalWins - team.TotalHomeWins) + '-' + (team.TotalLosses - team.TotalHomeLosses) + '-' + (team.TotalOther - team.TotalHomeOther)"></span></td>
+                  <td><span class="text-nowrap" ng-bind="team.TotalL10Wins + '-' + team.TotalL10Losses + '-' + team.TotalL10Other"></span></td>
+                  <td><span ng-bind="team.Streak"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

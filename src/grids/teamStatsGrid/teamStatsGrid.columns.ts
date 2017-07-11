@@ -2,7 +2,7 @@ import { ColumnDef } from '../../components/grid/models/columnDef';
 
 export function teamStatsGridColumns(): ColumnDef[] {
   return [
-    { fieldName: 'Name', sortable: 'asc', width: 200 },
+    { fieldName: 'Name', sortable: 'asc', width: 100 },
     { fieldName: 'GP', sortable: 'desc', centered: true },
     { fieldName: 'TotalWins', sortable: 'desc', centered: true, headerTitle: 'W' },
     { fieldName: 'TotalLosses', sortable: 'desc', centered: true, headerTitle: 'L' },

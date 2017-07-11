@@ -1,20 +1,24 @@
 <nav class="navbar navbar-default navbar-stacked">
   <div class="container">
-    <div class="col-md-12">
-      <league-selector initial-league="$ctrl.skaterStatsGridService.selectedLeague"
-        on-change="$ctrl.leagueUpdated(league)"></league-selector>
+    <div class="row">
+      <div class="col-md-12">
+        <league-selector initial-league="$ctrl.skaterStatsGridService.selectedLeague"
+          on-change="$ctrl.leagueUpdated(league)"></league-selector>
+      </div>
     </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Player Statistics
-      </div>
-      <div class="panel-body">
-        <grid grid-options="$ctrl.gridOptions"></grid>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Player Statistics
+        </div>
+        <div class="panel-body">
+          <grid grid-options="$ctrl.gridOptions"></grid>
+        </div>
       </div>
     </div>
   </div>

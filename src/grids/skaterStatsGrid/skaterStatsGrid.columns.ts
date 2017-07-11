@@ -2,8 +2,9 @@ import { ColumnDef } from '../../components/grid/models/columnDef';
 
 export function skaterStatsGridColumns(): ColumnDef[] {
   return [
-    { fieldName: 'Name', sortable: 'asc', width: 180,
-      template: `<a ng-href="/#!/skaters/{{ row.UniqueID }}"><span ng-bind="row.Name"></span></a>` },
+    { fieldName: 'Name', sortable: 'asc', width: 120, maxWidth: 180,
+      template: `<a ng-href="/#!/skaters/{{ row.UniqueID }}">
+        <div class="player-name-cell" ng-bind="row.Name"></div></a>` },
     { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
     { fieldName: 'Position', sortable: 'asc', centered: true, headerTitle: 'Pos', title: 'Position' },
     { fieldName: 'GP', sortable: 'desc', centered: true, title: 'Games Played' },
