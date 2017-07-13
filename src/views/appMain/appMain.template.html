@@ -6,11 +6,7 @@
         <div class="panel-body">
           <span ng-if="$ctrl.recentGames.length === 0">No recent games.</span>
           <span ng-if="!$ctrl.recentGames && !$ctrl.loadingRecentGames">Error loading recent games.</span>
-          <div class="loader-overlay" ng-if="$ctrl.loadingRecentGames">
-            <div class="loader-inner line-scale">
-              <div></div><div></div><div></div><div></div><div></div>
-            </div>
-          </div>
+          <loader ng-if="$ctrl.loadingRecentGames"></loader>
           <div class="score-card-container">
             <score-card ng-repeat="recentGame in $ctrl.recentGames"
               game-info="recentGame">
@@ -23,15 +19,24 @@
         <div class="panel-body">
           <span ng-if="$ctrl.upcomingGames.length === 0">No upcoming games.</span>
           <span ng-if="!$ctrl.upcomingGames && !$ctrl.loadingUpcomingGames">Error loading upcoming games.</span>
-          <div class="loader-overlay" ng-if="$ctrl.loadingUpcomingGames">
-            <div class="loader-inner line-scale">
-              <div></div><div></div><div></div><div></div><div></div>
-            </div>
-          </div>
+          <loader ng-if="$ctrl.loadingUpcomingGames"></loader>
           <div class="score-card-container">
             <score-card ng-repeat="upcomingGame in $ctrl.upcomingGames"
               game-info="upcomingGame">
             </score-card>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">News</div>
+        <div class="panel-body">
+          <span ng-if="$ctrl.recentNews.items.length === 0">No recent news.</span>
+          <span ng-if="!$ctrl.recentNews && !$ctrl.loadingRecentNews">Error loading recent news.</span>
+          <loader ng-if="$ctrl.loadingRecentNews"></loader>
+          <div class="news-article-container">
+            <news-article ng-repeat="article in $ctrl.recentNews.items"
+              article="article"></news-article>
+            <div class="news-more-link" ng-if="$ctrl.recentNews.more"><a ng-href="{{ $ctrl.recentNews.link }}">Older news</a></div>
           </div>
         </div>
       </div>

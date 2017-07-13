@@ -14,11 +14,11 @@ export class WaiversService {
 
   getWaiversList(params: WaiversParams): Promise<{ totalCount: number, rows: WaiverInfo[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.waiversList,
+      this.$http.get<WaiverInfo[]>(this.config.apiUrl + Routes.waiversList,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {
@@ -29,7 +29,7 @@ export class WaiversService {
 
   getWaiversOrder(): Promise<WaiversOrderTeam[]> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.waiversOrder)
+      this.$http.get<WaiversOrderTeam[]>(this.config.apiUrl + Routes.waiversOrder)
         .then((response) => {
           resolve(response.data);
         }, (error) => {

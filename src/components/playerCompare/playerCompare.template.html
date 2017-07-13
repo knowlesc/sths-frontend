@@ -15,7 +15,7 @@
       ng-show="$ctrl.selectedTeamId >= 0"
       ng-model="$ctrl.comparePlayerId"
       ng-change="$ctrl.playerSelected()"
-      ng-options="player.UniqueID as player.Name for player in $ctrl.playersOnSelectedTeam">
+      ng-options="player.UniqueID as player.Name for player in $ctrl.playersOnSelectedTeam | orderBy:'Name'">
       <option value="" selected>Select a player...</option>
     </select>
   </div>

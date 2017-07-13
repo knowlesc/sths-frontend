@@ -15,7 +15,7 @@ export class TeamService {
 
   getTeamList(params: TeamListParams): Promise<TeamInfo[]> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.teamList,
+      this.$http.get<TeamInfo[]>(this.config.apiUrl + Routes.teamList,
         { params: params })
         .then((response) => {
           resolve(response.data);
@@ -27,7 +27,7 @@ export class TeamService {
 
   getTeamInfo(params: TeamListParams): Promise<TeamInfo> {
     return new Promise((resolve, reject) => {
-      this.$http.get(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}`)
+      this.$http.get<TeamInfo>(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}`)
         .then((response) => {
           resolve(response.data);
         }, (error) => {
@@ -38,11 +38,11 @@ export class TeamService {
 
   getTeamStats(params?: TeamStatsParams): Promise<{ totalCount: number, rows: TeamStats[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.teamStats,
+      this.$http.get<TeamStats[]>(this.config.apiUrl + Routes.teamStats,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {

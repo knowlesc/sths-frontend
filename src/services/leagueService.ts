@@ -11,13 +11,24 @@ export class LeagueService {
 
   }
 
+  getNews(): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      this.$http.get(this.config.apiUrl + Routes.news)
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
   getLeagueLog(params?: LeagueLogParams): Promise<{ totalCount: number, rows: {}[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.leagueLog,
+      this.$http.get<{}[]>(this.config.apiUrl + Routes.leagueLog,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {
@@ -28,7 +39,7 @@ export class LeagueService {
 
   getLeagueInfo(): Promise<LeagueInfo> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.leagueInfo)
+      this.$http.get<LeagueInfo>(this.config.apiUrl + Routes.leagueInfo)
         .then((response) => {
           resolve(response.data);
         }, (error) => {

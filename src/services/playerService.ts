@@ -20,7 +20,7 @@ export class PlayerService {
 
   getSingleSkaterInfo(params?: SkaterInfoParams): Promise<SkaterInfo> {
     return new Promise((resolve, reject) => {
-      this.$http.get(`${this.config.apiUrl + Routes.skaterInfo}/${params.id}`,
+      this.$http.get<SkaterInfo>(`${this.config.apiUrl + Routes.skaterInfo}/${params.id}`,
         { params: params })
         .then((response) => {
           resolve(response.data);
@@ -32,7 +32,7 @@ export class PlayerService {
 
   getInjuredPlayers(): Promise<PlayerInjury[]> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.injuredPlayers)
+      this.$http.get<PlayerInjury[]>(this.config.apiUrl + Routes.injuredPlayers)
         .then((response) => {
           resolve(response.data);
         }, (error) => {
@@ -43,11 +43,11 @@ export class PlayerService {
 
   getSkaterInfo(params?: SkaterInfoParams): Promise<{ totalCount: number, rows: SkaterInfo[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.skaterInfo,
+      this.$http.get<SkaterInfo[]>(this.config.apiUrl + Routes.skaterInfo,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {
@@ -58,11 +58,11 @@ export class PlayerService {
 
   getSkaterStats(params?: SkaterStatsParams): Promise<{ totalCount: number, rows: SkaterStats[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.skaterStats,
+      this.$http.get<SkaterStats[]>(this.config.apiUrl + Routes.skaterStats,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {
@@ -85,11 +85,11 @@ export class PlayerService {
 
   getGoalieInfo(params?: GoalieInfoParams): Promise<{ totalCount: number, rows: SkaterInfo[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.goalieInfo,
+      this.$http.get<SkaterInfo[]>(this.config.apiUrl + Routes.goalieInfo,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {
@@ -100,11 +100,11 @@ export class PlayerService {
 
   getGoalieStats(params?: GoalieStatsParams): Promise<{ totalCount: number, rows: GoalieStats[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.goalieStats,
+      this.$http.get<GoalieStats[]>(this.config.apiUrl + Routes.goalieStats,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {

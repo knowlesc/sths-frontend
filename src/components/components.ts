@@ -6,6 +6,7 @@ import { ScoreCard } from './scoreCard/scoreCard.component';
 import { TwitterTimeline } from './twitterTimeline/twitterTimeline.component';
 import { PlayerCompare } from './playerCompare/playerCompare.component';
 import { Loader } from './loader/loader.component';
+import { NewsArticle } from './newsArticle/newsArticle.component';
 
 export class Components {
   static moduleName = 'Components';
@@ -18,5 +19,6 @@ angular.module(Components.moduleName, [
   ScoreCard.moduleName,
   TwitterTimeline.moduleName,
   PlayerCompare.moduleName,
-  Loader.moduleName
+  Loader.moduleName,
+  NewsArticle.moduleName
 ]);

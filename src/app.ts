@@ -7,6 +7,7 @@ import * as jQuery from 'jquery';
 import 'angular-aria';
 import 'angular-animate';
 import 'angular-route';
+import 'angular-sanitize';
 import 'bootstrap';
 
 import { AppMainController } from './views/appMain/appMain.controller';
@@ -39,6 +40,7 @@ declare const config: Config;
 
 const app = angular.module('sths.frontend', [
   'ngRoute',
+  'ngSanitize',
   GridServices.moduleName,
   Services.moduleName,
   Filters.moduleName,

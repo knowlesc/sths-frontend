@@ -13,11 +13,11 @@ export class ScheduleService {
 
   getSchedule(params?: ScheduleParams): Promise<{ totalCount: number, rows: GameInfo[] }> {
     return new Promise((resolve, reject) => {
-      this.$http.get(this.config.apiUrl + Routes.schedule,
+      this.$http.get<GameInfo[]>(this.config.apiUrl + Routes.schedule,
         { params: params })
         .then((response) => {
           resolve({
-            totalCount: response.headers('X-Total-Count') || 0,
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
             rows: response.data
           });
         }, (error) => {

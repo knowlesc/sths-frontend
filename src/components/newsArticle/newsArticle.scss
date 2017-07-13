@@ -1,0 +1,39 @@
+$secondary-font-color: #667580;
+$border-color: rgba(15, 70, 100, .12);
+
+.news-article-container {
+  margin: -15px;
+
+  .news-more-link {
+    padding: 15px;
+  }
+}
+
+.news-article {
+  font-size: 13px;
+  border-bottom: 1px solid $border-color;
+  padding: 15px;
+
+  .news-article-title {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .news-article-author {
+    color: $secondary-font-color;
+  }
+
+  .news-article-date {
+    text-align: right;
+
+    a {
+      color: $secondary-font-color;
+    }
+  }
+}
+
+news-article:last-child {
+  .news-article {
+    border-bottom: none;
+  }
+}

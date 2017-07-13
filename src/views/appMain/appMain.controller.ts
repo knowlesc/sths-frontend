@@ -7,8 +7,10 @@ import { GridOptions } from '../../components/grid/models/gridOptions';
 export class AppMainController {
   loadingUpcomingGames = true;
   loadingRecentGames = true;
+  loadingRecentNews = true;
   upcomingGames: {}[];
   recentGames: {}[];
+  recentNews: {};
   gridOptions: GridOptions;
 
   static $inject = ['$timeout', 'scheduleService', 'leagueService', 'transactionsGridService'];
@@ -16,6 +18,19 @@ export class AppMainController {
     private scheduleService: ScheduleService,
     private leagueService: LeagueService,
     private transactionsGridService: TransactionsGridService) {
+    leagueService.getNews()
+      .then((news) => {
+        $timeout(() => {
+          this.recentNews = news;
+          this.loadingRecentNews = false;
+        });
+      })
+      .catch(() => {
+        $timeout(() => {
+          this.loadingRecentNews = false;
+        });
+      });
+
     leagueService.getLeagueInfo()
       .then((leagueInfo) => {
         const currentDay = leagueInfo.ScheduleNextDay;
@@ -37,6 +52,12 @@ export class AppMainController {
             this.loadingUpcomingGames = false;
             this.loadingRecentGames = false;
           });
+        });
+      })
+      .catch(() => {
+        $timeout(() => {
+          this.loadingUpcomingGames = false;
+          this.loadingRecentGames = false;
         });
       });
 
