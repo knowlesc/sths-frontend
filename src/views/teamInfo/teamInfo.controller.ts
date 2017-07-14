@@ -71,7 +71,7 @@ export class TeamInfoController {
     private goalieStatsGridService: GoalieStatsGridService,
     private scheduleGridService: ScheduleGridService,
     private teamStatsGridService: TeamStatsGridService) {
-    teamService.getTeamInfo({ league: 'pro', id: $routeParams.id })
+    teamService.getTeamInfo({ league: league, id: $routeParams.id })
       .then((results) => {
         $timeout(() => {
           this.teamInfo = results;

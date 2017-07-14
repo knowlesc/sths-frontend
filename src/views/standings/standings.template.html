@@ -85,7 +85,9 @@
                     <span class="team-standing-title"
                       ng-if="team.StandingPlayoffTitle && team.StandingPlayoffTitle !== 'E'"
                       ng-bind="team.StandingPlayoffTitle + '-'"></span>
-                    <span ng-bind="team.Name"></span>
+                    <a ng-href="{{ '#!/teams/' + $ctrl.selectedLeague + '/' + team.Number }}">
+                      <span ng-bind="team.Name"></span>
+                    </a>
                   </td>
                   <td ng-class="{ active: $ctrl.orderByField === 'GP' }">
                     <span ng-bind="team.GP"></span>

@@ -12,7 +12,7 @@ export class StandingsController {
   orderByField = 'Points';
   fields = ['Points', 'Streak', 'TotalL10Losses', 'TotalL10Other', 'TotalL10Wins', 'TotalLosses', 'TotalOther',
       'TotalWins', 'Name', 'GP', 'GF', 'GA', 'Conference', 'Division', 'StandingPlayoffTitle', 'ROW', 'TotalHomeWins',
-      'TotalHomeLosses', 'TotalHomeOther'];
+      'TotalHomeLosses', 'TotalHomeOther', 'Number'];
 
   static $inject = ['$timeout', 'teamService'];
   constructor(private $timeout: ng.ITimeoutService, private teamService: TeamService) {
