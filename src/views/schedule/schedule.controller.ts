@@ -10,18 +10,21 @@ export class ScheduleController {
   leagueInfo: LeagueInfo;
   gridOptions: GridOptions;
   showTodaysGames = true;
-  startDay = 1;
-  endDay = 2;
 
-  static $inject = ['$timeout', '$location', '$routeParams', 'scheduleGridService', 'leagueService'];
+  static $inject = ['$timeout', '$location', 'scheduleGridService', 'leagueService'];
   constructor(private $timeout: ng.ITimeoutService,
     private $location: ng.ILocationService,
-    private $routeParams: ng.route.IRouteParamsService,
     private scheduleGridService: ScheduleGridService,
     private leagueService: LeagueService) {
     this.scheduleGridService.selectedTeam = null;
-    this.scheduleGridService.selectedLeague = 'pro';
     this.scheduleGridService.nextSimOnly = false;
+    const search = $location.search();
+
+    if (search.league === 'farm') {
+      this.scheduleGridService.selectedLeague = search.league;
+    } else {
+      this.scheduleGridService.selectedLeague = 'pro';
+    }
 
     leagueService.getLeagueInfo()
       .then((results) => {
@@ -29,12 +32,12 @@ export class ScheduleController {
           this.leagueInfo = results;
           this.loading = false;
 
-          if (!isNaN($routeParams['day']) && parseInt($routeParams['day']) > 0) {
-            this.scheduleGridService.startDay = this.startDay = parseInt($routeParams['day']);
+          if (!isNaN(search.day) && parseInt(search.day) > 0) {
+            this.scheduleGridService.startDay = parseInt(search.day);
           } else {
-            this.scheduleGridService.startDay = this.startDay = this.leagueInfo.ScheduleNextDay;
+            this.scheduleGridService.startDay = this.leagueInfo.ScheduleNextDay;
           }
-          this.scheduleGridService.endDay = this.endDay = this.startDay + this.leagueInfo.DefaultSimulationPerDay;
+          this.scheduleGridService.endDay = this.scheduleGridService.startDay + this.leagueInfo.DefaultSimulationPerDay;
         });
       })
       .catch(() => {
@@ -51,28 +54,33 @@ export class ScheduleController {
 
   get currentSelection() {
     return this.leagueInfo.DefaultSimulationPerDay > 1
-      ? `Day ${this.startDay} - Day ${this.endDay - 1}`
-      : `Day ${this.startDay}`;
+      ? `Day ${this.scheduleGridService.startDay} - Day ${this.scheduleGridService.endDay - 1}`
+      : `Day ${this.scheduleGridService.startDay}`;
   }
 
   daysPlus() {
-    this.startDay += this.leagueInfo.DefaultSimulationPerDay;
-    this.endDay += this.leagueInfo.DefaultSimulationPerDay;
-    this.daysUpdated();
+    this.scheduleGridService.startDay += this.leagueInfo.DefaultSimulationPerDay;
+    this.scheduleGridService.endDay += this.leagueInfo.DefaultSimulationPerDay;
+    this.searchUpdated();
   }
 
   daysMinus() {
-    this.startDay -= this.leagueInfo.DefaultSimulationPerDay;
-    this.endDay -= this.leagueInfo.DefaultSimulationPerDay;
-    this.daysUpdated();
+    this.scheduleGridService.startDay -= this.leagueInfo.DefaultSimulationPerDay;
+    this.scheduleGridService.endDay -= this.leagueInfo.DefaultSimulationPerDay;
+    this.searchUpdated();
   }
 
-  daysUpdated() {
-    this.$location.url(`/schedule/${this.startDay}`);
+  searchUpdated() {
+    this.$location.search({
+      league: this.scheduleGridService.selectedLeague,
+      day: this.scheduleGridService.startDay
+    });
+
+    this.gridOptions.api.reloadData();
   }
 
   leagueUpdated(league: 'farm' | 'pro') {
     this.scheduleGridService.selectedLeague = league;
-    this.gridOptions.api.reloadData();
+    this.searchUpdated();
   }
 }

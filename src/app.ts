@@ -112,10 +112,11 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     controller: TeamListController,
     controllerAs: '$ctrl'
   })
-  .when('/schedule/:day?', {
+  .when('/schedule', {
     templateUrl: 'templates/schedule.template.html',
     controller: ScheduleController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/skaters', {
     templateUrl: 'templates/skaterRatings.template.html',
