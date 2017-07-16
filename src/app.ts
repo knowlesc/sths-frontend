@@ -92,7 +92,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/teams/farm/:id', {
     resolve: {
@@ -100,7 +101,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/teamInfo.template.html',
     controller: TeamInfoController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/teamStats', {
     templateUrl: 'templates/teamStats.template.html',
@@ -130,7 +132,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/skaterInfo.template.html',
     controller: SkaterInfoController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/goalies', {
     templateUrl: 'templates/goalieRatings.template.html',
@@ -144,7 +147,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     },
     templateUrl: 'templates/goalieInfo.template.html',
     controller: GoalieInfoController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/waivers', {
     templateUrl: 'templates/waivers.template.html',

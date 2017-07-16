@@ -18,8 +18,8 @@ export class ScheduleController {
     private leagueService: LeagueService) {
     this.scheduleGridService.selectedTeam = null;
     this.scheduleGridService.nextSimOnly = false;
-    const search = $location.search();
 
+    const search = $location.search();
     if (search.league === 'farm') {
       this.scheduleGridService.selectedLeague = search.league;
     } else {

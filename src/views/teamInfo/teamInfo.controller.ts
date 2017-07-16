@@ -34,6 +34,8 @@ interface TeamInfoPages {
   Schedule: boolean;
 }
 
+type TeamInfoPage = 'Roster' | 'PlayerInfo' | 'PlayerStats' | 'TeamStats' | 'Schedule';
+
 export class TeamInfoController {
   teamInfo: TeamInfo;
   loadingTeamInfo = true;
@@ -47,20 +49,22 @@ export class TeamInfoController {
   teamStatsGridOptions: GridOptions;
   scheduleGridOptions: GridOptions;
 
-  page = 'Roster';
+  page: TeamInfoPage = 'Roster';
   openedPages: TeamInfoPages = {
-    Roster: true,
+    Roster: false,
     PlayerStats: false,
     PlayerInfo: false,
     TeamStats: false,
     Schedule: false
   };
 
-  static $inject = ['$routeParams', '$timeout', 'league', 'teamService', 'skaterInfoGridService',
-    'goalieInfoGridService', 'goalieRatingsGridService', 'skaterRatingsGridService',
-    'skaterStatsGridService', 'goalieStatsGridService', 'scheduleGridService', 'teamStatsGridService'];
+  static $inject = ['$routeParams', '$timeout', '$location', 'league', 'teamService',
+    'skaterInfoGridService', 'goalieInfoGridService', 'goalieRatingsGridService',
+    'skaterRatingsGridService', 'skaterStatsGridService', 'goalieStatsGridService',
+    'scheduleGridService', 'teamStatsGridService'];
   constructor($routeParams: ng.route.IRouteParamsService,
     private $timeout: ng.ITimeoutService,
+    private $location: ng.ILocationService,
     private league: 'farm' | 'pro',
     private teamService: TeamService,
     private skaterInfoGridService: SkaterInfoGridService,
@@ -71,6 +75,12 @@ export class TeamInfoController {
     private goalieStatsGridService: GoalieStatsGridService,
     private scheduleGridService: ScheduleGridService,
     private teamStatsGridService: TeamStatsGridService) {
+    const search = this.$location.search();
+    if (search.page) {
+      this.page = search.page as TeamInfoPage;
+    }
+    this.openedPages[this.page] = true;
+
     teamService.getTeamInfo({ league: league, id: $routeParams.id })
       .then((results) => {
         $timeout(() => {
@@ -87,9 +97,13 @@ export class TeamInfoController {
       });
   }
 
-  open(pageName: 'Roster' | 'PlayerInfo' | 'PlayerStats' | 'TeamStats' | 'Schedule') {
+  open(pageName: TeamInfoPage) {
     this.page = pageName;
     this.openedPages[pageName] = true;
+
+    this.$location.search({
+      page: pageName
+    });
   }
 
   private setUpGrids() {

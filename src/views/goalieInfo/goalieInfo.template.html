@@ -46,10 +46,10 @@
       <div class="col-md-12">
         <ul class="nav navbar-nav">
           <li ng-class="{ active: $ctrl.page === 'GoalieInfo' }">
-            <a ng-click="$ctrl.page = 'GoalieInfo'">Player Info</a>
+            <a ng-click="$ctrl.changePage('GoalieInfo')">Player Info</a>
           </li>
           <li ng-class="{ active: $ctrl.page === 'Compare' }">
-            <a ng-click="$ctrl.page = 'Compare'">Compare</a>
+            <a ng-click="$ctrl.changePage('Compare')">Compare</a>
           </li>
         </ul>
       </div>
