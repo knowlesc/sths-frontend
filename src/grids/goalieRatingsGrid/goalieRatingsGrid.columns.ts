@@ -1,12 +1,20 @@
 import { ColumnDef } from '../../components/grid/models/columnDef';
 
-export function goalieRatingsGridColumns(): ColumnDef[] {
+export function goalieRatingsGridColumns(showDetail?: boolean): ColumnDef[] {
   return [
     { fieldName: 'Name', sortable: 'asc', width: 120, maxWidth: 180,
-      template: `<a ng-href="/#!/goalies/{{ row.UniqueID }}">
-        <div class="player-name-cell" ng-bind="row.Name"></div></a>` },
+      template: `<span>
+          ${ showDetail ? '<span ng-if="row.Status1 % 2 === 0" title="Scratched">X</span>' : '' }
+          <a ng-href="/#!/goalies/{{ row.UniqueID }}">
+            <span class="player-name-cell" ng-bind="row.Name"></span>
+          </a>
+        </span>` },
     { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
-    { fieldName: 'Condition', sortable: 'desc', centered: true, headerTitle: 'Con', title: 'Conditioning' },
+    { fieldName: 'Condition', sortable: 'desc', centered: true, headerTitle: 'Con', title: 'Condition',
+      template: showDetail ? `
+        <span ng-bind="row.Condition" ng-if="row.Injury" style="color:red" title="{{ row.Injury }}"></span>
+        <span ng-bind="row.Condition" ng-if="!row.Injury"></span>
+      ` : undefined },
     { fieldName: 'SK', sortable: 'desc', centered: true, title: 'Skating' },
     { fieldName: 'DU', sortable: 'desc', centered: true, title: 'Durability' },
     { fieldName: 'EN', sortable: 'desc', centered: true, title: 'Endurance' },

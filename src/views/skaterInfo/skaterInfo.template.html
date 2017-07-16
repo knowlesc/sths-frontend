@@ -32,6 +32,13 @@
                 <label>Height: </label>
                 <span ng-bind="$ctrl.skaterInfo.Height | height"></span>
               </div>
+              <div class="skater-info-group">
+                <label>Condition: </label>
+                <span ng-bind="$ctrl.skaterInfo.Condition"></span>
+                <span ng-if="$ctrl.skaterInfo.Injury">
+                  (<span ng-bind="$ctrl.skaterInfo.Injury"></span>)
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -137,10 +144,6 @@
             <div class="skater-info-group">
               <label title="Potential">Potential</label>
               <span ng-bind="$ctrl.skaterInfo.PO"></span>
-            </div>
-            <div class="skater-info-group">
-              <label title="Condition">Condition</label>
-              <span ng-bind="$ctrl.skaterInfo.Condition"></span>
             </div>
             <div class="skater-info-group">
               <label title="Morale">Morale</label>

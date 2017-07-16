@@ -119,13 +119,13 @@ export class TeamInfoController {
 
     this.skaterRatingsGridOptions = new GridOptions();
     this.skaterRatingsGridOptions.dataSource = this.skaterRatingsGridService;
-    this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns();
+    this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns(true);
     this.skaterRatingsGridOptions.columns.splice(1, 1); // Remove team column
     this.skaterRatingsGridOptions.defaultSortField = 'Overall';
 
     this.goalieRatingsGridOptions = new GridOptions();
     this.goalieRatingsGridOptions.dataSource = this.goalieRatingsGridService;
-    this.goalieRatingsGridOptions.columns = goalieRatingsGridColumns();
+    this.goalieRatingsGridOptions.columns = goalieRatingsGridColumns(true);
     this.goalieRatingsGridOptions.columns.splice(1, 1);
     this.goalieRatingsGridOptions.defaultSortField = 'Overall';
 

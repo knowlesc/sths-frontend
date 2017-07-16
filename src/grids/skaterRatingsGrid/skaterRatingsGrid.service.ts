@@ -30,7 +30,7 @@ export class SkaterRatingsGridService implements GridDataSource {
       team: this.selectedTeam,
       sort: this.currentSort,
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
-      fields: 'UniqueID,' + this.fields
+      fields: 'UniqueID,Injury,Status1,' + this.fields
     };
 
     return this.playerService.getSkaterInfo(params)
