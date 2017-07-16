@@ -18,7 +18,10 @@
                 <span ng-bind="$ctrl.skaterInfo.Age"></span>
               </div>
               <div class="skater-info-group">
-                <label>Salary: </label>
+                <label>Contract: </label>
+                <span ng-bind="$ctrl.skaterInfo.Contract"></span>
+                <span ng-if="$ctrl.skaterInfo.Contract > 1">Years x</span>
+                <span ng-if="$ctrl.skaterInfo.Contract === 1">Year x</span>
                 <span ng-if="$ctrl.skaterInfo.Salary1" ng-bind="$ctrl.skaterInfo.Salary1 | currency : '$' : 0"></span>
                 <span ng-if="!$ctrl.skaterInfo.Salary1">N/A</span>
               </div>
