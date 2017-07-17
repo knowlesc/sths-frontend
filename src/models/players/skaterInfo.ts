@@ -11,10 +11,7 @@ export class SkaterInfo {
   Age: number;
   Weight: number;
   Height: number;
-  PosC: string;
-  PosLW: string;
-  PosRW: string;
-  PosD: string;
+  Position: string;
   Contract: number;
   Rookie: string;
   PProtected: string;

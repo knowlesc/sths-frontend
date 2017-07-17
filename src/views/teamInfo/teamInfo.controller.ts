@@ -62,7 +62,7 @@ export class TeamInfoController {
     'skaterInfoGridService', 'goalieInfoGridService', 'goalieRatingsGridService',
     'skaterRatingsGridService', 'skaterStatsGridService', 'goalieStatsGridService',
     'scheduleGridService', 'teamStatsGridService'];
-  constructor($routeParams: ng.route.IRouteParamsService,
+  constructor(private $routeParams: ng.route.IRouteParamsService,
     private $timeout: ng.ITimeoutService,
     private $location: ng.ILocationService,
     private league: 'farm' | 'pro',
