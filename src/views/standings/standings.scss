@@ -1,7 +1,12 @@
-.standings-header-sortable {
-  cursor: pointer;
-}
-
 .team-standing-title {
   font-weight: 700;
+}
+
+.wildcard-boundary {
+  border-top: 4px solid #DDD;
+}
+
+.standing-number {
+  width: 20px;
+  display: inline-block;
 }

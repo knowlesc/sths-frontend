@@ -16,4 +16,6 @@ export interface TeamStats {
   TotalOther: number;
   TotalWins: number;
   W: number;
+  LeagueRank: number;
+  ConferenceRank: number;
 }
