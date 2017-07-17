@@ -39,7 +39,7 @@
                 <label>Condition: </label>
                 <span ng-bind="$ctrl.skaterInfo.Condition"></span>
                 <span ng-if="$ctrl.skaterInfo.Injury">
-                  (<span ng-bind="$ctrl.skaterInfo.Injury"></span>)
+                  (<span ng-bind="$ctrl.skaterInfo.Injury"></span> - <span ng-bind="$ctrl.skaterInfo.InjuryLength | injuryLength"></span>)
                 </span>
               </div>
             </div>

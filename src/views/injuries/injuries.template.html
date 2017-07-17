@@ -14,8 +14,8 @@
           <div ng-repeat="team in $ctrl.teamsWithInjuredPlayers">
             <strong><span ng-bind="team"></span></strong>
             <div ng-repeat="player in $ctrl.injuredPlayers | filter: { Team: team }">
-              <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
-              (<span ng-bind="player.Injury"></span>)
+              <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>:
+              <span ng-bind="player.Injury | injury"></span> (<span ng-bind="player.InjuryLength | injuryLength"></span>)
             </div>
           </div>
         </div>

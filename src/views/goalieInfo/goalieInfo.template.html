@@ -39,7 +39,7 @@
                 <label>Condition: </label>
                 <span ng-bind="$ctrl.goalieInfo.Condition"></span>
                 <span ng-if="$ctrl.goalieInfo.Injury">
-                  (<span ng-bind="$ctrl.goalieInfo.Injury"></span>)
+                  (<span ng-bind="$ctrl.goalieInfo.Injury"></span> - <span ng-bind="$ctrl.goalieInfo.InjuryLength | injuryLength"></span>)
                 </span>
               </div>
             </div>

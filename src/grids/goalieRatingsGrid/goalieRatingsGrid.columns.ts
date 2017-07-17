@@ -12,7 +12,8 @@ export function goalieRatingsGridColumns(showDetail?: boolean): ColumnDef[] {
     { fieldName: 'TeamAbbre', sortable: 'asc', centered: true, headerTitle: 'Team' },
     { fieldName: 'Condition', sortable: 'desc', centered: true, headerTitle: 'Con', title: 'Condition',
       template: showDetail ? `
-        <span ng-bind="row.Condition" ng-if="row.Injury" style="color:red" title="{{ row.Injury }}"></span>
+        <span ng-bind="row.Condition" ng-if="row.Injury" style="color:red"
+          title="{{ row.Injury + ' (' + (row.InjuryLength | injuryLength) + ')' }}"></span>
         <span ng-bind="row.Condition" ng-if="!row.Injury"></span>
       ` : undefined },
     { fieldName: 'SK', sortable: 'desc', centered: true, title: 'Skating' },

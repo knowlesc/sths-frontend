@@ -13,7 +13,8 @@ export function skaterRatingsGridColumns(showDetail?: boolean): ColumnDef[] {
     { fieldName: 'Position', sortable: 'asc', centered: true, headerTitle: 'Pos', title: 'Position' },
     { fieldName: 'Condition', sortable: 'desc', centered: true, headerTitle: 'Con', title: 'Condition',
       template: showDetail ? `
-        <span ng-bind="row.Condition" ng-if="row.Injury" style="color:red" title="{{ row.Injury }}"></span>
+        <span ng-bind="row.Condition" ng-if="row.Injury" style="color:red"
+          title="{{ row.Injury + ' (' + (row.InjuryLength | injuryLength) + ')' }}"></span>
         <span ng-bind="row.Condition" ng-if="!row.Injury"></span>
       ` : undefined },
     { fieldName: 'CK', sortable: 'desc', centered: true, title: 'Checking' },
