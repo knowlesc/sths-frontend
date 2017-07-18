@@ -1,5 +1,30 @@
 <div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Draft Picks</div>
+      <div class="panel-body">
+        <span ng-if="$ctrl.loadingFailed">Error loading results.</span>
+        <table class="table" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
+          <thead>
+            <tr>
+              <th class="text-center">Year</th>
+              <th>Picks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="year in $ctrl.draftPickYears">
+              <td class="text-center"><span ng-bind="year"></span></td>
+              <td><span ng-bind="$ctrl.getDraftPicksInYear(year)"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="row" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">Left Wing</div>
@@ -80,8 +105,7 @@
 
 </div>
 
-<div class="row justify-content-center">
-
+<div class="row" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
   <div class="col-md-4 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">Defense</div>
@@ -133,5 +157,4 @@
       </div>
     </div>
   </div>
-
 </div>

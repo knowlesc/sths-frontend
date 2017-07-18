@@ -12,4 +12,5 @@ export class Routes {
   static schedule = 'schedule';
   static waiversList = 'waivers/list';
   static waiversOrder = 'waivers/order';
+  static draftPicks = 'draftPicks';
 }
