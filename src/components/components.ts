@@ -8,6 +8,7 @@ import { PlayerCompare } from './playerCompare/playerCompare.component';
 import { Loader } from './loader/loader.component';
 import { NewsArticle } from './newsArticle/newsArticle.component';
 import { DepthChart } from './depthChart/depthChart.component';
+import { FinanceInfo } from './financeInfo/financeInfo.component';
 
 export class Components {
   static moduleName = 'Components';
@@ -22,5 +23,6 @@ angular.module(Components.moduleName, [
   PlayerCompare.moduleName,
   Loader.moduleName,
   NewsArticle.moduleName,
-  DepthChart.moduleName
+  DepthChart.moduleName,
+  FinanceInfo.moduleName
 ]);

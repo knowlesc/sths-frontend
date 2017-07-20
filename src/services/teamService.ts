@@ -4,6 +4,7 @@ import { TeamInfo } from '../models/teams/teamInfo';
 import { TeamListParams } from '../models/teams/teamListParams';
 import { TeamStatsParams } from '../models/teams/teamStatsParams';
 import { TeamStats } from '../models/teams/teamStats';
+import { TeamFinances } from '../models/teams/teamFinances';
 
 export class TeamService {
   static serviceName = 'teamService';
@@ -28,6 +29,17 @@ export class TeamService {
   getTeamInfo(params: TeamListParams): Promise<TeamInfo> {
     return new Promise((resolve, reject) => {
       this.$http.get<TeamInfo>(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}`)
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  getTeamFinances(params: TeamListParams): Promise<TeamFinances> {
+    return new Promise((resolve, reject) => {
+      this.$http.get<TeamFinances>(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}/finances`)
         .then((response) => {
           resolve(response.data);
         }, (error) => {

@@ -80,6 +80,9 @@
           <li ng-class="{ active: $ctrl.page === 'Schedule' }">
             <a ng-click="$ctrl.open('Schedule')">Schedule</a>
           </li>
+          <li ng-class="{ active: $ctrl.page === 'Finances' }">
+            <a ng-click="$ctrl.open('Finances')">Finances</a>
+          </li>
           <li ng-if="$ctrl.league === 'pro'" ng-class="{ active: $ctrl.page === 'Depth' }">
             <a ng-click="$ctrl.open('Depth')">Depth</a>
           </li>
@@ -146,7 +149,11 @@
         </div>
       </div>
 
-      <div class="col-md-12" ng-if="$ctrl.openedPages.Depth" ng-show="$ctrl.page === 'Depth'">
+      <div ng-if="$ctrl.openedPages.Finances" ng-show="$ctrl.page === 'Finances'">
+        <finance-info team="$ctrl.$routeParams.id" league="$ctrl.league"></finance-info>
+      </div>
+
+      <div ng-if="$ctrl.openedPages.Depth" ng-show="$ctrl.page === 'Depth'">
         <depth-chart team="$ctrl.$routeParams.id"></depth-chart>
       </div>
     </div>

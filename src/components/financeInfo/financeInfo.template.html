@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Attendance (Detailed)</div>
+      <div class="panel-body">
+        <span ng-if="$ctrl.loadingFailed">Error loading results.</span>
+        <table class="table" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
+          <thead>
+            <tr>
+              <th>Seating Level</th>
+              <th>Ticket Price</th>
+              <th>Attendance (Avg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Level 1</td>
+              <td>$<span ng-bind="$ctrl.finances.TicketPriceL1 | number"></span></td>
+              <td><span ng-bind="$ctrl.averageAttendance('L1')"></span></td>
+            </tr>
+            <tr>
+              <td>Level 2</td>
+              <td>$<span ng-bind="$ctrl.finances.TicketPriceL2 | number"></span></td>
+              <td><span ng-bind="$ctrl.averageAttendance('L2')"></span></td>
+            </tr>
+            <tr ng-if="$ctrl.league === 'pro'">
+              <td>Level 3</td>
+              <td>$<span ng-bind="$ctrl.finances.TicketPriceL3 | number"></span></td>
+              <td><span ng-bind="$ctrl.averageAttendance('L3')"></span></td>
+            </tr>
+            <tr ng-if="$ctrl.league === 'pro'">
+              <td>Level 4</td>
+              <td>$<span ng-bind="$ctrl.finances.TicketPriceL4 | number"></span></td>
+              <td><span ng-bind="$ctrl.averageAttendance('L4')"></span></td>
+            </tr>
+            <tr ng-if="$ctrl.league === 'pro'">
+              <td>Luxury</td>
+              <td>$<span ng-bind="$ctrl.finances.TicketPriceLuxury | number"></span></td>
+              <td><span ng-bind="$ctrl.averageAttendance('Luxury')"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Attendance (Overall)</div>
+      <div class="panel-body">
+        <div ng-if="$ctrl.finances">
+          <span ng-if="$ctrl.loadingFailed">Error loading results.</span>
+          <div class="skater-info-group">
+            <label>Home Games Remaining:</label>
+            <span ng-bind="41 - $ctrl.finances.HomeGP"></span>
+          </div>
+          <div class="skater-info-group">
+            <label>Arena Capacity:</label>
+            <span ng-bind="$ctrl.totalCapacity"></span>
+          </div>
+          <div class="skater-info-group">
+            <label>Average Attendance:</label>
+            <span ng-bind="$ctrl.totalAverageAttendance"></span>
+            (<span ng-bind="100 * $ctrl.totalAverageAttendance / $ctrl.totalCapacity | number : 1"></span>%)
+          </div>
+          <div class="skater-info-group">
+            <label>Average Income per Game:</label>
+            $<span ng-bind="$ctrl.finances.TotalIncome / $ctrl.finances.HomeGP | number : 0"></span>
+          </div>
+          <div class="skater-info-group">
+            <label>Year-to-Date Revenue:</label>
+            $<span ng-bind="$ctrl.finances.TotalIncome | number : 0"></span>
+          </div>
+          <div class="skater-info-group">
+            <label>Team Popularity:</label>
+            <span ng-bind="$ctrl.finances.TeamPopularity"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
