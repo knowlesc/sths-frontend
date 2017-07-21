@@ -1,6 +1,10 @@
 import * as angular from 'angular';
 import { ColumnDef } from '../models/columnDef';
 
+interface GridCellScope extends ng.IScope {
+  columnDef: ColumnDef;
+}
+
 export class GridCell {
   static moduleName = 'GridCell';
   static directiveName = 'gridCell';
@@ -13,7 +17,7 @@ export class GridCell {
       },
       compile: (element, attributes) => {
         return {
-          pre: (scope, iElement, iAttrs, controller) => {
+          pre: (scope: GridCellScope, iElement, iAttrs, controller) => {
             const columnDef = scope.columnDef as ColumnDef;
             if (columnDef.centered) {
               iElement.addClass('text-center');
