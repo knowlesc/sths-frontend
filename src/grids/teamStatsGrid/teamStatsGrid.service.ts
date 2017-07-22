@@ -27,7 +27,8 @@ export class TeamStatsGridService implements GridDataSource {
       league: this.selectedLeague,
       team: this.selectedTeam,
       sort: this.currentSort,
-      skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0)
+      skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),
+      fields: this.fields
     };
 
     return this.teamService.getTeamStats(params)
