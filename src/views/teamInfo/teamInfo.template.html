@@ -80,7 +80,7 @@
           <li ng-class="{ active: $ctrl.page === 'Schedule' }">
             <a ng-click="$ctrl.open('Schedule')">Schedule</a>
           </li>
-          <li ng-class="{ active: $ctrl.page === 'Finances' }">
+          <li ng-if="$ctrl.league === 'pro'" ng-class="{ active: $ctrl.page === 'Finances' }">
             <a ng-click="$ctrl.open('Finances')">Finances</a>
           </li>
           <li ng-if="$ctrl.league === 'pro'" ng-class="{ active: $ctrl.page === 'Depth' }">
