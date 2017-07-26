@@ -18,7 +18,7 @@ export class StandingsController {
 
   fields = ['Points', 'Streak', 'TotalL10Losses', 'TotalL10Other', 'TotalL10Wins', 'TotalLosses', 'TotalOther',
     'TotalWins', 'Name', 'GP', 'GF', 'GA', 'Conference', 'Division', 'StandingPlayoffTitle', 'ROW', 'TotalHomeWins',
-    'TotalHomeLosses', 'TotalHomeOther', 'Number', 'LeagueRank', 'ConferenceRank'];
+    'TotalHomeLosses', 'TotalHomeOther', 'Number', 'LeagueRank', 'ConferenceRank', 'PointsPCT'];
 
   static $inject = ['$timeout', 'teamService'];
   constructor(private $timeout: ng.ITimeoutService, private teamService: TeamService) {

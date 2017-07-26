@@ -50,6 +50,7 @@
                 <th>L</th>
                 <th>OT</th>
                 <th>PTS</th>
+                <th>PTS%</th>
                 <th>ROW</th>
                 <th>GF</th>
                 <th>GA</th>
@@ -76,6 +77,7 @@
                   <td><span ng-bind="team.TotalLosses"></span></td>
                   <td><span ng-bind="team.TotalOther"></span></td>
                   <td><span ng-bind="team.Points"></span></td>
+                  <td><span ng-bind="team.PointsPCT | number : 2"></span></td>
                   <td><span ng-bind="team.ROW"></span></td>
                   <td><span ng-bind="team.GF"></span></td>
                   <td><span ng-bind="team.GA"></span></td>
