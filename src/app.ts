@@ -26,6 +26,7 @@ import { BoxscoreController } from './views/boxscore/boxscore.controller';
 import { StandingsController } from './views/standings/standings.controller';
 import { InjuriesController } from './views/injuries/injuries.controller';
 import { TradesController } from './views/trades/trades.controller';
+import { SearchController } from './views/search/search.controller';
 import { PlayerService } from './services/playerService';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
@@ -119,6 +120,11 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     controller: ScheduleController,
     controllerAs: '$ctrl',
     reloadOnSearch: false
+  })
+  .when('/search', {
+    templateUrl: 'templates/search.template.html',
+    controller: SearchController,
+    controllerAs: '$ctrl'
   })
   .when('/skaters', {
     templateUrl: 'templates/skaterRatings.template.html',

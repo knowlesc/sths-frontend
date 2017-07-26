@@ -2,10 +2,41 @@ a.dropdown-toggle {
   cursor: pointer;
 }
 
+.menu-item-more {
+  display: none!important;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  .app-menu .nav > li {
+    &.menu-item-more {
+      display: block!important;
+    }
+
+    &.menu-item-hide-more {
+      display: none!important;
+    }
+
+    > a {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
 .navbar-brand.brand-image {
   width: 80px;
   background-image: url("/images/SHL_small.png?version=1.0");
   background-position: top;
   background-size: 50px;
   background-repeat: no-repeat;
+}
+
+.navbar-form {
+  margin-top: 3px;
+}
+
+.search-button {
+  width: 43px;
+  height: 43px;
+  padding-left: 14px;
 }
