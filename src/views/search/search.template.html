@@ -2,9 +2,24 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Search Results</div>
+        <div class="panel-heading">{{ $ctrl.resultsCount }} Results for "{{ $ctrl.searchTerm }}"</div>
         <div class="panel-body">
-         
+          <span ng-if="$ctrl.results.length === 0">No results found.</span>
+          <span ng-if="!$ctrl.results && !$ctrl.loading">Error searching players.</span>
+          <loader ng-if="$ctrl.loading"></loader>
+          <div ng-repeat="player in $ctrl.results" class="well well-sm">
+            <div>
+              <span ng-bind="$index + 1"></span>.
+              <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind-html="player.Name | highlight : $ctrl.searchTerm"></span></a>
+            </div>
+            <span ng-bind="player.Position"></span>, <span ng-bind="player.Team"></span>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary"
+              ng-if="$ctrl.resultsCount > $ctrl.results.length"
+              ng-click="$ctrl.loadMore()">Load More</button>
+          </div>
         </div>
       </div>
     </div>

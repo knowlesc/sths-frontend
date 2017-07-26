@@ -6,11 +6,7 @@
         <div class="panel-body">
           <span ng-if="$ctrl.injuredPlayers.length === 0">No injured players.</span>
           <span ng-if="!$ctrl.injuredPlayers && !$ctrl.loadingInjuredPlayers">Error loading injured players.</span>
-          <div class="loader-overlay" ng-if="$ctrl.loadingInjuredPlayers">
-            <div class="loader-inner line-scale">
-              <div></div><div></div><div></div><div></div><div></div>
-            </div>
-          </div>
+          <loader ng-if="$ctrl.loadingInjuredPlayers"></loader>
           <div ng-repeat="team in $ctrl.teamsWithInjuredPlayers">
             <strong><span ng-bind="team"></span></strong>
             <div ng-repeat="player in $ctrl.injuredPlayers | filter: { Team: team }">

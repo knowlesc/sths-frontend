@@ -9,6 +9,7 @@ import { PlayerInjury } from '../models/players/playerInjury';
 import { SkaterInfoParams } from '../models/players/skaterInfoParams';
 import { SkaterStatsParams } from '../models/players/skaterStatsParams';
 import { GoalieStatsParams } from '../models/players/goalieStatsParams';
+import { PlayerSearchParams } from '../models/players/playerSearchParams';
 
 export class PlayerService {
   static serviceName = 'playerService';
@@ -35,6 +36,21 @@ export class PlayerService {
       this.$http.get<PlayerInjury[]>(this.config.apiUrl + Routes.injuredPlayers)
         .then((response) => {
           resolve(response.data);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  getPlayersByName(params: PlayerSearchParams): Promise<{ totalCount: number, rows: {}[] }> {
+    return new Promise((resolve, reject) => {
+      this.$http.get<{}[]>(this.config.apiUrl + Routes.searchPlayers,
+        { params: params })
+        .then((response) => {
+          resolve({
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
+            rows: response.data
+          });
         }, (error) => {
           reject(error);
         });
