@@ -6,7 +6,7 @@ export class SearchController {
   loadingFailed = false;
   currentPage = 0;
   rowsPerPage = 20;
-  resultsCount = 20;
+  resultsCount = 0;
   searchTerm: string;
 
   static $inject = ['$timeout', '$location', 'playerService'];
