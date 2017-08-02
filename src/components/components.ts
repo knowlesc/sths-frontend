@@ -9,6 +9,7 @@ import { Loader } from './loader/loader.component';
 import { NewsArticle } from './newsArticle/newsArticle.component';
 import { DepthChart } from './depthChart/depthChart.component';
 import { FinanceInfo } from './financeInfo/financeInfo.component';
+import { NgSrcFailover } from './ngSrcFailover/ngSrcFailover.directive';
 
 export class Components {
   static moduleName = 'Components';
@@ -24,5 +25,6 @@ angular.module(Components.moduleName, [
   Loader.moduleName,
   NewsArticle.moduleName,
   DepthChart.moduleName,
-  FinanceInfo.moduleName
+  FinanceInfo.moduleName,
+  NgSrcFailover.moduleName
 ]);

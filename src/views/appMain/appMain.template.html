@@ -48,6 +48,18 @@
       </div>
     </div>
     <div class="col-md-4">
+      <div class="panel panel-default" ng-src-failover ng-if="$ctrl.picOfTheDayConfig">
+        <div class="panel-body">
+          <div class="img">
+            <a ng-href="{{ $ctrl.picOfTheDayConfig.imgUrl }}">
+              <img ng-src="{{ $ctrl.picOfTheDayConfig.imgUrl }}"></img>
+            </a>
+          </div>
+
+          <h6 class="caption"><span ng-bind="$ctrl.picOfTheDayConfig.caption"></h6>
+        </div>
+      </div>
+
       <div class="panel panel-default">
         <div class="panel-heading">Commissioner</div>
         <div class="panel-body">

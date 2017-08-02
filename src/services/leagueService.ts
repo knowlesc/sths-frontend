@@ -22,6 +22,17 @@ export class LeagueService {
     });
   }
 
+  getPicOfTheDay(): Promise<{ imgUrl: string; caption: string }> {
+    return new Promise((resolve, reject) => {
+      this.$http.get<{ imgUrl: string; caption: string }>('/picoftheday.json')
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
   getLeagueLog(params?: LeagueLogParams): Promise<{ totalCount: number, rows: {}[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get<{}[]>(this.config.apiUrl + Routes.leagueLog,

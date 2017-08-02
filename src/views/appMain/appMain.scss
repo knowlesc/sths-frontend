@@ -1,0 +1,17 @@
+.panel.fail {
+  display: none;
+}
+
+.img {
+  margin: -15px -15px 0 -15px;
+
+  img {
+    width: 100%;
+  }
+
+  + .caption {
+    font-weight: 400;
+    font-style: italic;
+    margin: 10px -5px -5px -5px;
+  }
+}

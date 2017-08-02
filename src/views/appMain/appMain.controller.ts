@@ -5,6 +5,7 @@ import { transactionsGridColumns } from '../../grids/transactionsGrid/transactio
 import { GridOptions } from '../../components/grid/models/gridOptions';
 
 export class AppMainController {
+  picOfTheDayConfig: { imgUrl: string; caption: string };
   loadingUpcomingGames = true;
   loadingRecentGames = true;
   loadingRecentNews = true;
@@ -59,6 +60,16 @@ export class AppMainController {
           this.loadingUpcomingGames = false;
           this.loadingRecentGames = false;
         });
+      });
+
+    leagueService.getPicOfTheDay()
+      .then((config) => {
+        if (config.imgUrl && config.caption) {
+          this.picOfTheDayConfig = config;
+        }
+      })
+      .catch(() => {
+        // No problem
       });
 
     this.transactionsGridService.types = null;
