@@ -3,31 +3,31 @@ import { TransactionsGridService } from '../../grids/transactionsGrid/transactio
 import { transactionsGridColumns } from '../../grids/transactionsGrid/transactionsGrid.columns';
 import { TransactionTypes } from '../../models/league/transactionTypes';
 import { PlayerService } from '../../services/playerService';
-import { PlayerInjury } from '../../models/players/playerInjury';
+import { PlayerSuspension } from '../../models/players/playerSuspension';
 
-export class InjuriesController {
+export class SuspensionsController {
   gridOptions: GridOptions;
-  loadingInjuredPlayers = true;
-  injuredPlayers: PlayerInjury[];
+  loadingSuspendedPlayers = true;
+  suspendedPlayers: PlayerSuspension[];
 
   static $inject = ['$timeout', 'playerService', 'transactionsGridService'];
   constructor(private $timeout: ng.ITimeoutService,
     private playerService: PlayerService,
     private transactionsGridService: TransactionsGridService) {
-    playerService.getInjuredPlayers()
+    playerService.getSuspendedPlayers()
       .then((results) => {
         $timeout(() => {
-          this.injuredPlayers = results;
-          this.loadingInjuredPlayers = false;
+          this.suspendedPlayers = results;
+          this.loadingSuspendedPlayers = false;
         });
       })
       .catch(() => {
         $timeout(() => {
-          this.loadingInjuredPlayers = false;
+          this.loadingSuspendedPlayers = false;
         });
       });
 
-    this.transactionsGridService.types = [TransactionTypes.Injury];
+    this.transactionsGridService.types = [TransactionTypes.Suspension];
     this.gridOptions = new GridOptions();
     this.gridOptions.dataSource = this.transactionsGridService;
     this.gridOptions.columns = transactionsGridColumns();
@@ -35,22 +35,22 @@ export class InjuriesController {
     this.gridOptions.paginationOptions = [20, 50, 100];
   }
 
-  get proTeamsWithInjuredPlayers() {
-    if (!this.injuredPlayers) {
+  get proTeamsWithSuspendedPlayers() {
+    if (!this.suspendedPlayers) {
       return [];
     }
 
-    return this.injuredPlayers.filter((player) => player.League === 'pro')
+    return this.suspendedPlayers.filter((player) => player.League === 'pro')
       .map((player) => player.Team)
       .filter((item, i, array) => array.indexOf(item) === i);
   }
 
-  get farmTeamsWithInjuredPlayers() {
-    if (!this.injuredPlayers) {
+  get farmTeamsWithSuspendedPlayers() {
+    if (!this.suspendedPlayers) {
       return [];
     }
 
-    return this.injuredPlayers.filter((player) => player.League === 'farm')
+    return this.suspendedPlayers.filter((player) => player.League === 'farm')
       .map((player) => player.Team)
       .filter((item, i, array) => array.indexOf(item) === i);
   }

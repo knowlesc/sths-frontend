@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Current Suspensions (Pro)</div>
+        <div class="panel-body">
+          <span ng-if="$ctrl.suspendedPlayers && $ctrl.proTeamsWithSuspendedPlayers.length === 0">No suspended players.</span>
+          <span ng-if="!$ctrl.suspendedPlayers && !$ctrl.loadingSuspendedPlayers">Error loading suspended players.</span>
+          <loader ng-if="$ctrl.loadingSuspendedPlayers"></loader>
+          <div ng-repeat="team in $ctrl.proTeamsWithSuspendedPlayers">
+            <strong><span ng-bind="team"></span></strong>
+            <div ng-repeat="player in $ctrl.suspendedPlayers | filter: { Team: team }">
+              <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>:
+              <span ng-bind="player.Suspension"></span> game(s) remaining
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Current Suspensions (Farm)</div>
+        <div class="panel-body">
+          <span ng-if="$ctrl.suspendedPlayers && $ctrl.farmTeamsWithSuspendedPlayers.length === 0">No suspended players.</span>
+          <span ng-if="!$ctrl.suspendedPlayers && !$ctrl.loadingSuspendedPlayers">Error loading suspended players.</span>
+          <loader ng-if="$ctrl.loadingSuspendedPlayers"></loader>
+          <div ng-repeat="team in $ctrl.farmTeamsWithSuspendedPlayers">
+            <strong><span ng-bind="team"></span></strong>
+            <div ng-repeat="player in $ctrl.suspendedPlayers | filter: { Team: team }">
+              <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>:
+              <span ng-bind="player.Suspension"></span> game(s) remaining
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">Suspension History</div>
+        <div class="panel-body">
+          <grid grid-options="$ctrl.gridOptions"></grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

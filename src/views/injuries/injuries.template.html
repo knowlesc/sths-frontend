@@ -2,12 +2,27 @@
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-default">
-        <div class="panel-heading">Current Injuries</div>
+        <div class="panel-heading">Current Injuries (Pro)</div>
         <div class="panel-body">
-          <span ng-if="$ctrl.injuredPlayers.length === 0">No injured players.</span>
+          <span ng-if="$ctrl.injuredPlayers && $ctrl.proTeamsWithInjuredPlayers.length === 0">No injured players.</span>
           <span ng-if="!$ctrl.injuredPlayers && !$ctrl.loadingInjuredPlayers">Error loading injured players.</span>
           <loader ng-if="$ctrl.loadingInjuredPlayers"></loader>
-          <div ng-repeat="team in $ctrl.teamsWithInjuredPlayers">
+          <div ng-repeat="team in $ctrl.proTeamsWithInjuredPlayers">
+            <strong><span ng-bind="team"></span></strong>
+            <div ng-repeat="player in $ctrl.injuredPlayers | filter: { Team: team }">
+              <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>:
+              <span ng-bind="player.Injury | injury"></span> (<span ng-bind="player.InjuryLength | injuryLength"></span>)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Current Injuries (Farm)</div>
+        <div class="panel-body">
+          <span ng-if="$ctrl.injuredPlayers && $ctrl.farmTeamsWithInjuredPlayers.length === 0">No injured players.</span>
+          <span ng-if="!$ctrl.injuredPlayers && !$ctrl.loadingInjuredPlayers">Error loading injured players.</span>
+          <loader ng-if="$ctrl.loadingInjuredPlayers"></loader>
+          <div ng-repeat="team in $ctrl.farmTeamsWithInjuredPlayers">
             <strong><span ng-bind="team"></span></strong>
             <div ng-repeat="player in $ctrl.injuredPlayers | filter: { Team: team }">
               <a ng-href="/#!/{{ player.Type }}/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>:

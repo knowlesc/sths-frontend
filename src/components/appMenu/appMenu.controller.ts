@@ -21,7 +21,8 @@ export class AppMenuController {
         subItems: [
           { text: 'Skaters', url: '#!/skaters' },
           { text: 'Goalies', url: '#!/goalies' },
-          { text: 'Injuries', url: '#!/injuries' }
+          { text: 'Injuries', url: '#!/injuries' },
+          { text: 'Suspensions', url: '#!/suspensions' }
         ]
       },
       { text: 'Teams', url: '#!/teams', includedInMore: true },

@@ -1,5 +1,5 @@
-export class PlayerInjury {
-  Injury: string;
+export class PlayerSuspension {
+  Suspension: string;
   Name: string;
   Team: string;
   Type: string;
