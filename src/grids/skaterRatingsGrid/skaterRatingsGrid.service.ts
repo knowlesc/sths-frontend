@@ -25,7 +25,6 @@ export class SkaterRatingsGridService implements GridDataSource {
     const params: SkaterInfoParams = {
       limit: this.rowsPerPage,
       hasTeam: this.selectedTeam === 0 ? 'false' : 'true',
-      hasPlayedMinimumGames: 'true',
       league: this.selectedLeague,
       team: this.selectedTeam,
       sort: this.currentSort,

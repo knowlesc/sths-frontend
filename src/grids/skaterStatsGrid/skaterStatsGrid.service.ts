@@ -33,8 +33,6 @@ export class SkaterStatsGridService implements GridDataSource {
     // If a team is selected, we want a list of all players for that specific team
     if (this.selectedTeam !== null && !isNaN(this.selectedTeam)) {
       params.team = this.selectedTeam;
-    } else {
-      params.hasPlayedMinimumGames = 'true';
     }
 
     return this.playerService.getSkaterStats(params)
