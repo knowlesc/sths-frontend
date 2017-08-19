@@ -30,8 +30,8 @@ export class AppMenuController {
       {
         text: 'Transactions',
         subItems: [
-          { text: 'Waivers', url: '#!/waivers', includedInMore: true },
-          { text: 'Trades', url: '#!/trades', includedInMore: true },
+          { text: 'Waivers', url: '#!/waivers' },
+          { text: 'Trades', url: '#!/trades' },
           { text: 'Injuries', url: '#!/injuries' },
           { text: 'Suspensions', url: '#!/suspensions' }
         ]
@@ -48,9 +48,7 @@ export class AppMenuController {
     this.menuItemsMore = [
       { text: 'Teams', url: '#!/teams' },
       { text: 'Schedule', url: '#!/schedule' },
-      { text: 'Standings', url: '#!/standings' },
-      { text: 'Waivers', url: '#!/waivers' },
-      { text: 'Trades', url: '#!/trades' }
+      { text: 'Standings', url: '#!/standings' }
     ];
   }
 
