@@ -15,6 +15,7 @@ import { SkaterStatsController } from './views/skaterStats/skaterStats.controlle
 import { GoalieStatsController } from './views/goalieStats/goalieStats.controller';
 import { GoalieRatingsController } from './views/goalieRatings/goalieRatings.controller';
 import { SkaterRatingsController } from './views/skaterRatings/skaterRatings.controller';
+import { CoachRatingsController } from './views/coachRatings/coachRatings.controller';
 import { SkaterInfoController } from './views/skaterInfo/skaterInfo.controller';
 import { GoalieInfoController } from './views/goalieInfo/goalieInfo.controller';
 import { TeamStatsController } from './views/teamStats/teamStats.controller';
@@ -156,6 +157,11 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
     controller: GoalieInfoController,
     controllerAs: '$ctrl',
     reloadOnSearch: false
+  })
+  .when('/coaches', {
+    templateUrl: 'templates/coachRatings.template.html',
+    controller: CoachRatingsController,
+    controllerAs: '$ctrl'
   })
   .when('/waivers', {
     templateUrl: 'templates/waivers.template.html',

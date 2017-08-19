@@ -11,6 +11,7 @@ import { SkaterInfoParams } from '../models/players/skaterInfoParams';
 import { SkaterStatsParams } from '../models/players/skaterStatsParams';
 import { GoalieStatsParams } from '../models/players/goalieStatsParams';
 import { PlayerSearchParams } from '../models/players/playerSearchParams';
+import { CoachParams } from '../models/players/coachParams';
 
 export class PlayerService {
   static serviceName = 'playerService';
@@ -129,6 +130,21 @@ export class PlayerService {
   getGoalieStats(params?: GoalieStatsParams): Promise<{ totalCount: number, rows: GoalieStats[] }> {
     return new Promise((resolve, reject) => {
       this.$http.get<GoalieStats[]>(this.config.apiUrl + Routes.goalieStats,
+        { params: params })
+        .then((response) => {
+          resolve({
+            totalCount: parseInt(response.headers('X-Total-Count')) || 0,
+            rows: response.data
+          });
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  getCoaches(params?: CoachParams): Promise<{ totalCount: number, rows: {}[] }> {
+    return new Promise((resolve, reject) => {
+      this.$http.get<{}[]>(this.config.apiUrl + Routes.coaches,
         { params: params })
         .then((response) => {
           resolve({

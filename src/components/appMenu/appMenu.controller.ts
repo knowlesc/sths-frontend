@@ -17,12 +17,11 @@ export class AppMenuController {
         ]
       },
       {
-        text: 'Players',
+        text: 'Ratings',
         subItems: [
           { text: 'Skaters', url: '#!/skaters' },
           { text: 'Goalies', url: '#!/goalies' },
-          { text: 'Injuries', url: '#!/injuries' },
-          { text: 'Suspensions', url: '#!/suspensions' }
+          { text: 'Coaches', url: '#!/coaches' }
         ]
       },
       { text: 'Teams', url: '#!/teams', includedInMore: true },
@@ -32,7 +31,9 @@ export class AppMenuController {
         text: 'Transactions',
         subItems: [
           { text: 'Waivers', url: '#!/waivers', includedInMore: true },
-          { text: 'Trades', url: '#!/trades', includedInMore: true }
+          { text: 'Trades', url: '#!/trades', includedInMore: true },
+          { text: 'Injuries', url: '#!/injuries' },
+          { text: 'Suspensions', url: '#!/suspensions' }
         ]
       },
       {

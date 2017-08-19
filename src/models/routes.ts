@@ -7,6 +7,7 @@ export class Routes {
   static injuredPlayers = 'players/injured';
   static suspendedPlayers = 'players/suspended';
   static searchPlayers = 'players/search';
+  static coaches = 'coaches';
   static teamList = 'teams';
   static news = 'news';
   static leagueLog = 'league/log';

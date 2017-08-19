@@ -9,6 +9,7 @@ import { TransactionsGridService } from './transactionsGrid/transactionsGrid.ser
 import { ScheduleGridService } from './scheduleGrid/scheduleGrid.service';
 import { TeamStatsGridService } from './teamStatsGrid/teamStatsGrid.service';
 import { WaiversGridService } from './waiversGrid/waiversGrid.service';
+import { CoachRatingsGridService } from './coachRatingsGrid/coachRatingsGrid.service';
 
 export class GridServices {
   static moduleName = 'GridServices';
@@ -24,4 +25,5 @@ angular.module(GridServices.moduleName, [])
   .service(ScheduleGridService.serviceName, ScheduleGridService)
   .service(TeamStatsGridService.serviceName, TeamStatsGridService)
   .service(WaiversGridService.serviceName, WaiversGridService)
+  .service(CoachRatingsGridService.serviceName, CoachRatingsGridService)
   .service(GoalieStatsGridService.serviceName, GoalieStatsGridService);
