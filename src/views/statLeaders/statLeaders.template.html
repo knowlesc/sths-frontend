@@ -18,7 +18,8 @@
         </div>
         <div class="panel-body">
           <loader ng-if="$ctrl.loading"></loader>
-          <div class="row">
+          <div ng-if="$ctrl.loadingFailed">Error loading leaders.</div>
+          <div class="row" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
             <div class="col-xs-6 col-sm-3">
               <div class="stat-leader-heading">Points</div>
               <div ng-repeat="player in $ctrl.pointsLeaders">
@@ -89,7 +90,8 @@
         </div>
         <div class="panel-body">
           <loader ng-if="$ctrl.loading"></loader>
-          <div class="row">
+          <div ng-if="$ctrl.loadingFailed">Error loading leaders.</div>
+          <div class="row" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
             <div class="col-xs-6 col-sm-3">
               <div class="stat-leader-heading">Save Percentage</div>
               <div ng-repeat="player in $ctrl.savePercentageLeaders">
