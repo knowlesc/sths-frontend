@@ -1,5 +1,5 @@
 export interface GoalieStatsParams {
-  hasPlayedMinimumGames?: string;
+  hasPlayedMinimumGames?: number;
   hasTeam?: string;
   hasSavePercentage?: string;
   team?: number;
@@ -7,4 +7,5 @@ export interface GoalieStatsParams {
   limit?: number;
   skip?: number;
   sort?: string;
+  fields?: string;
 }

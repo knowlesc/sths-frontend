@@ -1,0 +1,159 @@
+<nav class="navbar navbar-default navbar-stacked">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <league-selector on-change="$ctrl.leagueUpdated(league)"></league-selector>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          League Leaders (Skaters)
+        </div>
+        <div class="panel-body">
+          <loader ng-if="$ctrl.loading"></loader>
+          <div class="row">
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Points</div>
+              <div ng-repeat="player in $ctrl.pointsLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.P"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.pointsLeaders, 'P') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Goals</div>
+              <div ng-repeat="player in $ctrl.goalsLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.G"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.goalsLeaders, 'G') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Assists</div>
+              <div ng-repeat="player in $ctrl.assistsLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.A"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.assistsLeaders, 'A') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Plus/Minus</div>
+              <div ng-repeat="player in $ctrl.plusMinusLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.PlusMinus"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.plusMinusLeaders, 'PlusMinus') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          League Leaders (Goalies)
+        </div>
+        <div class="panel-body">
+          <loader ng-if="$ctrl.loading"></loader>
+          <div class="row">
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Save Percentage</div>
+              <div ng-repeat="player in $ctrl.savePercentageLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.PCT | number : 3"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.savePercentageLeaders, 'PCT') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Wins</div>
+              <div ng-repeat="player in $ctrl.winsLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.W"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.winsLeaders, 'W') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">GAA</div>
+              <div ng-repeat="player in $ctrl.gaaLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.GAA | number : 3"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.gaaLeaders, 'GAA') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="stat-leader-heading">Shutouts</div>
+              <div ng-repeat="player in $ctrl.shutoutLeaders">
+                <div class="stat-leader">
+                  <div class="stat-leader-info">
+                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                  </div>
+                  <span class="stat-leader-value" ng-bind="player.Shootout"></span>
+                  <div class="stat-leader-rank">
+                    <div class="progress-bar"
+                      ng-style="{ width: $ctrl.getWidth(player, $ctrl.shutoutLeaders, 'Shootout') }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

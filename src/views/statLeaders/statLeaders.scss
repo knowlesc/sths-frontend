@@ -1,0 +1,24 @@
+.stat-leader-heading {
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.stat-leader {
+  width: 100%;
+
+  .stat-leader-info {
+    display: table-cell;
+    width: 100%;
+  }
+
+  .stat-leader-value {
+    display: table-cell;
+  }
+
+  .stat-leader-rank {
+    height: 2px;
+    margin-bottom: 10px;
+  }
+}
+

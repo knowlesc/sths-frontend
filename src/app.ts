@@ -29,6 +29,7 @@ import { InjuriesController } from './views/injuries/injuries.controller';
 import { SuspensionsController } from './views/suspensions/suspensions.controller';
 import { TradesController } from './views/trades/trades.controller';
 import { SearchController } from './views/search/search.controller';
+import { StatLeadersController } from './views/statLeaders/statLeaders.controller';
 import { PlayerService } from './services/playerService';
 import { TeamService } from './services/teamService';
 import { ScheduleService } from './services/scheduleService';
@@ -72,6 +73,11 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   $routeProvider.when('/', {
     templateUrl: 'templates/appMain.template.html',
     controller: AppMainController,
+    controllerAs: '$ctrl'
+  })
+  .when('/stats', {
+    templateUrl: 'templates/statLeaders.template.html',
+    controller: StatLeadersController,
     controllerAs: '$ctrl'
   })
   .when('/skaterStats', {
