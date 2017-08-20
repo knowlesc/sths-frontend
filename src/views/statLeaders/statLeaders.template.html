@@ -97,7 +97,7 @@
               <div ng-repeat="player in $ctrl.savePercentageLeaders">
                 <div class="stat-leader">
                   <div class="stat-leader-info">
-                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                    <a ng-href="/#!/goalies/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
                   </div>
                   <span class="stat-leader-value" ng-bind="player.PCT | number : 3"></span>
                   <div class="stat-leader-rank">
@@ -112,7 +112,7 @@
               <div ng-repeat="player in $ctrl.winsLeaders">
                 <div class="stat-leader">
                   <div class="stat-leader-info">
-                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                    <a ng-href="/#!/goalies/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
                   </div>
                   <span class="stat-leader-value" ng-bind="player.W"></span>
                   <div class="stat-leader-rank">
@@ -127,7 +127,7 @@
               <div ng-repeat="player in $ctrl.gaaLeaders">
                 <div class="stat-leader">
                   <div class="stat-leader-info">
-                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                    <a ng-href="/#!/goalies/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
                   </div>
                   <span class="stat-leader-value" ng-bind="player.GAA | number : 3"></span>
                   <div class="stat-leader-rank">
@@ -142,7 +142,7 @@
               <div ng-repeat="player in $ctrl.shutoutLeaders">
                 <div class="stat-leader">
                   <div class="stat-leader-info">
-                    <a ng-href="/#!/skaters/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
+                    <a ng-href="/#!/goalies/{{ player.UniqueID }}"><span ng-bind="player.Name"></span></a>
                   </div>
                   <span class="stat-leader-value" ng-bind="player.Shootout"></span>
                   <div class="stat-leader-rank">
