@@ -66,7 +66,7 @@
                   <td>
                     <span class="standing-number" ng-bind="$index + 1"></span>
                     <span class="team-standing-title"
-                      ng-if="team.StandingPlayoffTitle && team.StandingPlayoffTitle !== 'E'"
+                      ng-if="team.StandingPlayoffTitle"
                       ng-bind="team.StandingPlayoffTitle + '-'"></span>
                     <a ng-href="{{ '#!/teams/' + $ctrl.selectedLeague + '/' + team.Number }}">
                       <span ng-bind="team.Name"></span>
