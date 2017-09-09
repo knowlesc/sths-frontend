@@ -12,15 +12,17 @@ const babelify = require('babelify');
 const flatten = require('gulp-flatten');
 
 gulp.task('default',
-  ['watch', 'tslint', 'build']);
+  ['watch', 'full-build']);
 
 gulp.task('watch', () => {
-  gulp.watch(
-    ['src/**/*.ts', 'src/**/*.html', 'src/**/*.scss'],
-    ['tslint', 'build']);
+  gulp.watch(['src/**/*.ts'], ['tslint', 'build']);
+  gulp.watch(['src/**/*.html'], ['html']);
+  gulp.watch(['src/**/*.scss'], ['scss']);
 });
 
-gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'images', 'config'], () => {
+gulp.task('full-build', ['tslint', 'build', 'external-css', 'external-fonts', 'html', 'scss', 'images', 'config'])
+
+gulp.task('build', () => {
   return browserify()
     .add('src/app.ts')
     .plugin(tsify, { noImplicitAny: true })
@@ -31,7 +33,7 @@ gulp.task('build', ['external-css', 'external-fonts', 'html', 'scss', 'images', 
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build-minified', ['build'], () => {
+gulp.task('build-minified', ['full-build'], () => {
   pump([
     gulp.src('build/bundle.js'),
     uglify(),
