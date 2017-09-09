@@ -21,21 +21,25 @@ export class ScoreCard {
         </div>
 
         <div class="score-card-team">
-          <a ng-href="{{ '#!/teams/pro/' + $ctrl.gameInfo.HomeTeam }}">
-            <span ng-bind="$ctrl.gameInfo.HomeTeamName"></span>
-          </a>
-          <span ng-bind="$ctrl.homeRecord"></span>
-          <span ng-if="$ctrl.gameInfo.Play === 'True'"
-            class="pull-right"
+          <span class="score-card-team-info">
+            <a ng-href="{{ '#!/teams/pro/' + $ctrl.gameInfo.HomeTeam }}">
+              <span ng-bind="$ctrl.gameInfo.HomeTeamName"></span>
+            </a>
+            <span title="{{ $ctrl.homeRecord }}" ng-bind="$ctrl.homeRecord"></span>
+          </span>
+          <span class="score-card-score"
+            ng-if="$ctrl.gameInfo.Play === 'True'"
             ng-bind="$ctrl.gameInfo.HomeScore"></span>
         </div>
         <div class="score-card-team">
-          <a ng-href="{{ '#!/teams/pro/' + $ctrl.gameInfo.VisitorTeam }}">
-            <span ng-bind="$ctrl.gameInfo.VisitorTeamName"></span>
-          </a>
-          <span ng-bind="$ctrl.visitorRecord"></span>
-          <span ng-if="$ctrl.gameInfo.Play === 'True'"
-            class="pull-right"
+          <span class="score-card-team-info">
+            <a ng-href="{{ '#!/teams/pro/' + $ctrl.gameInfo.VisitorTeam }}">
+              <span ng-bind="$ctrl.gameInfo.VisitorTeamName"></span>
+            </a>
+            <span title="{{ $ctrl.visitorRecord }}" ng-bind="$ctrl.visitorRecord"></span>
+          </span>
+          <span class="score-card-score"
+            ng-if="$ctrl.gameInfo.Play === 'True'"
             ng-bind="$ctrl.gameInfo.VisitorScore"></span>
         </div>
       </div>

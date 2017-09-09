@@ -19,6 +19,29 @@
       .score-card-date {
         font-weight: 700;
       }
+
+      .score-card-team {
+        height: 18px;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+
+        .score-card-team-info {
+          position: absolute;
+          left: 0;
+          right: 9;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .score-card-score {
+          font-weight: 700;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
     }
   }
 }
