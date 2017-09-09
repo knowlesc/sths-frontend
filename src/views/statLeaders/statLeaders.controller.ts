@@ -1,3 +1,4 @@
+import { LeagueService } from './../../services/leagueService';
 import { GoalieStats } from './../../models/players/goalieStats';
 import { SkaterStats } from './../../models/players/skaterStats';
 import { PlayerService } from './../../services/playerService';
@@ -6,6 +7,7 @@ export class StatLeadersController {
   loading = true;
   loadingFailed = false;
   selectedLeague: 'farm' | 'pro' = 'pro';
+  minimumGoalieGamesPlaced = 1;
 
   pointsLeaders: SkaterStats[];
   goalsLeaders: SkaterStats[];
@@ -16,9 +18,24 @@ export class StatLeadersController {
   gaaLeaders: GoalieStats[];
   shutoutLeaders: GoalieStats[];
 
-  static $inject = ['$timeout', 'playerService'];
-  constructor(private $timeout: ng.ITimeoutService, private playerService: PlayerService) {
-    this.loadLeaders();
+  static $inject = ['$timeout', 'leagueService', 'playerService'];
+  constructor(private $timeout: ng.ITimeoutService,
+    private leagueService: LeagueService,
+    private playerService: PlayerService) {
+    this.leagueService.getLeagueInfo()
+      .then((leagueInfo) => {
+        if (leagueInfo.ScheduleNextDay < 20) {
+          this.minimumGoalieGamesPlaced = 1;
+        } else if (leagueInfo.ScheduleNextDay < 50) {
+          this.minimumGoalieGamesPlaced = 5;
+        } else if (leagueInfo.ScheduleNextDay < 80) {
+          this.minimumGoalieGamesPlaced = 10;
+        } else {
+          this.minimumGoalieGamesPlaced = 25;
+        }
+
+        this.loadLeaders();
+      });
   }
 
   loadLeaders() {
@@ -53,28 +70,28 @@ export class StatLeadersController {
         sort: '-PCT',
         limit: 10,
         league: this.selectedLeague,
-        hasPlayedMinimumGames: 25
+        hasPlayedMinimumGames: this.minimumGoalieGamesPlaced
       }),
       this.playerService.getGoalieStats({
         fields: 'UniqueID,Name,W',
         sort: '-W',
         limit: 10,
         league: this.selectedLeague,
-        hasPlayedMinimumGames: 25
+        hasPlayedMinimumGames: this.minimumGoalieGamesPlaced
       }),
       this.playerService.getGoalieStats({
         fields: 'UniqueID,Name,GAA',
         sort: 'GAA',
         limit: 10,
         league: this.selectedLeague,
-        hasPlayedMinimumGames: 25
+        hasPlayedMinimumGames: this.minimumGoalieGamesPlaced
       }),
       this.playerService.getGoalieStats({
         fields: 'UniqueID,Name,Shootout',
         sort: '-Shootout',
         limit: 10,
         league: this.selectedLeague,
-        hasPlayedMinimumGames: 25
+        hasPlayedMinimumGames: this.minimumGoalieGamesPlaced
       })
     ]).then((results) => {
         this.$timeout(() => {
