@@ -12,6 +12,7 @@ export class Routes {
   static news = 'news';
   static leagueLog = 'league/log';
   static leagueInfo = 'league/info';
+  static playoffStandings = 'league/playoffStandings';
   static schedule = 'schedule';
   static waiversList = 'waivers/list';
   static waiversOrder = 'waivers/order';

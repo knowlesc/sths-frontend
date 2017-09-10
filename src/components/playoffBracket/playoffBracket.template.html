@@ -1,0 +1,24 @@
+<main class="playoff-bracket">
+  <ul ng-repeat="round in $ctrl.rounds">
+
+    <li>&nbsp;</li>
+
+    <li ng-repeat-start="series in round"
+      class="game game-top"
+      ng-class="{ winner: series.topScore >= $ctrl.seriesWinCount }">
+      <span class="team-name"  ng-bind="series.topTeam"></span>
+      <span class="score" ng-bind="series.topScore"></span>
+    </li>
+
+    <li>&nbsp;</li>
+
+    <li class="game game-bottom"
+      ng-class="{ winner: series.bottomScore >= $ctrl.seriesWinCount }">
+      <span class="team-name" ng-bind="series.bottomTeam"></span>
+      <span class="score" ng-bind="series.bottomScore"></span>
+    </li>
+
+    <li ng-repeat-end>&nbsp;</li>
+
+  </ul>
+</main>

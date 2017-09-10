@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="btn-group button-group-margin">
+        <div class="btn-group button-group-margin" ng-if="$ctrl.isPlayoffs === false">
           <button type="button"
             class="btn btn-default"
             ng-class="{ 'active': $ctrl.selectedFormat === 'Wildcard' }"
@@ -36,12 +36,16 @@
         <div class="panel-heading">Standings</div>
         <div class="panel-body">
           <span ng-if="$ctrl.loadingFailed">Error loading standings.</span>
-          <div class="loader-overlay" ng-if="$ctrl.loading">
-            <div class="loader-inner line-scale">
-              <div></div><div></div><div></div><div></div><div></div>
-            </div>
+          <loader ng-if="$ctrl.loading"></loader>
+          <div class="table-responsive playoff-bracket-container"
+            ng-if="!$ctrl.loading && $ctrl.isPlayoffs && $ctrl.playoffStandings">
+            <playoff-bracket
+              standings="$ctrl.playoffStandings">
+            </playoff-bracket>
           </div>
-          <div class="table-responsive" ng-if="!$ctrl.loading && !$ctrl.loadingFailed">
+
+          <div class="table-responsive"
+            ng-if="!$ctrl.isPlayoffs && !$ctrl.loading && !$ctrl.loadingFailed">
             <table class="table table-condensed" ng-repeat="group in $ctrl.groups">
               <thead>
                 <th style="width: 250px">{{ group.title }}</th>

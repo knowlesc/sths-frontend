@@ -1,0 +1,62 @@
+.playoff-bracket-container {
+  padding: 10px;
+  border: none;
+}
+
+.playoff-bracket {
+  display: flex;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .game + li {
+    flex-grow: 1;
+  }
+
+  li:first-child,li:last-child {
+    flex-grow: .5;
+  }
+
+  .game {
+    padding-left: 20px;
+  }
+
+  .winner {
+    font-weight: bold;
+  }
+
+  .game .score {
+    float: right;
+    margin-right: 5px;
+  }
+
+  .game-top {
+    border-bottom: 1px solid #aaa;
+
+    &.winner {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .game-top + li {
+    border-right: 1px solid #aaa;
+    min-height: 60px;
+  }
+
+  .game-bottom {
+    border-top: 1px solid #aaa;
+
+    &.winner {
+      border-top: 1px solid black;
+    }
+  }
+
+  .team-name {
+    white-space: nowrap;
+  }
+}

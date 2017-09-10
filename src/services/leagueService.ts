@@ -1,3 +1,5 @@
+import { PlayoffStandingsParams } from './../models/playoffs/playoffStandingsParams';
+import { PlayoffStandings } from './../models/playoffs/playoffStandings';
 import { LeagueLogParams } from '../models/league/leagueLogParams';
 import { Config } from '../models/config';
 import { Routes } from '../models/routes';
@@ -51,6 +53,18 @@ export class LeagueService {
   getLeagueInfo(): Promise<LeagueInfo> {
     return new Promise((resolve, reject) => {
       this.$http.get<LeagueInfo>(this.config.apiUrl + Routes.leagueInfo)
+        .then((response) => {
+          resolve(response.data);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  getPlayoffStandings(params: PlayoffStandingsParams): Promise<PlayoffStandings[]> {
+    return new Promise((resolve, reject) => {
+      this.$http.get<PlayoffStandings[]>(this.config.apiUrl + Routes.playoffStandings,
+        { params: params })
         .then((response) => {
           resolve(response.data);
         }, (error) => {
