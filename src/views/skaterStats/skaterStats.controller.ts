@@ -4,10 +4,12 @@ import { GridOptions } from '../../components/grid/models/gridOptions';
 
 export class SkaterStatsController {
   gridOptions: GridOptions;
+  filter: { position: string } = { position: null };
 
   static $inject = ['skaterStatsGridService'];
   constructor(private skaterStatsGridService: SkaterStatsGridService) {
     this.skaterStatsGridService.selectedTeam = null;
+    this.skaterStatsGridService.selectedPosition = null;
     this.skaterStatsGridService.selectedLeague = 'pro';
 
     this.gridOptions = new GridOptions();
@@ -21,6 +23,11 @@ export class SkaterStatsController {
 
   leagueUpdated(league: 'farm' | 'pro') {
     this.skaterStatsGridService.selectedLeague = league;
+    this.gridOptions.api.reloadData();
+  }
+
+  filterUpdated() {
+    this.skaterStatsGridService.selectedPosition = this.filter.position;
     this.gridOptions.api.reloadData();
   }
 }

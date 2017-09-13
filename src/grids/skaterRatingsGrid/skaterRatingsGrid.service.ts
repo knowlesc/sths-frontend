@@ -13,6 +13,7 @@ export class SkaterRatingsGridService implements GridDataSource {
 
   rows: {}[] = null;
 
+  selectedPosition: string;
   selectedLeague: 'farm' | 'pro' = 'pro';
   selectedTeam: number;
 
@@ -26,6 +27,7 @@ export class SkaterRatingsGridService implements GridDataSource {
       limit: this.rowsPerPage,
       hasTeam: this.selectedTeam === 0 ? 'false' : 'true',
       league: this.selectedLeague,
+      position: this.selectedPosition,
       team: this.selectedTeam,
       sort: this.currentSort,
       skip: ((this.currentPage || 1) - 1) * (this.rowsPerPage || 0),

@@ -107,15 +107,18 @@ export class TeamInfoController {
   }
 
   private setUpGrids() {
-        [this.skaterInfoGridService, this.skaterStatsGridService, this.skaterRatingsGridService,
-      this.goalieInfoGridService, this.goalieStatsGridService, this.goalieRatingsGridService,
-      this.teamStatsGridService, this.scheduleGridService].forEach((gridService) => {
-      gridService.selectedTeam = this.teamInfo.UniqueID;
-      gridService.selectedLeague = this.league;
-    });
+      [this.skaterInfoGridService, this.skaterStatsGridService, this.skaterRatingsGridService,
+        this.goalieInfoGridService, this.goalieStatsGridService, this.goalieRatingsGridService,
+        this.teamStatsGridService, this.scheduleGridService]
+        .forEach((gridService) => {
+          gridService.selectedTeam = this.teamInfo.UniqueID;
+          gridService.selectedLeague = this.league;
+        });
 
     this.scheduleGridService.endDay = null;
     this.scheduleGridService.startDay = null;
+    this.skaterStatsGridService.selectedPosition = null;
+    this.skaterRatingsGridService.selectedPosition = null;
 
     this.skaterRatingsGridOptions = new GridOptions();
     this.skaterRatingsGridOptions.dataSource = this.skaterRatingsGridService;

@@ -18,6 +18,29 @@
           Skaters
         </div>
         <div class="panel-body">
+            <div class="filter-bar-heading" ng-click="$ctrl.filterOpen = !$ctrl.filterOpen">
+              <span class="glyphicon glyphicon-plus-sign" ng-if="!$ctrl.filterOpen"></span>
+              <span class="glyphicon glyphicon-minus-sign" ng-if="$ctrl.filterOpen"></span>
+              Filter
+            </div>
+            <div class="filter-bar" ng-class="{ expanded: $ctrl.filterOpen }">
+              <div class="row">
+                <div class="col-md-4 col-sm-6">
+                  <div class="form-group">
+                    <label class="text-nowrap">Position</label>
+                    <select class="form-control"
+                      ng-model="$ctrl.filter.position"
+                      ng-change="$ctrl.filterUpdated()">
+                      <option selected value="">Any</option>
+                      <option value="LW">Left Wing</option>
+                      <option value="C">Center</option>
+                      <option value="RW">Right Wing</option>
+                      <option value="D">Defense</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           <grid grid-options="$ctrl.gridOptions"></grid>
         </div>
       </div>
