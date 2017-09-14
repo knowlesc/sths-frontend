@@ -26,6 +26,10 @@ export class GridController {
 
     this.paginationOptions = this.gridOptions.paginationOptions;
     this.rowsPerPage = this.gridOptions.defaultRowsPerPage;
+    if (this.gridOptions.startAtPage) {
+      this.currentPage = parseInt(this.gridOptions.startAtPage.toString()) || 1;
+    }
+
     this.gridOptions.dataSource.fields = this.gridOptions.columns
       .map((column) => column.fieldName).join(',');
 
@@ -54,13 +58,20 @@ export class GridController {
     };
     this.gridOptions.api.reloadData = () => {
       this.currentPage = 1;
+      if (this.gridOptions.onPageChanged) {
+        this.gridOptions.onPageChanged(1);
+      }
+
       this.gridOptions.api.loadData();
     };
     if (this.gridOptions.defaultSortField) {
+      const descending = this.gridOptions.defaultSortField.indexOf('-') === 0;
+      const sortField = descending ? this.gridOptions.defaultSortField.substring(1) : this.gridOptions.defaultSortField;
+
       const sortColumn = this.gridOptions.columns.find((field) =>
-        field.fieldName === this.gridOptions.defaultSortField);
+        field.fieldName === sortField);
       if (sortColumn) {
-        this.gridOptions.api.updateSort(sortColumn);
+        this.gridOptions.api.updateSort(sortColumn, descending);
       } else {
         this.gridOptions.api.loadData();
       }
@@ -102,6 +113,9 @@ export class GridController {
     if (this.currentPage !== page) {
       this.currentPage = page;
       this.gridOptions.api.loadData();
+      if (this.gridOptions.onPageChanged) {
+        this.gridOptions.onPageChanged(page);
+      }
     }
   }
 

@@ -14,7 +14,7 @@ export class SkaterRatingsGridService implements GridDataSource {
   rows: {}[] = null;
 
   selectedPosition: string;
-  selectedLeague: 'farm' | 'pro' = 'pro';
+  selectedLeague = 'pro';
   selectedTeam: number;
 
   static $inject = ['playerService'];

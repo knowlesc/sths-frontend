@@ -83,12 +83,14 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/skaterStats', {
     templateUrl: 'templates/skaterStats.template.html',
     controller: SkaterStatsController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/goalieStats', {
     templateUrl: 'templates/goalieStats.template.html',
     controller: GoalieStatsController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/standings', {
     templateUrl: 'templates/standings.template.html',
@@ -137,7 +139,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/skaters', {
     templateUrl: 'templates/skaterRatings.template.html',
     controller: SkaterRatingsController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/skaters/:id', {
     resolve: {
@@ -152,7 +155,8 @@ app.config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
   .when('/goalies', {
     templateUrl: 'templates/goalieRatings.template.html',
     controller: GoalieRatingsController,
-    controllerAs: '$ctrl'
+    controllerAs: '$ctrl',
+    reloadOnSearch: false
   })
   .when('/goalies/:id', {
     resolve: {

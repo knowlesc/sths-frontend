@@ -10,6 +10,10 @@ export class GridOptions {
   defaultRowsPerPage: number;
   showIndexColumn: boolean;
   defaultSortField: string;
+  startAtPage: number;
 
   api: GridApi;
+
+  onPageChanged: (page: number) => void;
+  onSortChanged: (sort: string) => void;
 }

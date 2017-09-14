@@ -14,7 +14,7 @@ export class TeamStatsController {
     this.gridOptions.dataSource = this.teamStatsGridService;
     this.gridOptions.columns = teamStatsGridColumns();
     this.gridOptions.showIndexColumn = true;
-    this.gridOptions.defaultSortField = 'Points';
+    this.gridOptions.defaultSortField = '-Points';
   }
 
   leagueUpdated(league: 'farm' | 'pro') {

@@ -13,7 +13,7 @@ export class GoalieRatingsGridService implements GridDataSource {
 
   rows: {}[] = null;
 
-  selectedLeague: 'farm' | 'pro' = 'pro';
+  selectedLeague = 'pro';
   selectedTeam: number;
 
   static $inject = ['playerService'];
