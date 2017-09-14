@@ -1,3 +1,5 @@
+import { TeamLinesParams } from './../models/teams/teamLinesParams';
+import { TeamLines } from './../models/teams/teamLines';
 import { Config } from '../models/config';
 import { Routes } from '../models/routes';
 import { TeamInfo } from '../models/teams/teamInfo';
@@ -60,6 +62,17 @@ export class TeamService {
         }, (error) => {
           reject(error);
         });
+    });
+  }
+
+  getTeamLines(params?: TeamLinesParams): Promise<TeamLines> {
+    return new Promise((resolve, reject) => {
+      this.$http.get<TeamLines>(`${this.config.apiUrl}${Routes.teamList}/${params.league}/${params.id}/lines`)
+      .then((response) => {
+        resolve(response.data);
+      }, (error) => {
+        reject(error);
+      });
     });
   }
 }

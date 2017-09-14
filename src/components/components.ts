@@ -1,4 +1,5 @@
 import * as angular from 'angular';
+import { TeamLines } from './teamLines/teamLines.component';
 import { PlayoffBracket } from './playoffBracket/playoffBracket.component';
 import { Grid } from './grid/grid.component';
 import { AppMenu } from './appMenu/appMenu.component';
@@ -27,6 +28,7 @@ angular.module(Components.moduleName, [
   NewsArticle.moduleName,
   DepthChart.moduleName,
   FinanceInfo.moduleName,
+  TeamLines.moduleName,
   NgSrcFailover.moduleName,
   PlayoffBracket.moduleName
 ]);

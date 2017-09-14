@@ -1,0 +1,374 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">5v5</div>
+      <div class="panel-body">
+        <span ng-if="$ctrl.loadingFailed">Error loading lines</span>
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LW</th>
+            <th class="text-center">C</th>
+            <th class="text-center">RW</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line15vs5ForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line15vs5ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line15vs5ForwardRightWing"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line25vs5ForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line25vs5ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line25vs5ForwardRightWing"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line35vs5ForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line35vs5ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line35vs5ForwardRightWing"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line45vs5ForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line45vs5ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line45vs5ForwardRightWing"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line15vs5DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line15vs5DefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line25vs5DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line25vs5DefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line35vs5DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line35vs5DefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line45vs5DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line45vs5DefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Powerplay</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LW</th>
+            <th class="text-center">C</th>
+            <th class="text-center">RW</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PPForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PPForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PPForwardRightWing"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PPForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PPForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PPForwardRightWing"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PPDefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PPDefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PPDefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PPDefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Penalty Kill (4-man)</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">C</th>
+            <th class="text-center">WING</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK4ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK4ForwardWing"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK4ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK4ForwardWing"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK4DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK4DefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK4DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK4DefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Penalty Kill (3-man)</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">C</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK3ForwardCenter"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK3ForwardCenter"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK3DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line1PK3DefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK3DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line2PK3DefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Penalty Kill (4-man)</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">C</th>
+            <th class="text-center">WING</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line14VS4ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line14VS4ForwardWing"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line24VS4ForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line24VS4ForwardWing"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line14VS4DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line14VS4DefenseDefense2"></span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line24VS4DefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.Line24VS4DefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Last Minutes (Offensive)</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LW</th>
+            <th class="text-center">C</th>
+            <th class="text-center">RW</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinOffForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinOffForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinOffForwardRightWing"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinOffDefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinOffDefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Last Minutes (Defensive)</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LW</th>
+            <th class="text-center">C</th>
+            <th class="text-center">RW</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinDefForwardLeftWing"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinDefForwardCenter"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinDefForwardRightWing"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th class="text-center">LD</th>
+            <th class="text-center">RD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinDefDefenseDefense1"></span></td>
+              <td class="text-center"><span ng-bind="$ctrl.lines.LastMinDefDefenseDefense2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Goalies</div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td><strong>Starter</strong></td>
+              <td><span ng-bind="$ctrl.lines.Goaler1"></span></td>
+            </tr>
+            <tr>
+              <td><strong>Backup</strong></td>
+              <td><span ng-bind="$ctrl.lines.Goaler2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <loader ng-if="$ctrl.loading"></loader>
+      <div class="panel-heading">Other</div>
+      <div class="panel-body">
+        Extra Forwards
+        <table class="table table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td><strong>Even Strength</strong></td>
+              <td><span ng-bind="$ctrl.lines.ExtraForwardN1"></span></td>
+              <td><span ng-bind="$ctrl.lines.ExtraForwardN2"></span></td>
+              <td><span ng-bind="$ctrl.lines.ExtraForwardN3"></span></td>
+            </tr>
+            <tr>
+              <td><strong>PP</strong></td>
+              <td><span ng-bind="$ctrl.lines.ExtraForwardPP1"></span></td>
+              <td><span ng-bind="$ctrl.lines.ExtraForwardPP2"></span></td>
+            </tr>
+            <tr>
+              <td><strong>PK</strong></td>
+              <td><span ng-bind="$ctrl.lines.ExtraForwardPK"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        Extra Defensemen
+        <table class="table table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td><strong>Even Strength</strong></td>
+              <td><span ng-bind="$ctrl.lines.ExtraDefenseN1"></span></td>
+              <td><span ng-bind="$ctrl.lines.ExtraDefenseN2"></span></td>
+              <td><span ng-bind="$ctrl.lines.ExtraDefenseN3"></span></td>
+            </tr>
+            <tr>
+              <td><strong>PP</strong></td>
+              <td><span ng-bind="$ctrl.lines.ExtraDefensePP"></span></td>
+            </tr>
+            <tr>
+              <td><strong>PK</strong></td>
+              <td><span ng-bind="$ctrl.lines.ExtraDefensePK1"></span></td>
+              <td><span ng-bind="$ctrl.lines.ExtraDefensePK2"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        Penalty Shots
+        <table class="table table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td><span ng-bind="$ctrl.lines.PenaltyShots1"></span></td>
+              <td><span ng-bind="$ctrl.lines.PenaltyShots2"></span></td>
+              <td><span ng-bind="$ctrl.lines.PenaltyShots3"></span></td>
+              <td><span ng-bind="$ctrl.lines.PenaltyShots4"></span></td>
+              <td><span ng-bind="$ctrl.lines.PenaltyShots5"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
