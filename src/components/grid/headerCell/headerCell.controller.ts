@@ -6,14 +6,14 @@ export class HeaderCellController {
   gridOptions: GridOptions;
 
   get sortAsc(): boolean {
-    return this.column && this.column.sortable && this.gridOptions
+    return this.column && this.column.sortable && this.gridOptions && this.gridOptions.api
       && this.gridOptions.api.currentSort
       && this.gridOptions.api.currentSort.field === this.column.fieldName
       && this.gridOptions.api.currentSort.order === 'asc';
   }
 
   get sortDesc(): boolean {
-    return this.column && this.column.sortable && this.gridOptions
+    return this.column && this.column.sortable && this.gridOptions && this.gridOptions.api
       && this.gridOptions.api.currentSort
       && this.gridOptions.api.currentSort.field === this.column.fieldName
       && this.gridOptions.api.currentSort.order === 'desc';

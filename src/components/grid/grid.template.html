@@ -41,7 +41,7 @@
   </table>
 </div>
 
-<div class="text-center" ng-if="$ctrl.gridOptions.defaultRowsPerPage" ng-hide="$ctrl.firstTimeLoading">
+<div class="text-center" ng-if="$ctrl.gridOptions.defaultRowsPerPage && $ctrl.currentPage" ng-hide="$ctrl.firstTimeLoading">
   <ul class="pagination pagination-sm">
     <li>
       <a ng-click="$ctrl.goToPage(1)">
