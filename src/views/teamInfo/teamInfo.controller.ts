@@ -124,37 +124,37 @@ export class TeamInfoController {
     this.skaterRatingsGridOptions.dataSource = this.skaterRatingsGridService;
     this.skaterRatingsGridOptions.columns = skaterRatingsGridColumns(true);
     this.skaterRatingsGridOptions.columns.splice(1, 1); // Remove team column
-    this.skaterRatingsGridOptions.defaultSortField = 'Overall';
+    this.skaterRatingsGridOptions.defaultSortField = '-Overall';
 
     this.goalieRatingsGridOptions = new GridOptions();
     this.goalieRatingsGridOptions.dataSource = this.goalieRatingsGridService;
     this.goalieRatingsGridOptions.columns = goalieRatingsGridColumns(true);
     this.goalieRatingsGridOptions.columns.splice(1, 1);
-    this.goalieRatingsGridOptions.defaultSortField = 'Overall';
+    this.goalieRatingsGridOptions.defaultSortField = '-Overall';
 
     this.goalieInfoGridOptions = new GridOptions();
     this.goalieInfoGridOptions.dataSource = this.goalieInfoGridService;
     this.goalieInfoGridOptions.columns = goalieInfoGridColumns();
     this.goalieInfoGridOptions.columns.splice(1, 1);
-    this.goalieInfoGridOptions.defaultSortField = 'Salary1';
+    this.goalieInfoGridOptions.defaultSortField = '-Salary1';
 
     this.skaterInfoGridOptions = new GridOptions();
     this.skaterInfoGridOptions.dataSource = this.skaterInfoGridService;
     this.skaterInfoGridOptions.columns = skaterInfoGridColumns();
     this.skaterInfoGridOptions.columns.splice(1, 1);
-    this.skaterInfoGridOptions.defaultSortField = 'Salary1';
+    this.skaterInfoGridOptions.defaultSortField = '-Salary1';
 
     this.skaterStatsGridOptions = new GridOptions();
     this.skaterStatsGridOptions.dataSource = this.skaterStatsGridService;
     this.skaterStatsGridOptions.columns = skaterStatsGridColumns();
     this.skaterStatsGridOptions.columns.splice(1, 1);
-    this.skaterStatsGridOptions.defaultSortField = 'P';
+    this.skaterStatsGridOptions.defaultSortField = '-P';
 
     this.goalieStatsGridOptions = new GridOptions();
     this.goalieStatsGridOptions.dataSource = this.goalieStatsGridService;
     this.goalieStatsGridOptions.columns = goalieStatsGridColumns();
     this.goalieStatsGridOptions.columns.splice(1, 1);
-    this.goalieStatsGridOptions.defaultSortField = 'GP';
+    this.goalieStatsGridOptions.defaultSortField = '-GP';
 
     this.teamStatsGridOptions = new GridOptions();
     this.teamStatsGridOptions.dataSource = this.teamStatsGridService;
